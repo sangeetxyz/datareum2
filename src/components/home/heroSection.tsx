@@ -28,17 +28,21 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 import { BsMouse } from "react-icons/bs";
+import { useAuth } from "@/context/context";
+import { useRouter } from "next/navigation";
 const Inknut = Inknut_Antiqua({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
 const HeroSection = (props: { setVariant: (data: string) => void }) => {
+  const user = useAuth();
+  const router = useRouter();
   return (
-    <div className="relative flex h-screen w-full justify-center bg-gradient-to-l  from-stone-900 via-stone-95 to-stone-950 pt-20 text-white xl:pt-10">
+    <div className="via-stone-95 relative flex h-screen w-full justify-center  bg-gradient-to-l from-stone-900 to-stone-950 pt-20 text-white xl:pt-10">
       <div className="bg-neutral-70 flex h-full w-full max-w-[94rem] flex-col justify-center xl:flex-row">
         <div className="bg-red-95 lg justify-cente flex w-full items-center justify-center md:mt-10 xl:ml-8 xl:mt-0 2xl:ml-0">
-          <div className="flex flex-col mt-8 md:mt-0 items-center xl:items-start">
+          <div className="mt-8 flex flex-col items-center md:mt-0 xl:items-start">
             <div className="lg:text-md mb-2 ml-1 text-sm uppercase 2xl:text-xl">
               keep your data safe{" "}
               <span className="text-2xl font-extrabold text-acc">!</span>
@@ -100,6 +104,13 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
                 }}
                 whileTap={{
                   scale: 0.95,
+                }}
+                onClick={() => {
+                  if (!user) {
+                    router.push("/signin");
+                  } else {
+                    router.push("/dashboard");
+                  }
                 }}
                 className="cursor-pointer rounded-lg bg-acc px-5 py-3 text-center font-bold uppercase text-stone-950"
               >

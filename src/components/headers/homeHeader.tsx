@@ -34,7 +34,7 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
   const navbarItems = [
     {
       title: "get started",
-      link: user? "/dashboard" : "/signin",
+      link: user ? "/dashboard" : "/signin",
     },
     {
       title: "documentation",

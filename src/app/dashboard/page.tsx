@@ -15,6 +15,7 @@ import God from "@/components/dash/godSection";
 import Container from "@/components/containers/container";
 import { ContributionSection } from "@/components/dash/contributionSection";
 import Spinner from "@/components/loaders/spinner";
+import HomeHeader from "@/components/headers/homeHeader";
 
 const Dashboard = () => {
   const { user } = useAuth();
