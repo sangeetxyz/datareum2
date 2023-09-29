@@ -21,10 +21,10 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="md:cursor-none">
+    <div className="md:cursor-non">
       <Container>
         <HomeHeader setVariant={variantCB} />
-        <Cursor variant={variant} />
+        {/* <Cursor variant={variant} /> */}
         <HeroSection setVariant={variantCB} />
         <HeroSection setVariant={variantCB} />
         <Footer />

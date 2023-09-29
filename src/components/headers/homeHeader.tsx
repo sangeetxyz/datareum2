@@ -1,7 +1,12 @@
 import { useAuth } from "@/context/context";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { AiOutlineArrowRight, AiTwotoneExperiment } from "react-icons/ai";
+import {
+  AiOutlineArrowRight,
+  AiOutlineClose,
+  AiTwotoneExperiment,
+} from "react-icons/ai";
+import { GrClose } from "react-icons/gr";
 import { FaEthereum } from "react-icons/fa";
 import { RiMenu4Fill } from "react-icons/ri";
 import {
@@ -11,18 +16,65 @@ import {
   useTransform,
 } from "framer-motion";
 import { BiRightArrowAlt } from "react-icons/bi";
-import { BsBookHalf, BsPeople } from "react-icons/bs";
+import { BsBookHalf, BsPeople, BsSuitHeartFill } from "react-icons/bs";
 import {
   MdOutlineConnectWithoutContact,
   MdOutlineContactless,
   MdOutlinePrivacyTip,
 } from "react-icons/md";
 import Magnetic from "../containers/magnetic";
+import { menuItem, menu1 } from "../custom/anim";
+import { Lora } from "next/font/google";
+import { cn } from "@/lib/utils";
+const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const HomeHeader = (props: { setVariant: (data: string) => void }) => {
   const router = useRouter();
   const { user } = useAuth();
   const [isNavOpened, setIsNavOpened] = useState(false);
-
+  const navbarItems = [
+    {
+      title: "documentation",
+      link: "/docs",
+    },
+    {
+      title: "explore stats",
+      link: "/explore",
+    },
+    {
+      title: "who we are",
+      link: "/explore",
+    },
+    {
+      title: "privacy policy",
+      link: "/docs",
+    },
+    {
+      title: "contact us",
+      link: "/docs",
+    },
+  ];
+  const menuItems = [
+    {
+      title: "docs",
+      link: "/docs",
+    },
+    {
+      title: "explore",
+      link: "/explore",
+    },
+    {
+      title: "about",
+      link: "/about",
+    },
+    {
+      title: "privacy",
+      link: "/docs",
+    },
+    {
+      title: "contact",
+      link: "/docs",
+    },
+  ];
   return (
     <div className="bg-slate-40 border- fixed top-0 z-10 flex h-20 w-full justify-center border-gray-700">
       <div className="bg-red-30 flex w-full max-w-[94rem] items-center justify-between px-4 2xl:pl-0 2xl:pr-0">
@@ -40,118 +92,13 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
           </div>
         </div>
         <div className="hidden space-x-10 text-sm uppercase lg:flex">
-          <Magnetic>
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onMouseEnter={() => {
-                props.setVariant("hover");
-              }}
-              onMouseLeave={() => {
-                props.setVariant("default");
-              }}
-              onClick={() => {
-                router.push("/docs");
-              }}
-            >
-              docs
-            </motion.div>
-          </Magnetic>
-          <Magnetic>
-            {" "}
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onMouseEnter={() => {
-                props.setVariant("hover");
-              }}
-              onMouseLeave={() => {
-                props.setVariant("default");
-              }}
-              onClick={() => {
-                router.push("/explore");
-              }}
-            >
-              explore
-            </motion.div>
-          </Magnetic>
-          <Magnetic>
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onMouseEnter={() => {
-                props.setVariant("hover");
-              }}
-              onMouseLeave={() => {
-                props.setVariant("default");
-              }}
-              onClick={() => {
-                router.push("/docs");
-              }}
-            >
-              privacy
-            </motion.div>
-          </Magnetic>
-          <Magnetic>
-            {" "}
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onMouseEnter={() => {
-                props.setVariant("hover");
-              }}
-              onMouseLeave={() => {
-                props.setVariant("default");
-              }}
-              onClick={() => {
-                router.push("/contact");
-              }}
-            >
-              contact
-            </motion.div>
-          </Magnetic>
-          <Magnetic>
-            {" "}
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onMouseEnter={() => {
-                props.setVariant("hover");
-              }}
-              onMouseLeave={() => {
-                props.setVariant("default");
-              }}
-              onClick={() => {
-                router.push("/about");
-              }}
-            >
-              about
-            </motion.div>
-          </Magnetic>
+          {menuItems.map((item, index) => {
+            return <div>{item.title}</div>;
+          })}
         </div>
         {/* <Magnetic> */}
         <motion.div
-          className="hidden items-center rounded-lg bg-gradient-to-tr from-violet-500 to-teal-500 px-4 py-3 lg:flex"
+          className="hidden cursor-pointer items-center rounded-lg bg-acc from-violet-500 to-teal-500 px-4 py-3 font-bold text-stone-950 md:flex"
           whileHover={{
             scale: 1.05,
           }}
@@ -172,7 +119,7 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
           <AiOutlineArrowRight size={20} />
         </motion.div>
         {/* </Magnetic> */}
-        <div className=" lg:hidden">
+        <div className="cursor-pointer md:hidden">
           <RiMenu4Fill
             size={35}
             onClick={() => {
@@ -183,195 +130,71 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
       </div>
       {/* for mobile */}
       <AnimatePresence>
-        {isNavOpened ? (
+        {isNavOpened && (
           <motion.div
             key={"mobile_menu"}
-            initial={{
-              backdropFilter: `blur(0px) brightness(100%)`,
-            }}
-            animate={{
-              backdropFilter: `blur(15px)  brightness(70%)`,
-            }}
-            exit={{
-              backdropFilter: `blur(0px) brightness(100%)`,
-            }}
-            transition={{
-              duration: 1,
-            }}
+            variants={menu1}
+            initial={"initial"}
+            animate={"enter"}
+            exit={"exit"}
             className="fixed top-0 h-screen w-screen"
           >
             <div
-              className="flex h-full w-full items-center justify-center"
+              className="flex h-full w-full flex-col items-center justify-between bg-acc"
               onClick={() => {
                 setIsNavOpened(false);
               }}
             >
-              <div className="bg-yellow-60 flex w-64 flex-col items-center space-y-4 py-4">
-                <motion.div
-                  id="started"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: -100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    if (!user) {
-                      router.push("/signin");
-                    } else {
-                      router.push("/dashboard");
-                    }
-                  }}
-                >
-                  <div className="text-xl font-bold uppercase">login</div>
-                  <BiRightArrowAlt size={28} />
-                </motion.div>
-                <motion.div
-                  id="docs"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: 100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    router.push("/docs");
-                  }}
-                >
-                  <div className="mr-2 text-xl font-bold uppercase">docs</div>
-                  <BsBookHalf size={23} />
-                </motion.div>
-                <motion.div
-                  id="docs"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: -100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    router.push("/docs");
-                  }}
-                >
-                  <div className="mr-2 text-xl font-bold uppercase">
-                    explore
-                  </div>
-                  <AiTwotoneExperiment size={23} />
-                </motion.div>
-                <motion.div
-                  id="privacy"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: 100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    router.push("/privacy");
-                  }}
-                >
-                  <div className="mr-1 text-xl font-bold uppercase">
-                    privacy
-                  </div>
-                  <MdOutlinePrivacyTip size={25} />
-                </motion.div>
-                <motion.div
-                  id="privacy"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: -100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    router.push("/privacy");
-                  }}
-                >
-                  <div className="mr-1 text-xl font-bold uppercase">
-                    contact
-                  </div>
-                  <MdOutlineContactless size={25} />
-                </motion.div>
-                <motion.div
-                  id="privacy"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: 100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    router.push("/privacy");
-                  }}
-                >
-                  <div className="mr-1 text-xl font-bold uppercase">about</div>
-                  <BsPeople size={25} />
-                </motion.div>
+              <div className="flex w-full justify-between p-4 md:p-8">
+                <div>
+                  <FaEthereum size={40} color="#0C0A09" />
+                </div>
+                <div className="cursor-pointer">
+                  <GrClose size={40} color="#0C0A09" />
+                </div>
+              </div>
+              <div className="space- flex w-full flex-col items-center">
+                {navbarItems.map((item, index) => {
+                  return (
+                    <motion.div
+                      variants={menuItem}
+                      initial={"initial"}
+                      animate={"enter"}
+                      exit={"exit"}
+                      custom={index}
+                      whileHover={{
+                        backgroundColor: "#0C0A09",
+                        color: "#facc15",
+                        fontSize: "40px",
+                        transition: {
+                          duration: 0.5,
+                        },
+                      }}
+                      whileTap={{
+                        fontSize: "20px",
+                      }}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        router.push(item.link);
+                      }}
+                      className={cn(
+                        "w-full cursor-pointer py-3 text-center text-4xl font-bold uppercase text-stone-950",
+                        lora.className,
+                      )}
+                    >
+                      {item.title}
+                    </motion.div>
+                  );
+                })}
+              </div>
+              <div className="mb-4 flex items-center space-x-1">
+                <div className="font-bold text-stone-950">Made with</div>
+                <div>
+                  <BsSuitHeartFill size={20} color="#0C0A09" />
+                </div>
               </div>
             </div>
           </motion.div>
-        ) : (
-          <></>
         )}
       </AnimatePresence>
     </div>
