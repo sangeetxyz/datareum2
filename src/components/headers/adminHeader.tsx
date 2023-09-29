@@ -1,283 +1,172 @@
-"use client";
-import React, { useState } from "react";
-import { BiRightArrowAlt } from "react-icons/bi";
-import { BsBookHalf, BsPeople } from "react-icons/bs";
-import { FaEthereum } from "react-icons/fa";
-import { MdOutlineContactless, MdOutlinePrivacyTip } from "react-icons/md";
-import { RiMenu4Fill } from "react-icons/ri";
-import { useRouter } from "next/navigation";
-import {
-  AnimatePresence,
-  AnimationProps,
-  motion,
-  useTransform,
-} from "framer-motion";
-import { AiTwotoneExperiment } from "react-icons/ai";
 import { useAuth } from "@/context/context";
-import Magnetic from "../containers/magnetic";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { GrClose } from "react-icons/gr";
+import { FaEthereum } from "react-icons/fa";
+import { RiMenu4Fill } from "react-icons/ri";
+import { AnimatePresence, motion } from "framer-motion";
+import { BsSuitHeartFill } from "react-icons/bs";
+import { menuItem, menu1 } from "../custom/anim";
+import { Lora } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { unSigner } from "@/firebase/firebase";
+const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+
 const AdminHeader = () => {
   const [isNavOpened, setIsNavOpened] = useState(false);
   const router = useRouter();
   const { user } = useAuth();
+  const navbarItems = [
+    // {
+    //   title: "get started",
+    //   link: user ? "/dashboard" : "/signin",
+    // },
+    {
+      title: "documentation",
+      link: "/docs",
+    },
+    {
+      title: "explore stats",
+      link: "/explore",
+    },
+    // {
+    //   title: "who we are",
+    //   link: "/explore",
+    // },
+    {
+      title: "privacy policy",
+      link: "/docs",
+    },
+    {
+      title: "sign out",
+      link: "unsigner",
+    },
+  ];
+  const menuItems = [
+    {
+      title: "docs",
+      link: "/docs",
+    },
+    {
+      title: "explore",
+      link: "/explore",
+    },
+    {
+      title: "contact",
+      link: "/docs",
+    },
+  ];
   return (
-    <div className="fixed top-0 z-10 w-full">
-      {/* for pc */}
-      <div className="flex w-full items-center justify-center border-b border-gray-700 backdrop-blur-md">
-        <div className="bg-red- xl:px- flex h-20 w-full max-w-6xl items-center justify-between px-4">
-          <div className="flex flex-col items-end justify-center">
-            <div className="flex cursor-pointer items-center">
-              <FaEthereum size={28} color="white" />
-              <div
-                className="text-xl uppercase text-white md:text-2xl lg:text-3xl"
-                onClick={() => {
-                  router.push("/");
-                }}
-              >
-                datareum
-              </div>
+    <div className="fixed top-0 z-10 flex h-20 w-full justify-center border-gray-700 outline outline-1 outline-stone-700 backdrop-blur-sm backdrop-brightness-90">
+      <div className="flex w-full max-w-6xl items-center justify-between px-4">
+        <div className="flex flex-col items-end justify-center">
+          <div className="flex cursor-pointer items-center">
+            <FaEthereum size={28} color="#facc15" />
+            <div
+              className="text-xl uppercase text-white md:text-2xl lg:text-3xl"
+              onClick={() => {
+                router.push("/");
+              }}
+            >
+              datareum
             </div>
           </div>
-          <div className="mr- hidden space-x-10 text-sm uppercase lg:flex">
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onClick={() => {
-                router.back();
-              }}
-              className="cursor-pointer"
-            >
-              dashboard
-            </motion.div>
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onClick={() => {
-                router.push("/docs");
-              }}
-              className="cursor-pointer"
-            >
-              docs
-            </motion.div>
+        </div>
+        <div className="hidden space-x-10 text-sm uppercase md:flex">
+          {menuItems.map((item, index) => {
+            return (
+              <motion.div
+                whileHover={{ scale: 1.1, color: "#facc15" }}
+                whileTap={{ scale: 0.9 }}
+                className="cursor-pointer"
+              >
+                {item.title}
+              </motion.div>
+            );
+          })}
+        </div>
+        {/* dashboard button */}
 
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onClick={() => {
-                router.push("/explore");
-              }}
-              className="cursor-pointer"
-            >
-              explore
-            </motion.div>
-
-            {/* <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onClick={() => {
-                router.push("/docs");
-              }}
-              className="cursor-pointer"
-            >
-              privacy
-            </motion.div> */}
-
-            <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onClick={() => {
-                router.push("/contact");
-              }}
-              className="cursor-pointer"
-            >
-              contact
-            </motion.div>
-
-            {/* <motion.div
-              whileHover={{
-                scale: 1.1,
-              }}
-              whileTap={{
-                scale: 0.9,
-              }}
-              onClick={() => {
-                router.push("/about");
-              }}
-              className="cursor-pointer"
-            >
-              about
-            </motion.div> */}
-          </div>
-          <div className=" lg:hidden">
-            <RiMenu4Fill
-              size={35}
-              onClick={() => {
-                setIsNavOpened(true);
-              }}
-            />
-          </div>
+        <div className="cursor-pointer md:hidden">
+          <RiMenu4Fill
+            size={35}
+            onClick={() => {
+              setIsNavOpened(true);
+            }}
+          />
         </div>
       </div>
       {/* for mobile */}
       <AnimatePresence>
-        {isNavOpened ? (
+        {isNavOpened && (
           <motion.div
             key={"mobile_menu"}
-            initial={{
-              backdropFilter: `blur(0px) brightness(100%)`,
-            }}
-            animate={{
-              backdropFilter: `blur(15px)  brightness(70%)`,
-            }}
-            exit={{
-              backdropFilter: `blur(0px) brightness(100%)`,
-            }}
-            transition={{
-              duration: 1,
-            }}
+            variants={menu1}
+            initial={"initial"}
+            animate={"enter"}
+            exit={"exit"}
             className="fixed top-0 h-screen w-screen"
           >
             <div
-              className="flex h-full w-full items-center justify-center"
+              className="flex h-full w-full flex-col items-center justify-between bg-acc"
               onClick={() => {
                 setIsNavOpened(false);
               }}
             >
-              <div className="bg-yellow-60 flex w-64 flex-col items-center space-y-4 py-4">
-                <motion.div
-                  id="dashboard"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: -100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    // if (!user) {
-                    //   router.push("/signin");
-                    // } else {
-                    //   router.push("/dashboard");
-                    // }
-                    router.back();
-                  }}
-                >
-                  <div className="text-xl font-bold uppercase">dashboard</div>
-                  <BiRightArrowAlt size={28} />
-                </motion.div>
-                <motion.div
-                  id="docs"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: 100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    router.push("/docs");
-                  }}
-                >
-                  <div className="mr-2 text-xl font-bold uppercase">docs</div>
-                  <BsBookHalf size={23} />
-                </motion.div>
-                <motion.div
-                  id="explore"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: -100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    router.push("/explore");
-                  }}
-                >
-                  <div className="mr-2 text-xl font-bold uppercase">
-                    explore
-                  </div>
-                  <AiTwotoneExperiment size={23} />
-                </motion.div>
-
-                <motion.div
-                  id="contact"
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: 100,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: "easeInOut",
-                  }}
-                  className="flex cursor-pointer items-center"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    router.push("/contact");
-                  }}
-                >
-                  <div className="mr-1 text-xl font-bold uppercase">
-                    contact
-                  </div>
-                  <MdOutlineContactless size={25} />
-                </motion.div>
+              <div className="flex w-full justify-between p-4 md:p-8">
+                <div>
+                  <FaEthereum size={40} color="#0C0A09" />
+                </div>
+                <div className="cursor-pointer">
+                  <GrClose size={40} color="#0C0A09" />
+                </div>
+              </div>
+              <div className="space- flex w-full flex-col items-center">
+                {navbarItems.map((item, index) => {
+                  return (
+                    <motion.div
+                      variants={menuItem}
+                      initial={"initial"}
+                      animate={"enter"}
+                      exit={"exit"}
+                      custom={index}
+                      whileHover={{
+                        backgroundColor: "#0C0A09",
+                        color: "#facc15",
+                        fontSize: "40px",
+                        transition: {
+                          duration: 0.5,
+                        },
+                      }}
+                      whileTap={{
+                        fontSize: "20px",
+                      }}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        if (item.link === "unsigner") {
+                          unSigner();
+                        }
+                        router.push(item.link);
+                      }}
+                      className={cn(
+                        "w-full cursor-pointer py-3 text-center text-4xl font-bold uppercase text-stone-950",
+                        lora.className,
+                      )}
+                    >
+                      {item.title}
+                    </motion.div>
+                  );
+                })}
+              </div>
+              <div className="mb-4 flex items-center space-x-1">
+                <div className="font-bold text-stone-950">Made with</div>
+                <div>
+                  <BsSuitHeartFill size={20} color="#0C0A09" />
+                </div>
               </div>
             </div>
           </motion.div>
-        ) : (
-          <></>
         )}
       </AnimatePresence>
     </div>

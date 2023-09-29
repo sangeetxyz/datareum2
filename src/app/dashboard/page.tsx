@@ -55,14 +55,6 @@ const Dashboard = () => {
     // <CatLoader/>
     <Container>
       <div className="relative min-h-screen bg-stone-950">
-        {/* <div className="absolute left-0 top-0 -z-10 h-full w-full bg-black">
-          <img
-            src={waves.src}
-            // src="https://ideogram.ai/api/images/direct/w8yTF4rsQWGWyIyIUpJXQQ"
-            alt=""
-            className="h-full w-full object-cover opacity-20"
-          />
-        </div> */}
         <DashHeader />
         <div className="bg-pink-95 flex min-h-screen w-full flex-col items-center pt-20">
           <div className="h-full w-full max-w-6xl p-4">

@@ -78,8 +78,14 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
     <div className="bg-stone-95 fixed top-0 z-10 flex h-20 w-full justify-center border-gray-700 outline outline-1 outline-stone-700 backdrop-blur-sm backdrop-brightness-90">
       <div className="bg-red-30 flex w-full max-w-[94rem] items-center justify-between px-4 2xl:pl-0 2xl:pr-0">
         <div className="flex flex-col items-end justify-center">
-          <div className="flex items-center">
-            <FaEthereum size={28} color="#facc15" />
+          <div className="flex cursor-pointer items-center">
+            <motion.div
+              whileHover={{
+                rotate: 20,
+              }}
+            >
+              <FaEthereum size={28} color="#facc15" />
+            </motion.div>
             <div
               className="text-xl uppercase text-white md:text-2xl lg:text-3xl"
               onClick={() => {
