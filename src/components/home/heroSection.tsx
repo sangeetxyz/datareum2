@@ -35,10 +35,10 @@ const Inknut = Inknut_Antiqua({
 
 const HeroSection = (props: { setVariant: (data: string) => void }) => {
   return (
-    <div className="relative flex h-screen w-full justify-center bg-gradient-to-l  from-stone-900 to-stone-950 pt-20 text-white xl:pt-10">
+    <div className="relative flex h-screen w-full justify-center bg-gradient-to-l  from-stone-900 via-stone-95 to-stone-950 pt-20 text-white xl:pt-10">
       <div className="bg-neutral-70 flex h-full w-full max-w-[94rem] flex-col justify-center xl:flex-row">
         <div className="bg-red-95 lg justify-cente flex w-full items-center justify-center md:mt-10 xl:ml-8 xl:mt-0 2xl:ml-0">
-          <div className="flex flex-col items-center xl:items-start">
+          <div className="flex flex-col mt-8 md:mt-0 items-center xl:items-start">
             <div className="lg:text-md mb-2 ml-1 text-sm uppercase 2xl:text-xl">
               keep your data safe{" "}
               <span className="text-2xl font-extrabold text-acc">!</span>

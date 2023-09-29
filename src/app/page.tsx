@@ -26,7 +26,8 @@ const Home = () => {
         <HomeHeader setVariant={variantCB} />
         {/* <Cursor variant={variant} /> */}
         <HeroSection setVariant={variantCB} />
-        <HeroSection setVariant={variantCB} />
+        {/* <HeroSection setVariant={variantCB} /> */}
+        <div className="h-screen bg-stone-950"></div>
         <Footer />
       </Container>
     </div>

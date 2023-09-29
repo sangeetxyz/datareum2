@@ -14,6 +14,7 @@ import { unSigner } from "@/firebase/firebase";
 import God from "@/components/dash/godSection";
 import Container from "@/components/containers/container";
 import { ContributionSection } from "@/components/dash/contributionSection";
+import Spinner from "@/components/loaders/spinner";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -40,7 +41,7 @@ const Dashboard = () => {
 
   return !userData ? (
     <div>
-      <CatLoader />
+      <Spinner />
       <div
         onClick={() => {
           unSigner();
@@ -76,5 +77,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-

@@ -33,6 +33,10 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
   const [isNavOpened, setIsNavOpened] = useState(false);
   const navbarItems = [
     {
+      title: "get started",
+      link: user? "/dashboard" : "/signin",
+    },
+    {
       title: "documentation",
       link: "/docs",
     },
@@ -76,11 +80,11 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
     },
   ];
   return (
-    <div className="bg-slate-40 border- fixed top-0 z-10 flex h-20 w-full justify-center border-gray-700">
+    <div className="bg-stone-95 fixed top-0 z-10 flex h-20 w-full justify-center border-gray-700 outline outline-1 outline-stone-700 backdrop-blur-sm backdrop-brightness-90">
       <div className="bg-red-30 flex w-full max-w-[94rem] items-center justify-between px-4 2xl:pl-0 2xl:pr-0">
         <div className="flex flex-col items-end justify-center">
           <div className="flex items-center">
-            <FaEthereum size={28} color="white" />
+            <FaEthereum size={28} color="#facc15" />
             <div
               className="text-xl uppercase text-white md:text-2xl lg:text-3xl"
               onClick={() => {
@@ -93,7 +97,15 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
         </div>
         <div className="hidden space-x-10 text-sm uppercase lg:flex">
           {menuItems.map((item, index) => {
-            return <div>{item.title}</div>;
+            return (
+              <motion.div
+                whileHover={{ scale: 1.1, color: "#facc15" }}
+                whileTap={{ scale: 0.9 }}
+                className="cursor-pointer"
+              >
+                {item.title}
+              </motion.div>
+            );
           })}
         </div>
         {/* <Magnetic> */}
