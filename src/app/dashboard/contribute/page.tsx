@@ -146,17 +146,10 @@ const Contribute = () => {
   ) : (
     <Container>
       <div className="relative min-h-screen w-full">
-        <div className="absolute left-0 top-0 -z-10 h-full w-full bg-black">
-          <img
-            src={waves.src}
-            alt="waves"
-            className="h-full w-full object-cover opacity-20"
-          />
-        </div>
         <AdminHeader />
         {file ? (
           // has file
-          <div className="bg-pink-95 mih-h-screen flex w-full flex-col items-center pt-20">
+          <div className="mih-h-screen flex w-full flex-col items-center bg-stone-950 pt-20">
             <div className="h-full w-full max-w-6xl p-4">
               <div className="bg-red-95 h-full">
                 {/* stats */}
@@ -181,17 +174,17 @@ const Contribute = () => {
           </div>
         ) : (
           // no file
-          <div className="bg-pink-95 flex h-screen w-full flex-col items-center pt-20">
+          <div className="bg-stone-950 flex h-screen w-full flex-col items-center pt-20">
             <div className="h-full w-full max-w-6xl p-4">
               <div
                 onClick={(event) => {
                   fileRef.current?.click();
                 }}
-                className="relative flex h-full items-center justify-center rounded-xl bg-zinc-950 bg-opacity-30 outline outline-1 outline-slate-700 backdrop-blur-md"
+                className="relative flex h-full items-center justify-center rounded-xl bg-stone-800 bg-opacity-30 outline outline-2 outline-stone-700 backdrop-blur-md"
               >
                 <div className="flex flex-col items-center">
                   <div className="w-24">
-                    <IoCloudUpload className="h-full w-full" />
+                    <IoCloudUpload className="h-full w-full" color={"#facc15"} />
                   </div>
                   <div>Select your file to get started</div>
                 </div>
