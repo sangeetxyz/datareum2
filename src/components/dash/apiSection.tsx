@@ -38,7 +38,7 @@ export const ApiSection: React.FC<APIProps> = ({ userData }) => {
   return (
     <div>
       <div className="my-4 text-xl uppercase">api token</div>
-      <div className="relative rounded-xl bg-zinc-950 bg-opacity-30 outline outline-2 outline-gray-700 backdrop-blur-sm">
+      <div className="relative rounded-xl bg-stone-800 text-stone-100 bg-opacity-30 outline outline-2 outline-stone-700 backdrop-blur-sm">
         <div className="flex flex-col items-center justify-between space-y-4 px-6 py-6 md:flex-row md:space-y-0">
           <div className="text-center text-xl font-bold">
             Generate your secret API token now!
@@ -83,7 +83,7 @@ export const ApiSection: React.FC<APIProps> = ({ userData }) => {
                 }
               }
             }}
-            className="cursor-pointer rounded-lg bg-gradient-to-tr from-violet-500 to-teal-500 px-4 py-2 text-sm uppercase"
+            className="cursor-pointer rounded-lg bg-acc font-bold text-stone-950 px-4 py-2 text-sm uppercase"
           >
             generate
           </motion.div>
@@ -95,7 +95,7 @@ export const ApiSection: React.FC<APIProps> = ({ userData }) => {
             className="h-8 w-[600px] rounded-l-lg bg-gray-300 px-3 text-center font-mono font-bold text-gray-800  focus:outline-none lg:w-[700px] xl:w-[800px]"
           />
           <div
-            className="flex h-8 cursor-pointer items-center rounded-r-lg bg-gray-700 px-2"
+            className="flex h-8 cursor-pointer items-center rounded-r-lg bg-stone-600 px-2"
             onClick={() => {
               if (inputState === "password") {
                 setInputState("text");
@@ -139,7 +139,7 @@ export const ApiSection: React.FC<APIProps> = ({ userData }) => {
             }}
           >
             <Tooltip title={"Copy to clipboard"} arrow={false}>
-              <BiSolidCopy size={30} color="#2DD4BF" />
+              <BiSolidCopy size={30} color="#facc15" />
             </Tooltip>
           </motion.div>
         </div>
@@ -206,7 +206,7 @@ export const ApiSection: React.FC<APIProps> = ({ userData }) => {
                 transition={{
                   duration: 1,
                 }}
-                className="shadow-l cursor-pointer rounded-full bg-gray-800 p-2 uppercase text-gray-200 shadow-black outline outline-1 outline-gray-200"
+                className="shadow-l cursor-pointer rounded-full bg-stone-800 p-2 uppercase text-gray-200 shadow-black outline outline-1 outline-gray-200"
               >
                 {userData.canDownload ? (
                   <BiSolidLockOpenAlt size={30} />

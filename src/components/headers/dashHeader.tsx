@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 import { unSigner } from "@/firebase/firebase";
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const DashHeader = () => {
-  const { user } = useAuth();
   const navbarItems = [
     // {
     //   title: "get started",
@@ -60,7 +59,7 @@ const DashHeader = () => {
     <div className="fixed top-0 z-10 flex h-20 w-full justify-center border-gray-700 outline outline-1 outline-stone-700 backdrop-blur-sm backdrop-brightness-90">
       <div className="flex w-full max-w-6xl items-center justify-between px-4">
         <div className="flex flex-col items-end justify-center">
-          <div className="flex items-center">
+          <div className="flex cursor-pointer items-center">
             <FaEthereum size={28} color="#facc15" />
             <div
               className="text-xl uppercase text-white md:text-2xl lg:text-3xl"

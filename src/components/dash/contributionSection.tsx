@@ -12,7 +12,7 @@ export const ContributionSection = ({ userData }: { userData: userData }) => {
   return (
     <div>
       <div className="my-4 text-xl uppercase">contribution</div>
-      <div className="rounded-xl bg-zinc-950 bg-opacity-30 outline outline-2 outline-gray-700 backdrop-blur-sm">
+      <div className="rounded-xl bg-stone-800 bg-opacity-30 outline outline-2 outline-stone-700 backdrop-blur-sm">
         <div className="flex flex-col items-center justify-between p-6 md:flex-row">
           <div className="text-xl font-bold">
             Contrtibute to the Healthcare now!
@@ -24,7 +24,7 @@ export const ContributionSection = ({ userData }: { userData: userData }) => {
             whileTap={{
               scale: 0.95,
             }}
-            className="mt-4 flex cursor-pointer items-center space-x-2 rounded-lg bg-gradient-to-tr from-violet-500 to-teal-500 px-3 py-2 text-center text-sm uppercase md:mt-0 xl:mt-0"
+            className="mt-4 flex cursor-pointer items-center space-x-2 rounded-lg bg-acc font-bold text-stone-950 px-3 py-2 text-center text-sm uppercase md:mt-0 xl:mt-0"
             onClick={() => {
               if (userData.canContribute) {
                 router.push("/dashboard/contribute");

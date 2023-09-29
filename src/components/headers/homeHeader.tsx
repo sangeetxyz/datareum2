@@ -16,13 +16,8 @@ import {
   useTransform,
 } from "framer-motion";
 import { BiRightArrowAlt } from "react-icons/bi";
-import { BsBookHalf, BsPeople, BsSuitHeartFill } from "react-icons/bs";
-import {
-  MdOutlineConnectWithoutContact,
-  MdOutlineContactless,
-  MdOutlinePrivacyTip,
-} from "react-icons/md";
-import Magnetic from "../containers/magnetic";
+import { BsSuitHeartFill } from "react-icons/bs";
+
 import { menuItem, menu1 } from "../custom/anim";
 import { Lora } from "next/font/google";
 import { cn } from "@/lib/utils";

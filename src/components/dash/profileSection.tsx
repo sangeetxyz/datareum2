@@ -46,17 +46,16 @@ const ProfileSection = (props: { userData: userData }) => {
   return (
     <div className="w-full rounded-xl">
       <div className="mb-4 text-xl uppercase">profile</div>
-
-      <div className="grid grid-cols-8 rounded-xl outline outline-2 outline-gray-700">
-        <div className="col-span-8 flex justify-center rounded-xl md:rounded-r-none bg-zinc-950 bg-opacity-30 p-4 backdrop-blur-md md:col-span-3">
+      <div className="grid grid-cols-8 rounded-xl outline outline-2 outline-stone-700">
+        <div className="col-span-8 flex justify-center rounded-xl bg-stone-800 bg-opacity-30 p-4 backdrop-blur-md md:col-span-3 md:rounded-r-none">
           <div className="relative flex items-center">
             <img
               src={profilePhotoUrl}
               alt=""
-              className="h-72 w-72 rounded-full border-2 border-gray-100 bg-zinc-950 object-cover md:h-64 md:w-64 lg:h-72 lg:w-72"
+              className="h-72 w-72 rounded-full border-2 border-stone-100 bg-stone-950 object-cover md:h-64 md:w-64 lg:h-72 lg:w-72"
             />
             <div
-              className="absolute bottom-5 right-5 cursor-pointer rounded-full bg-gradient-to-tr from-violet-500 to-teal-500 p-2"
+              className="absolute bottom-5 right-5 cursor-pointer rounded-full bg-acc p-2"
               onClick={() => {
                 inputRef.current?.click();
                 setIsProUploaded(false);
@@ -66,15 +65,15 @@ const ProfileSection = (props: { userData: userData }) => {
             </div>
           </div>
         </div>
-        <div className="col-span-8 flex flex-col justify-between rounded-b-xl bg-zinc-950 bg-opacity-30 text-gray-200 backdrop-blur-md md:col-span-5 md:rounded-r-xl md:rounded-bl-none">
+        <div className="col-span-8 flex flex-col justify-between rounded-b-xl bg-stone-800 bg-opacity-30 text-stone-100 backdrop-blur-md md:col-span-5 md:rounded-r-xl md:rounded-bl-none">
           <div>
-            <div className="m-4 border-b border-gray-700 pb-4 pl-2 pt-2 text-center text-2xl font-bold capitalize md:text-start">{`
+            <div className="m-4 border-b border-stone-700 pb-4 pl-2 pt-2 text-center text-2xl font-bold capitalize md:text-start">{`
                 ${getGreeting()} ${props.userData!.name}!
                 `}</div>
             <div className="bg-pink-95 m-4 space-y-2 pl-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <BiSolidBusiness size={30} color="#2DD4BF" />
+                  <BiSolidBusiness size={30} color="#facc15" />
                   <div className="ml-4 font-semibold">
                     {props.userData!.org}
                   </div>
@@ -96,7 +95,7 @@ const ProfileSection = (props: { userData: userData }) => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <MdEmail size={30} color="#2DD4BF" />
+                  <MdEmail size={30} color="#facc15" />
                   <div className="ml-4 font-semibold">
                     {props.userData!.email}
                   </div>
@@ -115,7 +114,7 @@ const ProfileSection = (props: { userData: userData }) => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <AiFillPhone size={30} color="#2DD4BF" />
+                  <AiFillPhone size={30} color="#facc15" />
                   <div className="ml-4 font-semibold">
                     {props.userData!.phone}
                   </div>
@@ -137,7 +136,7 @@ const ProfileSection = (props: { userData: userData }) => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <SiFastapi size={28} color="#2DD4BF" />
+                  <SiFastapi size={28} color="#facc15" />
                   <div className="ml-4 font-semibold">API Access</div>
                 </div>
                 <div>
@@ -162,7 +161,7 @@ const ProfileSection = (props: { userData: userData }) => {
               whileTap={{
                 scale: 0.95,
               }}
-              className="cursor-pointer rounded-lg bg-gradient-to-tr from-violet-500 to-teal-500 px-3 py-2 text-sm uppercase"
+              className="cursor-pointer rounded-lg bg-acc px-3 py-2 text-sm font-bold uppercase text-stone-950"
               onClick={() => {
                 setIsUpadateOpened(true);
               }}
@@ -170,7 +169,7 @@ const ProfileSection = (props: { userData: userData }) => {
               edit profile
             </motion.div>
             <motion.div
-              className="cursor-pointer rounded-lg bg-gradient-to-tr from-violet-500 to-teal-500 px-3 py-2 text-sm uppercase"
+              className="cursor-pointer rounded-lg bg-acc px-3 py-2 text-sm font-bold uppercase text-stone-950"
               onClick={() => {
                 unSigner();
               }}
@@ -233,7 +232,7 @@ const ProfileSection = (props: { userData: userData }) => {
               transition={{
                 duration: 0.5,
               }}
-              className="flex flex-col rounded-xl border-2 border-gray-700 bg-zinc-950 bg-opacity-50 p-6 backdrop-blur-sm"
+              className="flex flex-col rounded-xl border-2 border-stone-700 bg-zinc-950 bg-opacity-50 p-6 backdrop-blur-sm"
               onClick={(event) => {
                 event.stopPropagation();
               }}
@@ -252,13 +251,13 @@ const ProfileSection = (props: { userData: userData }) => {
                     router.push("/");
                   }}
                 >
-                  <FaEthereum size={100} color="#2DD4BF" />
+                  <FaEthereum size={100} color="#facc15" />
                 </motion.div>
               </div>
               <div className="font-bold text-white">Full Name</div>
               <div className="mt-1 flex items-center space-x-2">
                 <div className="">
-                  <BsFillPersonFill size={30} color="#2DD4BF" />
+                  <BsFillPersonFill size={30} color="#facc15" />
                 </div>
                 <input
                   type="text"
@@ -273,7 +272,7 @@ const ProfileSection = (props: { userData: userData }) => {
               <div className="mt-2 font-bold text-white">Email</div>
               <div className="mt-1 flex items-center space-x-2">
                 <div className="">
-                  <MdEmail size={30} color="#2DD4BF" />
+                  <MdEmail size={30} color="#facc15" />
                 </div>
                 <input
                   type="text"
@@ -288,7 +287,7 @@ const ProfileSection = (props: { userData: userData }) => {
               <div className="mt-2 font-bold text-white">Organization</div>
               <div className="mt-1 flex items-center space-x-2">
                 <div className="">
-                  <BiSolidBusiness size={30} color="#2DD4BF" />
+                  <BiSolidBusiness size={30} color="#facc15" />
                 </div>
                 <input
                   type="text"
@@ -323,7 +322,7 @@ const ProfileSection = (props: { userData: userData }) => {
                   });
                   setIsUpadateOpened(false);
                 }}
-                className="mt-6 w-full cursor-pointer rounded-xl bg-gradient-to-tr from-violet-500 to-teal-500 py-2 text-center font-bold text-zinc-100"
+                className="mt-6 w-full cursor-pointer rounded-xl bg-acc py-2 text-center font-bold text-stone-950"
               >
                 Update Profile
               </motion.div>
@@ -371,7 +370,7 @@ const ProfileSection = (props: { userData: userData }) => {
               transition={{
                 duration: 0.5,
               }}
-              className="flex flex-col rounded-xl border-2 border-gray-700 bg-zinc-950 bg-opacity-50 p-6 backdrop-blur-sm"
+              className="flex flex-col rounded-xl border-2 border-stone-700 bg-stone-950 bg-opacity-50 p-6 backdrop-blur-sm"
               onClick={(event) => {
                 event.stopPropagation();
               }}
@@ -407,7 +406,7 @@ const ProfileSection = (props: { userData: userData }) => {
                     setIsProUploaded(true);
                     setIsConfirmationOpened(false);
                   }}
-                  className="mt-6 w-full cursor-pointer rounded-xl bg-gradient-to-tr from-violet-500 to-teal-500 py-2 text-center font-bold text-zinc-100"
+                  className="mt-6 w-full cursor-pointer rounded-xl bg-acc py-2 text-center font-bold text-stone-950"
                 >
                   Okay
                 </motion.div>
