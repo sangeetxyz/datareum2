@@ -37,6 +37,7 @@ const Inknut = Inknut_Antiqua({
 
 const HeroSection = (props: { setVariant: (data: string) => void }) => {
   const user = useAuth();
+  console.log(user);
   const router = useRouter();
   return (
     <div className="via-stone-95 relative flex h-screen w-full justify-center  bg-gradient-to-l from-stone-900 to-stone-950 pt-20 text-white xl:pt-10">
@@ -106,10 +107,10 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
                   scale: 0.95,
                 }}
                 onClick={() => {
-                  if (!user) {
-                    router.push("/signin");
-                  } else {
+                  if (user.user) {
                     router.push("/dashboard");
+                  } else {
+                    router.push("/signin");
                   }
                 }}
                 className="cursor-pointer rounded-lg bg-acc px-5 py-3 text-center font-bold uppercase text-stone-950"
