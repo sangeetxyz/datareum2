@@ -29,7 +29,7 @@ export const AnalyticsSection = ({
   }) => {
     if (active && payload && payload.length > 0) {
       return (
-        <div className="flex flex-col items-center rounded-lg bg-zinc-950 p-2 text-sm outline outline-1 outline-slate-700">
+        <div className="flex flex-col items-center rounded-lg bg-stone-950 p-2 text-sm outline outline-1 outline-stone-700">
           <div>{`On Row - ${label + 1}`}</div>
           <div>{`Raw Columns - ${payload[0].value}`}</div>
           <div>{`Parsed Columns - ${payload[1].value}`}</div>
