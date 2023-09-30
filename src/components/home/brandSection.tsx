@@ -13,7 +13,7 @@ const BrandSection = () => {
   console.log(mainDivTrans);
   return (
     <div ref={mainDivRef} className="relative h-[400vh] bg-black">
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden bg-stone-950">
+      <div className="sticky top-0 pt-20 flex h-screen w-full items-center justify-center overflow-hidden bg-stone-950">
         <div className="h-full w-full p-[4vw]">
           <div className="relative flex h-full w-full overflow-hidden rounded-2xl outline  outline-1 outline-acc">
             <motion.div
@@ -45,17 +45,15 @@ const BrandSection = () => {
               style={{
                 x: mainDivTrans2,
               }}
-              className="absolute left-0 top-0 flex h-full w-full items-center justify-end text-9xl"
+              className="absolute text-acc left-0 top-0 flex h-full w-full items-center justify-end text-9xl"
             >
+              <div className="w-full shrink-0 text-center font-bold">one</div>
+              <div className="w-full shrink-0 text-center font-bold">You!</div>
               <div className="w-full shrink-0 text-center font-bold">
-               one
+                Privacy is everything
               </div>
               <div className="w-full shrink-0 text-center font-bold">
-                You!
-              </div>
-              <div className="w-full shrink-0 text-center font-bold">Everyone is wathing</div>
-              <div className="w-full shrink-0 text-center font-bold">
-               In this world
+                In this world
               </div>
             </motion.div>
           </div>
