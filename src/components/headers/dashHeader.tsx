@@ -77,7 +77,7 @@ const DashHeader = () => {
               <motion.div
                 whileHover={{ scale: 1.1, color: "#facc15" }}
                 whileTap={{ scale: 0.9 }}
-                className="cursor-pointer"
+                className="cursor-pointer text-stone-100"
               >
                 {item.title}
               </motion.div>
@@ -88,6 +88,7 @@ const DashHeader = () => {
 
         <div className="cursor-pointer md:hidden">
           <RiMenu4Fill
+            color="fff"
             size={35}
             onClick={() => {
               setIsNavOpened(true);

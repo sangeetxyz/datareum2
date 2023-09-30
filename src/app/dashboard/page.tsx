@@ -54,7 +54,7 @@ const Dashboard = () => {
   ) : (
     // <CatLoader/>
     <Container>
-      <div className="relative min-h-screen bg-stone-950">
+      <div className="relative min-h-screen bg-stone-950 via-stone-900 from-stone-950 to-stone-950">
         {/* <div className="absolute left-0 top-0 -z-10 h-full w-full bg-black">
           <img
             src={waves.src}

@@ -69,3 +69,9 @@ export type PatientBC = {
   identifier: string;
   secretKey: string;
 };
+
+
+export interface MousePosition {
+  x: number | null;
+  y: number | null;
+}

@@ -40,10 +40,11 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
   console.log(user);
   const router = useRouter();
   return (
-    <div className="via-stone-95 relative flex h-screen w-full justify-center  bg-gradient-to-l from-stone-900 to-stone-950 pt-20 text-white xl:pt-10">
+    <div className="via-stone-95 relative flex h-screen w-full justify-center bg-gradient-to-tr from-stone-950 to-stone-900 pt-20 text-white xl:pt-10">
       <div className="bg-neutral-70 flex h-full w-full max-w-[94rem] flex-col justify-center xl:flex-row">
         <div className="bg-red-95 lg justify-cente flex w-full items-center justify-center md:mt-10 xl:ml-8 xl:mt-0 2xl:ml-0">
           <div className="mt-8 flex flex-col items-center md:mt-0 xl:items-start">
+            <div className="mb-4 hidden h-[2px] w-[30rem] bg-gradient-radial from-acc xl:block xl:bg-gradient-to-l xl:from-transparent xl:to-acc"></div>
             <div className="lg:text-md mb-2 ml-1 text-sm uppercase 2xl:text-xl">
               keep your data safe{" "}
               <span className="text-2xl font-extrabold text-acc">!</span>
@@ -129,8 +130,9 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
                 explore now
               </motion.div>
             </div>
+            <div className="mt-6 hidden h-[2px] w-[30rem] bg-gradient-radial from-acc xl:block xl:bg-gradient-to-l xl:from-transparent xl:to-acc"></div>
             {/* 2nd page */}
-            <div className="mt-7 hidden flex-col items-center space-y-4 xl:flex">
+            {/* <div className="mt-7 hidden flex-col items-center space-y-4 xl:flex">
               <div className="h-[2px] w-[30rem] bg-gradient-radial from-acc xl:bg-gradient-to-l xl:from-transparent xl:to-acc"></div>
               <div className="flex w-full justify-center">
                 <div className="flex w-full justify-around">
@@ -152,7 +154,7 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
                 </div>
               </div>
               <div className="h-[2px] w-[30rem] bg-gradient-radial from-acc to-transparent xl:bg-gradient-to-l xl:from-transparent xl:to-acc"></div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="bg-red-90 flex w-full items-center justify-center overflow-hidden ">

@@ -6,6 +6,8 @@ import React, { useEffect, useState } from "react";
 import HeroSection from "@/components/home/heroSection";
 import Toaster from "@/components/containers/Toaster";
 import Container from "@/components/containers/container";
+import Se from "@/components/home/se";
+import BrandSection from "@/components/home/brandSection";
 
 const Home = () => {
   const [variant, setVariant] = useState("default");
@@ -23,11 +25,11 @@ const Home = () => {
   return (
     <div className="md:cursor-non">
       <Container>
-        <HomeHeader setVariant={variantCB} />
+        {/* <HomeHeader setVariant={variantCB} /> */}
         {/* <Cursor variant={variant} /> */}
         <HeroSection setVariant={variantCB} />
         {/* <HeroSection setVariant={variantCB} /> */}
-        <div className="h-screen bg-stone-950"></div>
+        <BrandSection />
         <Footer />
       </Container>
     </div>
