@@ -68,22 +68,20 @@ const Signup = () => {
                   key={"second page"}
                   initial={{
                     opacity: 0,
-                    scale: 0.9,
-                    y: 100,
+                    scale: 0.5,
                   }}
                   animate={{
                     scale: 0.9,
                     opacity: 1,
-                    y: 0,
                   }}
                   transition={{
-                    duration: 0.2,
-                    delay: 0.3,
+                    duration: 1,
+                    delay: 0.5,
                   }}
-                  className="flex flex-col rounded-xl border-2 border-gray-700 bg-zinc-950 bg-opacity-50 p-6 backdrop-blur-sm"
+                  className="flex flex-col rounded-xl border-2 border-stone-700 bg-stone-800 bg-opacity-50 p-6 backdrop-blur-sm"
                 >
                   <div
-                    className="w-72 cursor-pointer text-3xl font-bold text-white"
+                    className="w-72 cursor-pointer text-3xl font-bold text-stone-200 md:w-80"
                     onClick={() => {
                       window.location.reload();
                       router.refresh();
@@ -91,7 +89,7 @@ const Signup = () => {
                   >
                     Back
                   </div>
-                  <div className="mb-4 text-white">
+                  <div className="mb-4 text-stone-200">
                     Enter your one time password
                   </div>
                   <div className="my-4 flex w-full justify-center">
@@ -101,13 +99,13 @@ const Signup = () => {
                         rotate: 10,
                       }}
                     >
-                      <FaEthereum size={100} color="#2DD4BF" />
+                      <FaEthereum size={100} color="#facc15" />
                     </motion.div>
                   </div>
-                  <div className="font-bold text-white">6 Digit OTP</div>
+                  <div className="font-bold text-stone-200">6 Digit OTP</div>
                   <div className="mt-1 flex items-center space-x-2">
                     <div className="">
-                      <RiLockPasswordFill size={30} color="#2DD4BF" />
+                      <RiLockPasswordFill size={30} color="#facc15" />
                     </div>
                     <input
                       type="text"
@@ -117,7 +115,7 @@ const Signup = () => {
                         setOTP(value.target.value);
                       }}
                       placeholder="121212"
-                      className="h-10 w-full rounded-xl bg-zinc-300 px-4 text-zinc-800 focus:outline-none"
+                      className="h-10 w-full rounded-xl bg-stone-200 px-4 text-stone-800 focus:outline-none"
                     />
                   </div>
                   <motion.div
@@ -138,11 +136,11 @@ const Signup = () => {
                         isTacAccepted,
                       );
                     }}
-                    className="mt-6 w-full cursor-pointer rounded-xl bg-gradient-to-tr from-violet-500 to-teal-500 py-2 text-center font-bold text-zinc-100"
+                    className="mt-6 w-full cursor-pointer rounded-xl bg-acc py-2 text-center font-bold text-stone-950"
                   >
                     Proceed
                   </motion.div>
-                  <div className="mt-1 text-center text-sm text-white">
+                  <div className="mt-1 text-center text-sm text-stone-200">
                     Already have an account?{" "}
                     <span
                       onClick={() => {
@@ -160,7 +158,7 @@ const Signup = () => {
                   key={"first page"}
                   initial={{
                     opacity: 0,
-                    scale: 0,
+                    scale: 0.5,
                   }}
                   animate={{
                     scale: 0.9,
@@ -171,7 +169,7 @@ const Signup = () => {
                   }}
                   className="flex flex-col rounded-xl border-2 border-stone-700 bg-stone-800 bg-opacity-50 p-6 backdrop-blur-sm"
                 >
-                  <div className="w-72 md:w-80 text-3xl font-bold text-stone-200">
+                  <div className="w-72 text-3xl font-bold text-stone-200 md:w-80">
                     Get started
                   </div>
                   <div className="mb-4 text-stone-200">

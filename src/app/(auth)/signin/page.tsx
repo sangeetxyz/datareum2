@@ -41,7 +41,7 @@ const Signup = () => {
   }, [user]);
   return (
     <Container>
-      <div className="h-screen bg-gradient-to-r from-stone-950 to-stone-900">
+      <div className="h-screen bg-gradient-to-t from-stone-950 to-stone-900">
         <div className="grid h-full grid-cols-3">
           {/* for mobile */}
           <div className="relative col-span-3 flex h-full flex-col items-center justify-center xl:col-span-1 xl:bg-stone-950">
@@ -52,7 +52,7 @@ const Signup = () => {
                   key={"second-page"}
                   initial={{
                     opacity: 0,
-                    scale: 0,
+                    scale: 0.5,
                   }}
                   animate={{
                     scale: 0.9,
@@ -135,10 +135,9 @@ const Signup = () => {
                   initial={{
                     // y: 200,
                     opacity: 0,
-                    scale: 0,
+                    scale: 0.5,
                   }}
                   animate={{
-                    y: 0,
                     scale: 0.9,
                     opacity: 1,
                   }}
