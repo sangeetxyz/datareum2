@@ -9,13 +9,14 @@ import {
 } from "recharts";
 import React, { useEffect, useState } from "react";
 import { calculateColumnCounts } from "@/utils/csvHelpers";
+import SmallSpinner from "../loaders/smallSpinner";
 
 export const AnalyticsSection = ({
   rawData,
   parsedData,
 }: {
-  rawData: object[];
-  parsedData: object[];
+  rawData: object[] | null;
+  parsedData: object[] | null;
 }) => {
   const CustomTooltip = ({
     active,
@@ -42,69 +43,73 @@ export const AnalyticsSection = ({
     <>
       <div className="my-2 mt-8 text-xl uppercase">analytics</div>
       <div className="h-72 w-full">
-        <ResponsiveContainer>
-          <AreaChart
-            width={500}
-            height={400}
-            data={calculateColumnCounts(rawData, parsedData)}
-            margin={{
-              top: -26,
-              right: 0,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <Tooltip
-              content={(event) => (
-                <CustomTooltip
-                  active={event.active}
-                  label={event.label}
-                  payload={event.payload}
-                />
-              )}
-            />
-            <defs>
-              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-              </linearGradient>
-              <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-              </linearGradient>
-            </defs>
-            <Area
-              type="monotone"
-              dataKey="rawColumns"
-              stroke="#4E77FF"
-              fill="fff"
-              // fill="url(#colorUv)"
-            />
-            <Area
-              type="monotone"
-              dataKey="parsedColumns"
-              stroke="#FFDCCC"
-              // fill="url(#colorPv)"
-            />
-            <Legend
-              iconType="diamond"
-              payload={[
-                {
-                  value: "Raw Columns",
-                  type: "diamond",
-                  id: "rawColumns",
-                  color: "#4E77FF",
-                },
-                {
-                  value: "Parsed Columns",
-                  type: "diamond",
-                  id: "parsedColumns",
-                  color: "#FFDCCC",
-                },
-              ]}
-            />
-          </AreaChart>
-        </ResponsiveContainer>
+        {rawData && parsedData ? (
+          <ResponsiveContainer>
+            <AreaChart
+              width={500}
+              height={400}
+              data={calculateColumnCounts(rawData, parsedData)}
+              margin={{
+                top: -26,
+                right: 0,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <Tooltip
+                content={(event) => (
+                  <CustomTooltip
+                    active={event.active}
+                    label={event.label}
+                    payload={event.payload}
+                  />
+                )}
+              />
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <Area
+                type="monotone"
+                dataKey="rawColumns"
+                stroke="#4E77FF"
+                fill="fff"
+                // fill="url(#colorUv)"
+              />
+              <Area
+                type="monotone"
+                dataKey="parsedColumns"
+                stroke="#FFDCCC"
+                // fill="url(#colorPv)"
+              />
+              <Legend
+                iconType="diamond"
+                payload={[
+                  {
+                    value: "Raw Columns",
+                    type: "diamond",
+                    id: "rawColumns",
+                    color: "#4E77FF",
+                  },
+                  {
+                    value: "Parsed Columns",
+                    type: "diamond",
+                    id: "parsedColumns",
+                    color: "#FFDCCC",
+                  },
+                ]}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        ) : (
+          <SmallSpinner />
+        )}
       </div>
     </>
   );

@@ -165,12 +165,12 @@ const Contribute = () => {
                   rawStats={rawStats}
                   parsedStats={parsedStats}
                 />
-                {rawData && parsedData && (
+             
                   <AnalyticsSection
                     rawData={rawData}
                     parsedData={parsedData}
                   />
-                )}
+               
                 <RetentionSection
                   rawStats={rawStats}
                   parsedStats={parsedStats}
