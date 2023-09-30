@@ -17,6 +17,7 @@ import { QuickStatsSection } from "@/components/contribute/quickStatsSection";
 import { AnalyticsSection } from "@/components/contribute/analyticsSection";
 import { RetentionSection } from "@/components/contribute/retentionSection";
 import { FeedbackSection } from "@/components/contribute/feedbackSection";
+import { motion } from "framer-motion";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -53,7 +54,17 @@ export const AcceptButton = ({
     <div className="mb-4 mt-8 flex w-full items-center overflow-x-clip rounded-xl">
       <AlertDialog>
         <AlertDialogTrigger className="w-full">
-          <ThemeButton title="contribute now" className="w-full" />
+          <motion.div
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+            className="cursor-pointer rounded-lg bg-acc px-4 py-2 text-sm font-bold uppercase text-stone-950"
+          >
+            generate
+          </motion.div>
         </AlertDialogTrigger>
         <AlertDialogContent className="md:w-[1000px]">
           <AlertDialogHeader>

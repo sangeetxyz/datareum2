@@ -10,6 +10,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { calculateColumnCounts } from "@/utils/csvHelpers";
 import SmallSpinner from "../loaders/smallSpinner";
+import { set } from "zod";
+import LoadingText from "../loaders/loadingText";
 
 export const AnalyticsSection = ({
   rawData,
@@ -18,6 +20,7 @@ export const AnalyticsSection = ({
   rawData: object[] | null;
   parsedData: object[] | null;
 }) => {
+  const [short, setShort] = useState(100);
   const CustomTooltip = ({
     active,
     payload,
@@ -41,16 +44,32 @@ export const AnalyticsSection = ({
 
   return (
     <>
-      <div className="my-2 mt-8 text-xl uppercase">analytics</div>
+      <div className="my-2 mt-8 flex items-center justify-between">
+        <div className="text-xl uppercase">analytics</div>
+        {parsedData && (
+          <div
+            className="cursor-pointer text-xs uppercase"
+            onClick={() => {
+              if (short === 100) {
+                setShort(parsedData?.length);
+              } else {
+                setShort(100);
+              }
+            }}
+          >
+            {short === 100 ? "first 100" : "All data"}
+          </div>
+        )}
+      </div>
       <div className="h-72 w-full">
         {rawData && parsedData ? (
           <ResponsiveContainer>
             <AreaChart
               width={500}
               height={400}
-              data={calculateColumnCounts(rawData, parsedData)}
+              data={calculateColumnCounts(rawData, parsedData).slice(0, short)}
               margin={{
-                top: -26,
+                // top: -26,
                 right: 0,
                 left: 0,
                 bottom: 0,
@@ -107,7 +126,7 @@ export const AnalyticsSection = ({
             </AreaChart>
           </ResponsiveContainer>
         ) : (
-          <SmallSpinner />
+          <LoadingText />
         )}
       </div>
     </>

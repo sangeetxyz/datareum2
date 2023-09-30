@@ -197,7 +197,7 @@ const csvWriter = createCsvWriter({
 
 const records = [];
 
-for (let i = 0; i < 500; i++) {
+for (let i = 0; i < 300; i++) {
   records.push(generateMockRowWithErrors(errorPercentage));
 }
 
