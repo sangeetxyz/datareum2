@@ -12,7 +12,7 @@ import {
   BiSolidQuoteAltLeft,
   BiSolidQuoteAltRight,
 } from "react-icons/bi";
-import { Switch, Tooltip } from "antd";
+import { Tooltip } from "antd";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/context";
@@ -25,6 +25,7 @@ import {
   handleGetOtpClickedForSignup,
   handleProceedClickedForSignup,
 } from "@/utils/handlers";
+import { Switch } from "@/components/ui/switch";
 
 import Container from "@/components/containers/container";
 
@@ -56,17 +57,10 @@ const Signup = () => {
   }, [user]);
   return (
     <Container>
-      <div className="h-screen bg-gradient-to-bl from-gray-900 via-gray-950 to-black md:bg-gradient-to-l">
+      <div className="h-screen bg-gradient-to-b from-stone-900 to-stone-950">
         <div className="grid h-full grid-cols-3">
           {/* for mobile */}
-          <div className="relative col-span-3 flex h-full flex-col items-center justify-center bg-gradient-to-bl from-gray-900 via-gray-950 to-black md:bg-gradient-to-l xl:col-span-1 xl:bg-gradient-to-r">
-            <div className="absolute left-0 top-0 h-full w-full bg-black">
-              <img
-                src={waves.src}
-                alt=""
-                className="h-full w-full object-cover opacity-20"
-              />
-            </div>
+          <div className="relative col-span-3 flex h-full flex-col items-center justify-center xl:col-span-1 xl:bg-stone-950">
             <AnimatePresence>
               {isOtpClicked ? (
                 // second page
@@ -165,28 +159,22 @@ const Signup = () => {
                 <motion.div
                   key={"first page"}
                   initial={{
-                    // y: 200,
                     opacity: 0,
-                    // scale: 0.9,
+                    scale: 0,
                   }}
                   animate={{
-                    y: 0,
                     scale: 0.9,
                     opacity: 1,
                   }}
-                  exit={{
-                    opacity: 0,
-                    y: -200,
-                  }}
                   transition={{
-                    duration: 0.5,
+                    duration: 1,
                   }}
-                  className="flex flex-col rounded-xl border-2 border-gray-700 bg-zinc-950 bg-opacity-50 p-6 backdrop-blur-sm"
+                  className="flex flex-col rounded-xl border-2 border-stone-700 bg-stone-800 bg-opacity-50 p-6 backdrop-blur-sm"
                 >
-                  <div className="w-72 text-3xl font-bold text-white">
+                  <div className="w-72 md:w-80 text-3xl font-bold text-stone-200">
                     Get started
                   </div>
-                  <div className="mb-4 text-white">
+                  <div className="mb-4 text-stone-200">
                     Create a new account now
                   </div>
                   <div className="my-4 flex w-full justify-center">
@@ -199,13 +187,13 @@ const Signup = () => {
                         router.push("/");
                       }}
                     >
-                      <FaEthereum size={100} color="#2DD4BF" />
+                      <FaEthereum size={100} color="#facc15" />
                     </motion.div>
                   </div>
-                  <div className="font-bold text-white">Full Name</div>
+                  <div className="font-bold text-stone-100">Full Name</div>
                   <div className="mt-1 flex items-center space-x-2">
                     <div className="">
-                      <BsFillPersonFill size={30} color="#2DD4BF" />
+                      <BsFillPersonFill size={30} color="#facc15" />
                     </div>
                     <input
                       type="text"
@@ -214,13 +202,13 @@ const Signup = () => {
                         setName(value.target.value);
                       }}
                       placeholder="John Smith"
-                      className="h-8 w-full rounded-lg bg-zinc-300 px-4 text-zinc-800 focus:outline-none"
+                      className="h-8 w-full rounded-lg bg-stone-200 px-4 text-stone-800 focus:outline-none"
                     />
                   </div>
                   <div className="mt-2 font-bold text-white">Email</div>
                   <div className="mt-1 flex items-center space-x-2">
                     <div className="">
-                      <MdEmail size={30} color="#2DD4BF" />
+                      <MdEmail size={30} color="#facc15" />
                     </div>
                     <input
                       type="text"
@@ -229,13 +217,13 @@ const Signup = () => {
                         setEmail(value.target.value);
                       }}
                       placeholder="abc@xyz.com"
-                      className="h-8 w-full rounded-lg bg-zinc-300 px-4 text-zinc-800 focus:outline-none"
+                      className="h-8 w-full rounded-lg bg-stone-200 px-4 text-stone-800 focus:outline-none"
                     />
                   </div>
                   <div className="mt-2 font-bold text-white">Organization</div>
                   <div className="mt-1 flex items-center space-x-2">
                     <div className="">
-                      <BiSolidBusiness size={30} color="#2DD4BF" />
+                      <BiSolidBusiness size={30} color="#facc15" />
                     </div>
                     <input
                       type="text"
@@ -244,13 +232,13 @@ const Signup = () => {
                         setOrg(value.target.value);
                       }}
                       placeholder="Google"
-                      className="h-8 w-full rounded-lg bg-zinc-300 px-4 text-zinc-800 focus:outline-none"
+                      className="h-8 w-full rounded-lg bg-stone-200 px-4 text-stone-800 focus:outline-none"
                     />
                   </div>
                   <div className="mt-2 font-bold text-white">Phone Number</div>
                   <div className="mt-1 flex items-center space-x-2">
                     <div className="">
-                      <AiFillPhone size={30} color="#2DD4BF" />
+                      <AiFillPhone size={30} color="#facc15" />
                     </div>
                     <input
                       type="text"
@@ -259,11 +247,11 @@ const Signup = () => {
                         setPhoneNumber(value.target.value);
                       }}
                       placeholder="1234567890"
-                      className="h-8 w-full rounded-lg bg-zinc-300 px-4 text-zinc-800 focus:outline-none"
+                      className="h-8 w-full rounded-lg bg-stone-200 px-4 text-stone-800 focus:outline-none"
                     />
                   </div>
                   <div className="mt-4 flex items-center justify-between">
-                    <div className="font-bold text-white">
+                    <div className="font-bold text-stone-100">
                       <Tooltip
                         title="Contribute to the health system"
                         arrow={false}
@@ -271,12 +259,12 @@ const Signup = () => {
                         <span>I want to contribute</span>
                       </Tooltip>
                     </div>
+
                     <Switch
-                      onChange={(checked) => {
+                      onCheckedChange={(checked) => {
                         setIsContributing(checked);
                       }}
                       className="bg-zinc-300"
-                      size={switchSizeReturner(30)}
                     />
                   </div>
                   <div className="mt-4 flex items-center justify-between">
@@ -287,11 +275,11 @@ const Signup = () => {
                       </span>
                     </div>
                     <Switch
-                      onChange={(checked) => {
+                      onCheckedChange={(checked) => {
                         setIsTacAccepted(checked);
                       }}
                       className="bg-zinc-300"
-                      size={switchSizeReturner(30)}
+                      // size={30}
                     />
                   </div>
                   <motion.div
@@ -315,7 +303,7 @@ const Signup = () => {
                         }
                       });
                     }}
-                    className="mt-6 w-full cursor-pointer rounded-xl bg-gradient-to-tr from-violet-500 to-teal-500 py-2 text-center font-bold text-zinc-100"
+                    className="mt-6 w-full cursor-pointer rounded-xl bg-acc py-2 text-center font-bold text-stone-950"
                   >
                     Get OTP
                   </motion.div>

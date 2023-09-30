@@ -52,13 +52,14 @@ const Signup = () => {
                   key={"second-page"}
                   initial={{
                     opacity: 0,
+                    scale: 0,
                   }}
                   animate={{
                     scale: 0.9,
                     opacity: 1,
                   }}
                   transition={{
-                    duration: 0.5,
+                    duration: 1,
                     delay: 0.5,
                   }}
                   className="flex flex-col rounded-xl border-2 border-stone-700 bg-stone-800 bg-opacity-50 p-6 backdrop-blur-sm"
@@ -134,16 +135,12 @@ const Signup = () => {
                   initial={{
                     // y: 200,
                     opacity: 0,
-                    // scale: 0.9,
+                    scale: 0,
                   }}
                   animate={{
                     y: 0,
                     scale: 0.9,
                     opacity: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: -200,
                   }}
                   transition={{
                     duration: 1,
@@ -225,7 +222,7 @@ const Signup = () => {
             </AnimatePresence>
           </div>
           {/* for pc */}
-          <div className="relative col-span-2 hidden h-full w-full border-l border-gray-700 xl:block">
+          <div className="relative col-span-2 hidden h-full w-full border-l border-stone-700 xl:block">
             <div className="absolute left-0 top-0 h-full w-full">
               <img
                 src={abstract.src}
