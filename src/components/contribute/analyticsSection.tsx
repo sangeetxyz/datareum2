@@ -67,26 +67,25 @@ export const AnalyticsSection = ({
               />
               <defs>
                 <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#fff" stopOpacity={1} />
+                  <stop offset="95%" stopColor="fff" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#facc15" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#facc15" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <Area
                 type="monotone"
                 dataKey="rawColumns"
-                stroke="#4E77FF"
-                fill="fff"
-                // fill="url(#colorUv)"
+                stroke="white"
+                fill="url(#colorUv)"
               />
               <Area
                 type="monotone"
                 dataKey="parsedColumns"
-                stroke="#FFDCCC"
-                // fill="url(#colorPv)"
+                stroke="#facc15"
+                fill="url(#colorPv)"
               />
               <Legend
                 iconType="diamond"
@@ -95,13 +94,13 @@ export const AnalyticsSection = ({
                     value: "Raw Columns",
                     type: "diamond",
                     id: "rawColumns",
-                    color: "#4E77FF",
+                    color: "#fff",
                   },
                   {
                     value: "Parsed Columns",
                     type: "diamond",
                     id: "parsedColumns",
-                    color: "#FFDCCC",
+                    color: "#facc15",
                   },
                 ]}
               />
