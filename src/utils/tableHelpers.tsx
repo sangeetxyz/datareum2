@@ -263,10 +263,10 @@ export const columns: ColumnDef<userData>[] = [
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle className="text-3xl text-zinc-50">
+                <AlertDialogTitle className="text-3xl text-stone-100">
                   User Controls
                 </AlertDialogTitle>
-                <AlertDialogDescription className="text-zinc-300">
+                <AlertDialogDescription className="text-stone-300">
                   Toggle permissons and verifications!
                 </AlertDialogDescription>
                 <div className="flex flex-col space-y-4 pt-2">
@@ -329,6 +329,7 @@ export const columns: ColumnDef<userData>[] = [
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel
+                className="bg-stone-900"
                   onClick={() => {
                     setIsGod(userData.isGod);
                     setCanContribute(userData.canContribute);
@@ -353,7 +354,7 @@ export const columns: ColumnDef<userData>[] = [
                     );
                     window.location.reload();
                   }}
-                  className="cursor-pointer rounded-lg bg-gradient-to-tr from-violet-500 to-teal-500 px-3 py-2 text-center text-sm uppercase text-zinc-50 hover:opacity-90 xl:mt-0"
+                  className="cursor-pointer rounded-lg bg-acc px-3 py-2 text-center text-sm uppercase font-bold text-stone-950 hover:opacity-90 xl:mt-0"
                 >
                   update
                 </AlertDialogAction>

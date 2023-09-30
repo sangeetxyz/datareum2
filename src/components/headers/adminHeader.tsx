@@ -1,7 +1,5 @@
-import { useAuth } from "@/context/context";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 import { FaEthereum } from "react-icons/fa";
 import { RiMenu4Fill } from "react-icons/ri";
@@ -16,12 +14,11 @@ const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const AdminHeader = () => {
   const [isNavOpened, setIsNavOpened] = useState(false);
   const router = useRouter();
-  const { user } = useAuth();
   const navbarItems = [
-    // {
-    //   title: "get started",
-    //   link: user ? "/dashboard" : "/signin",
-    // },
+    {
+      title: "dashboard",
+      link: "/dashboard",
+    },
     {
       title: "documentation",
       link: "/docs",
@@ -45,6 +42,10 @@ const AdminHeader = () => {
   ];
   const menuItems = [
     {
+      title: "dashboard",
+      link: "/dashboard",
+    },
+    {
       title: "docs",
       link: "/docs",
     },
@@ -58,13 +59,13 @@ const AdminHeader = () => {
     },
   ];
   return (
-    <div className="fixed top-0 z-10 flex h-20 w-full justify-center border-gray-700 outline outline-1 outline-stone-700 backdrop-blur-sm backdrop-brightness-90">
+    <div className="fixed top-0 z-10 flex h-20 w-full justify-center outline outline-1 outline-stone-700 backdrop-blur-sm backdrop-brightness-90">
       <div className="flex w-full max-w-6xl items-center justify-between px-4">
         <div className="flex flex-col items-end justify-center">
           <div className="flex cursor-pointer items-center">
             <FaEthereum size={28} color="#facc15" />
             <div
-              className="text-xl uppercase text-white md:text-2xl lg:text-3xl"
+              className="text-xl uppercase text-stone-100 md:text-2xl lg:text-3xl"
               onClick={() => {
                 router.push("/");
               }}
@@ -80,6 +81,13 @@ const AdminHeader = () => {
                 whileHover={{ scale: 1.1, color: "#facc15" }}
                 whileTap={{ scale: 0.9 }}
                 className="cursor-pointer"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  if (item.link === "unsigner") {
+                    unSigner();
+                  }
+                  router.push(item.link);
+                }}
               >
                 {item.title}
               </motion.div>

@@ -5,9 +5,7 @@ import { getDashUserData } from "@/utils/helpers";
 import { userData } from "@/types/types";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-import CatLoader from "@/components/loaders/catLoader";
 import Papa from "papaparse";
-import waves from "../../../../public/waves.png";
 import { unSigner } from "@/firebase/firebase";
 import Container from "@/components/containers/container";
 import AdminHeader from "@/components/headers/adminHeader";
@@ -21,33 +19,8 @@ import { QuickStatsSection } from "@/components/contribute/quickStatsSection";
 import { AnalyticsSection } from "@/components/contribute/analyticsSection";
 import { RetentionSection } from "@/components/contribute/retentionSection";
 import { FeedbackSection } from "@/components/contribute/feedbackSection";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-
-import ThemeButton from "@/components/custom/themeButton";
-import { Switch } from "@/components/ui/switch";
-import {
-  objectEncryptor,
-  objectIdentificator,
-  objectSplitter,
-  objectUserDataMixer,
-} from "@/utils/crypt";
-import {
-  getPatientsDataFromBc,
-  handlePatientUploadToBc,
-  handlePatientUploadToDb,
-} from "@/utils/handlers";
-import { toast } from "react-toastify";
 import { AcceptButton } from "@/components/contribute/acceptButton";
+import Spinner from "@/components/loaders/spinner";
 
 const Contribute = () => {
   const { user } = useAuth();
@@ -120,7 +93,7 @@ const Contribute = () => {
   }, [user, isLoading]);
   return !userData ? (
     <div>
-      <CatLoader />
+      <Spinner />
       <div
         onClick={() => {
           unSigner();
@@ -165,12 +138,9 @@ const Contribute = () => {
                   rawStats={rawStats}
                   parsedStats={parsedStats}
                 />
-             
-                  <AnalyticsSection
-                    rawData={rawData}
-                    parsedData={parsedData}
-                  />
-               
+
+                <AnalyticsSection rawData={rawData} parsedData={parsedData} />
+
                 <RetentionSection
                   rawStats={rawStats}
                   parsedStats={parsedStats}

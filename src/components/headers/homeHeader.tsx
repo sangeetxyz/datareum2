@@ -22,6 +22,7 @@ import { menuItem, menu1 } from "../custom/anim";
 import { Lora } from "next/font/google";
 import { cn } from "@/lib/utils";
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+
 const HomeHeader = (props: { setVariant: (data: string) => void }) => {
   const router = useRouter();
   const { user } = useAuth();

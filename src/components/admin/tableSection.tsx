@@ -40,7 +40,7 @@ export function TableSection<TData, TValue>({
   return (
     <>
       <div className="my-4 text-xl uppercase">user management</div>
-      <div className="rounded-xl bg-zinc-950 bg-opacity-30 outline outline-1 outline-zinc-500 backdrop-blur-sm">
+      <div className="rounded-xl bg-stone-800 bg-opacity-70 outline outline-1 outline-zinc-500 backdrop-blur-sm">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

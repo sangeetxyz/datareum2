@@ -12,7 +12,7 @@ import waves from "../../../../public/waves.png";
 import TableSection from "@/components/admin/tableSection";
 import { columns, allUsersData } from "@/utils/tableHelpers";
 import AdminHeader from "@/components/headers/adminHeader";
-import Toaster from "@/components/containers/Toaster";
+import Spinner from "@/components/loaders/spinner";
 
 const AdminPanel = () => {
   const { user } = useAuth();
@@ -47,7 +47,7 @@ const AdminPanel = () => {
   }, [user, isLoading]);
   return !userData ? (
     <div>
-      <CatLoader />
+      <Spinner />
       <div
         onClick={() => {
           unSigner();
@@ -77,17 +77,8 @@ const AdminPanel = () => {
       </div>
     </div>
   ) : (
-    // <CatLoader/>
-
     <Container>
-      <div className="relative min-h-screen w-full">
-        <div className="absolute left-0 top-0 -z-10 h-full w-full bg-black">
-          <img
-            src={waves.src}
-            alt="waves"
-            className="h-full w-full object-cover opacity-20"
-          />
-        </div>
+      <div className="relative min-h-screen bg-stone-950 w-full">
         <AdminHeader />
         <div className="bg-pink-95 flex min-h-screen w-full flex-col items-center pt-20">
           <div className="h-full w-full max-w-6xl px-4">
