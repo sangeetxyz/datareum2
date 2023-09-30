@@ -12,7 +12,11 @@ import { unSigner } from "@/firebase/firebase";
 import Container from "@/components/containers/container";
 import AdminHeader from "@/components/headers/adminHeader";
 import { IoCloudUpload } from "react-icons/io5";
-import { analyzeObjectList, processCsvData } from "@/utils/csvHelpers";
+import {
+  analyzeObjectList,
+  calculateColumnCounts,
+  processCsvData,
+} from "@/utils/csvHelpers";
 import { QuickStatsSection } from "@/components/contribute/quickStatsSection";
 import { AnalyticsSection } from "@/components/contribute/analyticsSection";
 import { RetentionSection } from "@/components/contribute/retentionSection";
@@ -48,6 +52,7 @@ import { AcceptButton } from "@/components/contribute/acceptButton";
 const Contribute = () => {
   const { user } = useAuth();
   const router = useRouter();
+  const [graphData, setGraphData] = useState<object[]>([]);
   const fileRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userData, setUserData] = useState<userData | undefined>(undefined);
@@ -95,6 +100,7 @@ const Contribute = () => {
               setParsedData(processed);
               const parsedAnalytics = analyzeObjectList(processed);
               setParsedStats(parsedAnalytics);
+              setGraphData(calculateColumnCounts(data, processed));
             }
           },
         });
@@ -159,7 +165,12 @@ const Contribute = () => {
                   rawStats={rawStats}
                   parsedStats={parsedStats}
                 />
-                <AnalyticsSection rawData={rawData} parsedData={parsedData} />
+                {rawData && parsedData && (
+                  <AnalyticsSection
+                    rawData={rawData}
+                    parsedData={parsedData}
+                  />
+                )}
                 <RetentionSection
                   rawStats={rawStats}
                   parsedStats={parsedStats}
@@ -174,7 +185,7 @@ const Contribute = () => {
           </div>
         ) : (
           // no file
-          <div className="bg-stone-950 flex h-screen w-full flex-col items-center pt-20">
+          <div className="flex h-screen w-full flex-col items-center bg-stone-950 pt-20">
             <div className="h-full w-full max-w-6xl p-4">
               <div
                 onClick={(event) => {
@@ -184,7 +195,10 @@ const Contribute = () => {
               >
                 <div className="flex flex-col items-center">
                   <div className="w-24">
-                    <IoCloudUpload className="h-full w-full" color={"#facc15"} />
+                    <IoCloudUpload
+                      className="h-full w-full"
+                      color={"#facc15"}
+                    />
                   </div>
                   <div>Select your file to get started</div>
                 </div>

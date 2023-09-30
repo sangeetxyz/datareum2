@@ -27,6 +27,7 @@ export const RetentionSection = ({
     longestObjectLength: number;
   } | null;
 }) => {
+  console.log(parsedStats);
   const CustomTooltip = ({
     active,
     payload,

@@ -14,10 +14,9 @@ export const AnalyticsSection = ({
   rawData,
   parsedData,
 }: {
-  rawData: object[] | null;
-  parsedData: object[] | null;
+  rawData: object[];
+  parsedData: object[];
 }) => {
-  const [data, setData] = useState<object[]>([{}]);
   const CustomTooltip = ({
     active,
     payload,
@@ -36,14 +35,9 @@ export const AnalyticsSection = ({
         </div>
       );
     }
-
     return null;
   };
-  useEffect(() => {
-    if (!!rawData && !!parsedData) {
-      setData(calculateColumnCounts(rawData, parsedData));
-    }
-  }, [rawData, parsedData]);
+
   return (
     <>
       <div className="my-2 mt-8 text-xl uppercase">analytics</div>
@@ -52,7 +46,7 @@ export const AnalyticsSection = ({
           <AreaChart
             width={500}
             height={400}
-            data={data.splice(0, 100)}
+            data={calculateColumnCounts(rawData, parsedData)}
             margin={{
               top: -26,
               right: 0,
@@ -83,13 +77,14 @@ export const AnalyticsSection = ({
               type="monotone"
               dataKey="rawColumns"
               stroke="#4E77FF"
-              fill="url(#colorUv)"
+              fill="fff"
+              // fill="url(#colorUv)"
             />
             <Area
               type="monotone"
               dataKey="parsedColumns"
               stroke="#FFDCCC"
-              fill="url(#colorPv)"
+              // fill="url(#colorPv)"
             />
             <Legend
               iconType="diamond"
