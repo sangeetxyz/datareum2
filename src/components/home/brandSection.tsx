@@ -32,7 +32,7 @@ const BrandSection = () => {
     console.log(
       carousel.current?.scrollWidth! - carousel.current?.offsetWidth!,
     );
-  }, []);
+  }, [carousel.current]);
 
   return (
     <div ref={mainDivRef} className="relative">
@@ -47,7 +47,7 @@ const BrandSection = () => {
             left: -width - 32,
           }}
           whileHover={{
-            cursor: "grabbing"
+            cursor: "grabbing",
           }}
           className="overflow-hidde flex h-full w-full items-center space-x-8 p-8"
         >

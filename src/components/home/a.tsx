@@ -12,10 +12,14 @@ const A = () => {
 
   console.log(mainDivTrans);
   return (
-    <div ref={mainDivRef} className="relative h-[400vh] bg-black">
-      <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden bg-stone-950 pt-20">
-        <div className="h-full w-full p-[4vw]">
-          <div>asdas</div>
+    <div
+      ref={mainDivRef}
+      className="relative flex h-[400vh] justify-center bg-black"
+    >
+      <div className="flex h-full w-full max-w-6xl">
+        <div className="h-full w-full bg-red-900 pt-20">adasdasd</div>
+        <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden bg-stone-900 pt-20">
+          asdasd
         </div>
       </div>
     </div>

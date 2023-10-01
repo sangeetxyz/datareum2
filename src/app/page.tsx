@@ -30,10 +30,10 @@ const Home = () => {
         <HomeHeader setVariant={variantCB} />
         {/* <Cursor variant={variant} /> */}
         <HeroSection setVariant={variantCB} />
-        {/* <HeroSection setVariant={variantCB} /> */}
         {/* <ReverseSection />
         <BrandSection /> */}
         <A />
+        <HeroSection setVariant={variantCB} />
         <Footer />
       </Container>
     </div>
