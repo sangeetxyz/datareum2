@@ -37,7 +37,6 @@ const Inknut = Inknut_Antiqua({
 
 const HeroSection = (props: { setVariant: (data: string) => void }) => {
   const user = useAuth();
-  console.log(user);
   const router = useRouter();
   return (
     <div className="via-stone-95 relative flex h-screen w-full justify-center bg-gradient-to-tr from-stone-950 to-stone-900 pt-20 text-white xl:pt-10">

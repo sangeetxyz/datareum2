@@ -7,6 +7,8 @@ import HeroSection from "@/components/home/heroSection";
 import Toaster from "@/components/containers/Toaster";
 import Container from "@/components/containers/container";
 import Se from "@/components/home/se";
+import ReverseSection from "@/components/home/reverseSection";
+import A from "@/components/home/a";
 import BrandSection from "@/components/home/brandSection";
 
 const Home = () => {
@@ -29,7 +31,9 @@ const Home = () => {
         {/* <Cursor variant={variant} /> */}
         <HeroSection setVariant={variantCB} />
         {/* <HeroSection setVariant={variantCB} /> */}
-        <BrandSection />
+        {/* <ReverseSection />
+        <BrandSection /> */}
+        <A />
         <Footer />
       </Container>
     </div>
