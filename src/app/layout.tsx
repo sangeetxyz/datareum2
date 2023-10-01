@@ -2,6 +2,7 @@ import { AuthContextProvider } from "@/context/context";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import Providers from "@/jotai/jotai";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -21,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <AuthContextProvider>{children}</AuthContextProvider>
+        <AuthContextProvider>
+          <Providers>{children}</Providers>
+        </AuthContextProvider>
       </body>
     </html>
   );

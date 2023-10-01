@@ -8,9 +8,9 @@ import { RiMenu4Fill } from "react-icons/ri";
 import { AnimatePresence, motion } from "framer-motion";
 import { BsSuitHeartFill } from "react-icons/bs";
 import { menuItem, menu1 } from "../custom/anim";
-import { Lora } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { unSigner } from "@/firebase/firebase";
+import { Lora } from "next/font/google";
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const DashHeader = () => {
   const navbarItems = [
