@@ -78,11 +78,11 @@ const A = () => {
   return (
     <div
       ref={mainDivRef}
-      className="relative flex h-[400vh] justify-center bg-gradient-to-b from-stone-900 to-stone-950"
+      className="relative flex justify-center bg-gradient-to-b from-stone-900 to-stone-950 lg:h-[400vh]"
     >
       <div className="flex h-full w-full max-w-6xl">
         {/* left */}
-        <div className="flex h-full w-full flex-col items-center justify-between bg-gradient-to-b from-stone-900 to-stone-950 px-[5vw] lg:py-[50vh]">
+        <div className="flex h-full w-full flex-col items-center space-y-10 bg-gradient-to-b from-stone-900 to-stone-950 px-[5vw] lg:px-8 py-10 lg:justify-between lg:space-y-0 lg:py-[50vh]">
           {lust.map((el) => {
             return (
               <LeftItem
