@@ -34,7 +34,7 @@ const Home = () => {
         <ReverseSection />
         <BrandSection />
         <A />
-        <Three />
+        {/* <Three /> */}
         <HeroSection setVariant={variantCB} />
         <Footer />
       </Container>
