@@ -57,7 +57,7 @@ const Three = () => {
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [handleMouseMove]);
   const t = ["this", "is", "the", "blockchain"];
   return (
     <div ref={mainDivRef} className="h-[500vh] bg-red-950">

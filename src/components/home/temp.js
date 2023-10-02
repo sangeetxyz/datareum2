@@ -1,4 +1,4 @@
-<div className="relative h-[300vh] bg-black">
+{/* <div className="relative h-[300vh] bg-black">
   <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden bg-stone-950">
     <motion.div
       style={{ rotate: mainDivTrans }}
@@ -55,4 +55,4 @@
       </motion.div>
     </motion.div>
   </div>
-</div>;
+</div>; */}
