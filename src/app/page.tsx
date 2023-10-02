@@ -31,9 +31,9 @@ const Home = () => {
         <HomeHeader setVariant={variantCB} />
         {/* <Cursor variant={variant} /> */}
         <HeroSection setVariant={variantCB} />
-        <ReverseSection />
-        <BrandSection />
-        <A />
+        {/* <ReverseSection /> */}
+        {/* <BrandSection /> */}
+        {/* <A /> */}
         <Three />
         {/* <HeroSection setVariant={variantCB} /> */}
         <Footer />

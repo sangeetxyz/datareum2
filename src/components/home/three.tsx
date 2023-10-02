@@ -7,10 +7,12 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { lazy, useEffect, useRef } from "react";
 import { motion as motion3d } from "framer-motion-3d";
+import { useLoader } from "@react-three/fiber";
+import Model from "./model";
+const ModelComponent = lazy(() => import("./model"));
 const Three = () => {
-  const ether = useGLTF("./uni.glb");
   const mainDivRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: mainDivRef,
@@ -71,13 +73,9 @@ const Three = () => {
           />
           <OrbitControls enableZoom={false} enablePan={false} />
           <Environment preset="studio" />
-          <motion3d.primitive
-            rotation={[mouse.y, mouse.x, 0]}
-            scale={threeZoom}
-            object={ether.scene}
-          ></motion3d.primitive>
+          <ModelComponent mouse={mouse} zoom={threeZoom} />
         </Canvas>
-        <div className="absolute overflow-hidden left-0 top-0 -mt-20 flex h-full w-full flex-col items-center justify-center bg-stone-950 bg-opacity-20 text-9xl capitalize">
+        <div className="absolute left-0 top-0 -mt-20 flex h-full w-full flex-col items-center justify-center overflow-hidden bg-stone-950 bg-opacity-20 text-9xl capitalize">
           <motion.div
             style={{
               opacity: textOneOpa,
@@ -128,5 +126,6 @@ const Three = () => {
     </div>
   );
 };
+// useGLTF.preload("./uni.glb");
 
 export default Three;
