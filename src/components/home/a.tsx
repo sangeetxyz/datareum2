@@ -33,43 +33,43 @@ const A = () => {
       id: 1,
       text: "Passwordless authentication",
       description:
-        "Passwordless authentication and OTPs enhance security by replacing traditional passwords with temporary, one-time codes for user access.",
+        "Our platform introduces a revolutionary password-less authentication system that leverages OTP (One-Time Password) technology. Say goodbye to the hassles of remembering complex passwords and the security risks they entail. With our system, users receive a unique OTP on their registered device, ensuring a highly secure login process.",
       path: "./features/passwordless.svg",
     },
     {
       id: 2,
       text: "CSV Processing Unit",
       description:
-        "Passwordless authentication and OTPs enhance security by replacing traditional passwords with temporary, one-time codes for user access.",
+        "Discover our powerful CSV file processing system, designed to seamlessly parse and import data that perfectly aligns with your database schema. Say goodbye to manual data manipulation and let our system automate the data integration process for you, saving time and ensuring data accuracy.",
       path: "./features/csv.svg",
     },
     {
       id: 3,
-      text: "Passwordless authentication",
+      text: "Type Safe Database",
       description:
-        "Passwordless authentication and OTPs enhance security by replacing traditional passwords with temporary, one-time codes for user access.",
-      path: "./Documents-bro.svg",
+        "Experience the future of data management with our type-safe database solution. Eliminate the risk of data inconsistencies and errors by enforcing strict data typing and schema adherence, guaranteeing a reliable and robust database environment for your business needs.",
+      path: "./features/db.svg",
     },
     {
       id: 4,
-      text: "Passwordless authentication",
+      text: "Blockchain Powered",
       description:
-        "Passwordless authentication and OTPs enhance security by replacing traditional passwords with temporary, one-time codes for user access.",
-      path: "./Documents-bro.svg",
+        "Revolutionize your data management with our Ethereum blockchain-powered system. Enjoy the benefits of transparency, security, and decentralized control as our platform harnesses the Ethereum network to empower your data-driven operations, ensuring trust and reliability at every step.",
+      path: "./features/bitcoin.svg",
     },
     {
       id: 5,
-      text: "Passwordless authentication",
+      text: "RESTful API",
       description:
-        "Passwordless authentication and OTPs enhance security by replacing traditional passwords with temporary, one-time codes for user access.",
-      path: "./Documents-bro.svg",
+        "Access your data effortlessly through our user-friendly system, equipped with a RESTful API for seamless data retrieval. Our platform not only ensures the security of your information on the Ethereum blockchain but also provides a convenient and standardized way to access it, putting the power of your data in your hands.",
+      path: "./features/api.svg",
     },
     {
       id: 6,
-      text: "Passwordless authentication",
+      text: "256-Bit Encryption",
       description:
-        "Passwordless authentication and OTPs enhance security by replacing traditional passwords with temporary, one-time codes for user access.",
-      path: "./Documents-bro.svg",
+        "Security is paramount in our system. Every single data row is fortified with robust 256-bit encryption, providing an impenetrable layer of protection for your sensitive information, guaranteeing the highest level of data security available.",
+      path: "./features/encrypt.svg",
     },
   ];
   console.log(mainDivTrans);
@@ -82,7 +82,7 @@ const A = () => {
     >
       <div className="flex h-full w-full max-w-6xl">
         {/* left */}
-        <div className="flex h-full w-full flex-col items-center space-y-10 bg-gradient-to-b from-stone-900 to-stone-950 px-[5vw] lg:px-8 py-10 lg:justify-between lg:space-y-0 lg:py-[50vh]">
+        <div className="flex h-full w-full flex-col items-center space-y-10 bg-gradient-to-b from-stone-900 to-stone-950 px-[5vw] py-10 lg:justify-between lg:space-y-0 lg:px-8 lg:py-[50vh]">
           {lust.map((el) => {
             return (
               <LeftItem
@@ -128,40 +128,44 @@ const LeftItem = ({
   }, [isInMiddle]);
 
   return (
-    <div
-      ref={eleRef}
-      className="w- mx-4 flex flex-col space-y-4 rounded-xl bg-gradient-to-b from-stone-800 to-stone-950 p-8 shadow-xl shadow-stone-950 outline outline-2 outline-stone-700"
-    >
+    <AnimatePresence>
       <motion.div
+        ref={eleRef}
         initial={{
           opacity: 0,
         }}
         animate={{
-          opacity: isInView && isInMiddle ? 1 : isInView ? 1 : 0,
+          opacity: isInView && isInMiddle ? 1 : isInView ? 0.5 : 0,
+          scale: isInView && isInMiddle ? 1 : isInView ? 0.8 : 0.5,
         }}
-        className={cn(
-          "text-center text-3xl font-bold capitalize transition-colors md:text-4xl lg:text-5xl",
-          isInMiddle ? "text-acc" : "text-stone-100",
-          lora.className,
-        )}
+        transition={{
+          duration: 0.6,
+        }}
+        className="w- mx-4 flex flex-col space-y-4 rounded-xl bg-gradient-to-b from-stone-800 to-stone-950 p-8 shadow-xl shadow-stone-950 outline outline-2 outline-stone-700"
       >
-        {text}
+        <motion.div
+          className={cn(
+            "text-center text-3xl font-bold capitalize transition-colors md:text-4xl lg:text-5xl",
+            isInMiddle ? "text-acc" : "text-stone-100",
+            lora.className,
+          )}
+        >
+          {text}
+        </motion.div>
+        <div className="text-center">{description}</div>
       </motion.div>
-      <div className="text-center">{description}</div>
-    </div>
+    </AnimatePresence>
   );
 };
 
 const RightItem = ({ path, id }: { path: string; id: number }) => {
-  const [key, setKey] = useAtom(keyHolder);
   const eleRef = useRef(null);
-  const isInView = useInView(eleRef, {});
   return (
     <AnimatePresence>
       <motion.div
         key={id}
         initial={{
-          scale: 0,
+          // scale: 0,
           opacity: 0,
         }}
         animate={{
@@ -169,10 +173,10 @@ const RightItem = ({ path, id }: { path: string; id: number }) => {
           scale: 1,
         }}
         transition={{
-          duration: 0.3,
+          duration: 0.6,
         }}
         exit={{
-          scale: 0,
+          // scale: 0,
           opacity: 0,
         }}
         className="absolute left-0 top-0 h-full w-full p-8"

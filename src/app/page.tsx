@@ -35,7 +35,7 @@ const Home = () => {
         <BrandSection />
         <A />
         <Three />
-        <HeroSection setVariant={variantCB} />
+        {/* <HeroSection setVariant={variantCB} /> */}
         <Footer />
       </Container>
     </div>
