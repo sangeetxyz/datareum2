@@ -88,6 +88,7 @@ const AdminHeader = () => {
                   }
                   router.push(item.link);
                 }}
+                key={index}
               >
                 {item.title}
               </motion.div>
@@ -161,6 +162,7 @@ const AdminHeader = () => {
                         "w-full cursor-pointer py-3 text-center text-4xl font-bold uppercase text-stone-950",
                         lora.className,
                       )}
+                      key={index}
                     >
                       {item.title}
                     </motion.div>

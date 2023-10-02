@@ -89,6 +89,7 @@ const A = () => {
                 text={el.text}
                 description={el.description}
                 id={el.id}
+                key={el.id}
               />
             );
           })}

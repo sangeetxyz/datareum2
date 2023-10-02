@@ -14,10 +14,6 @@ import { Lora } from "next/font/google";
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const DashHeader = () => {
   const navbarItems = [
-    // {
-    //   title: "get started",
-    //   link: user ? "/dashboard" : "/signin",
-    // },
     {
       title: "documentation",
       link: "/docs",
@@ -26,10 +22,6 @@ const DashHeader = () => {
       title: "explore stats",
       link: "/explore",
     },
-    // {
-    //   title: "who we are",
-    //   link: "/explore",
-    // },
     {
       title: "privacy policy",
       link: "/docs",
@@ -78,6 +70,7 @@ const DashHeader = () => {
                 whileHover={{ scale: 1.1, color: "#facc15" }}
                 whileTap={{ scale: 0.9 }}
                 className="cursor-pointer text-stone-100"
+                key={index}
               >
                 {item.title}
               </motion.div>
@@ -152,6 +145,7 @@ const DashHeader = () => {
                         "w-full cursor-pointer py-3 text-center text-4xl font-bold uppercase text-stone-950",
                         lora.className,
                       )}
+                      key={index}
                     >
                       {item.title}
                     </motion.div>

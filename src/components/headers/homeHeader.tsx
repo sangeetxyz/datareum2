@@ -104,6 +104,7 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
                 whileHover={{ scale: 1.1, color: "#facc15" }}
                 whileTap={{ scale: 0.9 }}
                 className="cursor-pointer"
+                key={index}
               >
                 {item.title}
               </motion.div>
@@ -195,6 +196,7 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
                         "w-full cursor-pointer py-3 text-center text-4xl font-bold uppercase text-stone-950",
                         lora.className,
                       )}
+                      key={index}
                     >
                       {item.title}
                     </motion.div>
