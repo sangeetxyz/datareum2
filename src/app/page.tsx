@@ -10,6 +10,7 @@ import Se from "@/components/home/se";
 import ReverseSection from "@/components/home/reverseSection";
 import A from "@/components/home/a";
 import BrandSection from "@/components/home/brandSection";
+import Three from "@/components/home/three";
 
 const Home = () => {
   const [variant, setVariant] = useState("default");
@@ -33,6 +34,7 @@ const Home = () => {
         <ReverseSection />
         <BrandSection />
         <A />
+        <Three />
         <HeroSection setVariant={variantCB} />
         <Footer />
       </Container>
