@@ -42,7 +42,6 @@ const Three = () => {
   const textFiveOpa = useTransform(scrollYProgress, [0.8, 0.9, 1], [0, 1, 0]);
   const textFiveSca = useTransform(scrollYProgress, [0.8, 0.9, 1], [0, 1, 10]);
 
-  console.log(threeZoom);
   const mouse = {
     x: useSpring(useMotionValue(0), { damping: 30 }),
     y: useSpring(useMotionValue(0), { damping: 30 }),
