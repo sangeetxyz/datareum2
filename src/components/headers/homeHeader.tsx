@@ -50,7 +50,11 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
     },
     {
       title: "contact us",
-      link: "/docs",
+      link: "/contact",
+    },
+    {
+      title: "help us",
+      link: "/donate",
     },
   ];
   const menuItems = [
@@ -73,6 +77,10 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
     {
       title: "contact",
       link: "/docs",
+    },
+    {
+      title: "donate",
+      link: "/donate",
     },
   ];
   return (
@@ -105,6 +113,9 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
                 whileTap={{ scale: 0.9 }}
                 className="cursor-pointer"
                 key={index}
+                onClick={() => {
+                  router.push(item.link);
+                }}
               >
                 {item.title}
               </motion.div>
@@ -191,6 +202,7 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
                       onClick={(event) => {
                         event.stopPropagation();
                         router.push(item.link);
+                        console.log(item.link);
                       }}
                       className={cn(
                         "w-full cursor-pointer py-3 text-center text-4xl font-bold uppercase text-stone-950",

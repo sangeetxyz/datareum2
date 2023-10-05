@@ -12,15 +12,15 @@ import {
 import { cn } from "@/lib/utils";
 import { useAtom } from "jotai";
 import { keyHolder } from "@/jotai/atom";
-const A = () => {
+const FeatureSection = () => {
   const mainDivRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: mainDivYProgess } = useScroll({
     target: mainDivRef,
     offset: ["0 0", "1 1"],
   });
   const spring = useSpring(mainDivYProgess);
-  const mainDivTrans = useTransform(mainDivYProgess, [0, 1], ["0%", "-300%"]);
-  const mainDivTrans2 = useTransform(mainDivYProgess, [0, 1], ["0%", "300%"]);
+  const mainDivTrans = useTransform(spring, [0, 1], ["0%", "-300%"]);
+  const mainDivTrans2 = useTransform(spring, [0, 1], ["0%", "300%"]);
   const lust: {
     path: string;
     description: string;
@@ -70,7 +70,6 @@ const A = () => {
       path: "./features/encrypt.svg",
     },
   ];
-  console.log(mainDivTrans);
   const [key, setKey] = useAtom(keyHolder);
 
   return (
@@ -103,7 +102,7 @@ const A = () => {
   );
 };
 
-export default A;
+export default FeatureSection;
 
 const LeftItem = ({
   text,
@@ -172,7 +171,8 @@ const RightItem = ({ path, id }: { path: string; id: number }) => {
           scale: 1,
         }}
         transition={{
-          duration: 0.6,
+          duration: 1,
+          type: "spring"
         }}
         exit={{
           // scale: 0,

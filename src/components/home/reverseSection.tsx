@@ -9,7 +9,28 @@ const ReverseSection = () => {
   const spring = useSpring(mainDivYProgess);
   const mainDivTrans = useTransform(mainDivYProgess, [0, 1], ["0%", "-300%"]);
   const mainDivTrans2 = useTransform(mainDivYProgess, [0, 1], ["0%", "300%"]);
-
+  const itemList = [
+    {
+      id: 1,
+      path: "",
+      text: "You got data?",
+    },
+    {
+      id: 2,
+      path: "",
+      text: "We need it!",
+    },
+    {
+      id: 3,
+      path: "",
+      text: "You need data?",
+    },
+    {
+      id: 4,
+      path: "",
+      text: "We got it!",
+    },
+  ];
   return (
     <div ref={mainDivRef} className="relative h-[400vh] bg-black">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden bg-stone-950 pt-20">
