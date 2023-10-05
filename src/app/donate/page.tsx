@@ -25,7 +25,17 @@ const Donate = () => {
     let provider = null;
     const windowExtended: windowExtended = window;
     if (windowExtended.ethereum === null) {
-      console.log("MetaMask not installed");
+      toast.error("Metamask is not installed!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        pauseOnFocusLoss: false,
+        theme: "dark",
+      });
       return null;
     } else {
       provider = new ethers.BrowserProvider(windowExtended.ethereum);
@@ -49,9 +59,18 @@ const Donate = () => {
       if (result) {
         setProvider(result?.provider);
         setSigner(result?.signer);
-        console.log("done");
       } else {
-        console.log("error");
+        toast.success("Metamask connected!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          pauseOnFocusLoss: false,
+          theme: "dark",
+        });
       }
     });
   };
@@ -77,8 +96,29 @@ const Donate = () => {
     try {
       const tx = await signer.sendTransaction(transaction);
       await tx.wait();
+      toast.success("Payment successful!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        pauseOnFocusLoss: false,
+        theme: "dark",
+      });
     } catch (error) {
-      console.log(error);
+      toast.error("Payment rejected!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        pauseOnFocusLoss: false,
+        theme: "dark",
+      });
     }
   };
 
