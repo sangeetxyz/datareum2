@@ -1,5 +1,5 @@
 import React from "react";
-import heroSvg from "../../../public/hero/Blood test-bro.svg";
+import heroSvg from "../../../public/hero/test.svg";
 import { motion } from "framer-motion";
 import { Inknut_Antiqua } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -134,7 +134,11 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
           </div>
         </div>
         <div className="bg-red-90 flex w-full items-center justify-center overflow-hidden ">
-          <img src={heroSvg.src} alt="" className="xl:-scale-x-11 h-full w-full" />
+          <img
+            src={heroSvg.src}
+            alt=""
+            className="xl:-scale-x-11 h-full w-full"
+          />
         </div>
       </div>
       <div className="absolute bottom-10 hidden flex-col items-center justify-center xl:flex">

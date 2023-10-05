@@ -10,8 +10,6 @@ import {
   useTransform,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Scale } from "lucide-react";
-import { list } from "firebase/storage";
 import { useAtom } from "jotai";
 import { keyHolder } from "@/jotai/atom";
 const A = () => {

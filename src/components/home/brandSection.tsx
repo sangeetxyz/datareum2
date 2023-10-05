@@ -14,8 +14,6 @@ import {
   TbBrandValorant,
   TbBrandVercel,
 } from "react-icons/tb";
-import Scrollbars from "react-scrollbars-custom";
-import { Carousel } from "antd";
 const BrandSection = () => {
   const mainDivRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: mainDivYProgess } = useScroll({

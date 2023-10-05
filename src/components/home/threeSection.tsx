@@ -8,9 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 import React, { lazy, useEffect, useRef } from "react";
-import { motion as motion3d } from "framer-motion-3d";
-import { useLoader } from "@react-three/fiber";
-import Model from "../three/model";
+
 const ModelComponent = lazy(() => import("../three/model"));
 const Three = () => {
   const mainDivRef = useRef(null);
