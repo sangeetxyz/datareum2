@@ -42,11 +42,11 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
     },
     {
       title: "who we are",
-      link: "/explore",
+      link: "/about",
     },
     {
       title: "privacy policy",
-      link: "/docs",
+      link: "/privacy",
     },
     {
       title: "contact us",
@@ -66,18 +66,18 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
       title: "explore",
       link: "/explore",
     },
-    {
-      title: "about",
-      link: "/about",
-    },
+    // {
+    //   title: "about",
+    //   link: "/about",
+    // },
     {
       title: "privacy",
-      link: "/docs",
+      link: "/privacy",
     },
-    {
-      title: "contact",
-      link: "/docs",
-    },
+    // {
+    //   title: "contact",
+    //   link: "/contact",
+    // },
     {
       title: "donate",
       link: "/donate",

@@ -75,7 +75,7 @@ const Donate = () => {
     });
   };
   const handlePayment = async () => {
-    if (amount === 0) {
+    if (amount <= 0) {
       toast.error("Enter a valid amount!", {
         position: "top-right",
         autoClose: 5000,
@@ -252,7 +252,7 @@ const Donate = () => {
         <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center overflow-hidden pt-20">
           <motion.div
             initial={{
-              x: 1000,
+              x: 2000,
             }}
             animate={{
               x: 0,
@@ -265,7 +265,7 @@ const Donate = () => {
           ></motion.div>
           <motion.div
             initial={{
-              x: -1000,
+              x: -2000,
             }}
             animate={{
               x: 0,
