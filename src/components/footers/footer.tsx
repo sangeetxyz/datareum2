@@ -1,9 +1,11 @@
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FaEthereum } from "react-icons/fa";
 
 const Footer = () => {
+  const router = useRouter();
   return (
-    <div className="flex w-full justify-center py-4 bg-stone-950">
+    <div className="flex w-full justify-center bg-stone-950 py-4">
       <div className="flex w-full max-w-6xl flex-col items-center p-4">
         <div className="mx-4 flex shrink flex-col items-center justify-between space-y-4 rounded-xl px-4 py-4 sm:bg-acc md:w-full md:flex-row md:space-y-0 md:rounded-full">
           <div className="px-4 text-xl font-bold text-acc sm:text-stone-950">
@@ -15,13 +17,13 @@ const Footer = () => {
               type="email"
               className="rounded-full bg-stone-100 px-4 text-stone-950 focus:outline-none"
             />
-            <div className="cursor-pointer rounded-full bg-acc px-4 py-2 font-semibold sm:font-normal text-stone-950 sm:bg-stone-950 sm:text-stone-100">
+            <div className="cursor-pointer rounded-full bg-acc px-4 py-2 font-semibold text-stone-950 sm:bg-stone-950 sm:font-normal sm:text-stone-100">
               Submit
             </div>
           </div>
         </div>
         <div className="my-8 flex w-full flex-col md:flex-row">
-          <div className="border-1 bg-red-95 flex w-full flex-col items-center justify-center border-b md:border-r md:border-b-0 border-stone-700">
+          <div className="border-1 bg-red-95 flex w-full flex-col items-center justify-center border-b border-stone-700 md:border-b-0 md:border-r">
             <div className="flex flex-col items-center py-8">
               <div className="flex cursor-pointer items-center">
                 <FaEthereum size={28} color="#facc15" />
@@ -39,24 +41,51 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="bg-yellow-95 py-4 flex w-full items-center justify-around">
+          <div className="bg-yellow-95 flex w-full items-center justify-around py-4">
             <div className="flex flex-col space-y-2 text-sm">
-              <div className="text-lg font-bold capitalize">services</div>
-              <div className="cursor-pointer capitalize">contact us</div>
-              <div className="cursor-pointer capitalize">about us</div>
-              <div className="blog cursor-pointer">about us</div>
+              <div className="text-lg font-bold capitalize underline decoration-acc">
+                services
+              </div>
+              <div
+                className="cursor-pointer capitalize"
+                onClick={() => {
+                  router.push("/contact");
+                }}
+              >
+                contact us
+              </div>
+              <div
+                className="cursor-pointer capitalize"
+                onClick={() => {
+                  router.push("/about");
+                }}
+              >
+                about us
+              </div>
+              <div
+                className="blog cursor-pointer capitalize"
+                onClick={() => {
+                  router.push("/privacy");
+                }}
+              >
+                privacy policy
+              </div>
             </div>
             <div className="flex flex-col space-y-2 text-sm">
-              <div className="text-lg font-bold capitalize">Resources</div>
-              <div className="cursor-pointer capitalize">dashboard</div>
+              <div className="text-lg font-bold capitalize underline decoration-acc">
+                Resources
+              </div>
               <div className="cursor-pointer capitalize">docs</div>
-              <div className="blog cursor-pointer">API</div>
+              <div className="cursor-pointer capitalize">dashboard</div>
+              <div className="cursor-pointer capitalize">API</div>
             </div>
             <div className="flex flex-col space-y-2 text-sm">
-              <div className="text-lg font-bold capitalize">Contact</div>
+              <div className="text-lg font-bold capitalize underline decoration-acc">
+                Contact
+              </div>
               <div className="cursor-pointer capitalize">dashboard</div>
               <div className="cursor-pointer capitalize">docs</div>
-              <div className="blog cursor-pointer">API</div>
+              <div className="cursor-pointer capitalize">API</div>
             </div>
           </div>
         </div>
