@@ -5,6 +5,7 @@ import { MdAccountBalanceWallet } from "react-icons/md";
 import { PiCopyFill } from "react-icons/pi";
 import { ethers } from "ethers";
 import { GrConnect } from "react-icons/gr";
+import {motion} from "framer-motion"
 
 const Donate = () => {
   type windowExtended = {

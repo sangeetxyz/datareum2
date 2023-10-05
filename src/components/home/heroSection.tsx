@@ -16,7 +16,7 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
   const user = useAuth();
   const router = useRouter();
   return (
-    <div className="via-stone-95 relative flex h-screen w-full justify-center bg-gradient-to-tr from-stone-950 to-stone-900 pt-20 text-white xl:pt-10">
+    <div className="via-stone-95 relative flex h-screen w-full justify-center bg-gradient-to-t from-stone-950 to-stone-900 pt-20 text-white xl:pt-10">
       <div className="bg-neutral-70 flex h-full w-full max-w-[94rem] flex-col justify-center xl:flex-row">
         <div className="bg-red-95 lg justify-cente flex w-full items-center justify-center md:mt-10 xl:ml-8 xl:mt-0 2xl:ml-0">
           <div className="mt-8 flex flex-col items-center md:mt-0 xl:items-start">

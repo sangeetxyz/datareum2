@@ -3,7 +3,7 @@ import { FaEthereum } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="flex w-full justify-center bg-stone-950">
+    <div className="flex w-full justify-center py-4 bg-stone-950">
       <div className="flex w-full max-w-6xl flex-col items-center p-4">
         <div className="mx-4 flex shrink flex-col items-center justify-between space-y-4 rounded-xl px-4 py-4 sm:bg-acc md:w-full md:flex-row md:space-y-0 md:rounded-full">
           <div className="px-4 text-xl font-bold text-acc sm:text-stone-950">
@@ -20,7 +20,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mt-4 flex w-full flex-col md:flex-row">
+        <div className="my-8 flex w-full flex-col md:flex-row">
           <div className="border-1 bg-red-95 flex w-full flex-col items-center justify-center border-b md:border-r md:border-b-0 border-stone-700">
             <div className="flex flex-col items-center py-8">
               <div className="flex cursor-pointer items-center">
@@ -60,7 +60,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mt-4 w-full text-center text-xs">
+        <div className="w-full text-center text-xs">
           © 2023 Datareum All rights reserved
         </div>
       </div>
