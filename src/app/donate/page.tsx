@@ -6,48 +6,12 @@ import { PiCopyFill } from "react-icons/pi";
 import { ethers } from "ethers";
 import { GrConnect } from "react-icons/gr";
 
-async function handleMetamaskConnect() {
-  if (window.ethereum) {
-    try {
-      // Request MetaMask access
-      await window.ethereum.request({ method: "eth_requestAccounts" });
-
-      // Create a provider and signer with MetaMask
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-      // Replace with the recipient's Ethereum address
-      const recipientAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
-
-      // Ensure a valid donation amount
-      if (!0.001) {
-        // setMessage('Please enter a valid donation amount.');
-        return;
-      }
-
-      // Convert the donation amount to wei (1 Ether = 10^18 Wei)
-      const donationWei = 100000;
-
-      // Create a transaction object
-      const transaction = {
-        to: recipientAddress,
-        value: donationWei,
-      };
-
-      // Sign and send the transaction
-      const tx = await signer.sendTransaction(transaction);
-      await tx.wait();
-
-      // setMessage(`Donation of ${donationAmount} ETH sent successfully!`);
-    } catch (error) {
-      console.error(error);
-      // setMessage('Error sending donation.');
-    }
-  } else {
-    console.error("MetaMask not detected. Please install MetaMask.");
-  }
-}
 const Donate = () => {
-  const [amount, setAmount] = useState(0);
+  type windowExtended = {
+    window: Window;
+    ethereum?: object;
+  };
+  const [amount, setAmount] = useState(0.0);
   const [provider, setProvider] = useState<any>(null);
   const [signer, setSigner] = useState<any>(null);
   const connectMetamask = async (): Promise<{
@@ -56,7 +20,8 @@ const Donate = () => {
   } | null> => {
     let signer = null;
     let provider = null;
-    if (window.ethereum === null) {
+    const windowExtended: windowExtended = window;
+    if (windowExtended.ethereum === null) {
       console.log("MetaMask not installed");
       return null;
     } else {
@@ -79,7 +44,7 @@ const Donate = () => {
   const handlePayment = async () => {
     const transaction = {
       to: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-      value: amount,
+      value: ethers.parseEther(amount.toString()),
     };
     try {
       const tx = await signer.sendTransaction(transaction);
@@ -107,7 +72,6 @@ const Donate = () => {
                 <PiCopyFill size={30} color={"#1C1917"} />
               </div>
             </div>
-            {/* <div className="text-sm">Copy the public key </div> */}
           </div>
           <div className="flex items-center">
             <div className="mx-6 h-[1px] w-full bg-stone-100"></div>
@@ -117,14 +81,14 @@ const Donate = () => {
 
           {provider && signer ? (
             <div className="flex h-full items-center justify-center space-x-4 rounded-xl bg-stone-800 bg-opacity-20 px-8 outline outline-1 outline-stone-600 backdrop-blur-md">
-              {/* <div className="capitalize">metamask wallet</div> */}
               <input
                 type="number"
+                step="0.01"
                 onChange={(event) => {
-                  setAmount(parseInt(event.currentTarget.value));
+                  setAmount(parseFloat(event.currentTarget.value));
                 }}
-                className="w-44 rounded-full px-3 py-2 text-sm text-stone-950 focus:outline-none"
-                placeholder="Enter amount in Wei"
+                className="w-44 appearance-none rounded-full px-3 py-2 text-sm text-stone-950 focus:outline-none"
+                placeholder="Enter amount in Eth"
               />
               <div
                 onClick={handlePayment}
