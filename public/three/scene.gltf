@@ -1,0 +1,288 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 60,
+      "max": [
+        0.8944200277328491,
+        0.8506399989128113,
+        1.0
+      ],
+      "min": [
+        -0.8944200277328491,
+        -0.8506399989128113,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 720,
+      "componentType": 5126,
+      "count": 60,
+      "max": [
+        0.9822456240653992,
+        0.9341700077056885,
+        0.7946538329124451
+      ],
+      "min": [
+        -0.9822456240653992,
+        -0.9341700077056885,
+        -0.7946538329124451
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 60,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1440,
+      "componentType": 5126,
+      "count": 39984,
+      "max": [
+        545.7134399414063,
+        360.02691650390625,
+        325.3577575683594
+      ],
+      "min": [
+        -448.987060546875,
+        -316.4147644042969,
+        -589.1316528320313
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 481248,
+      "componentType": 5126,
+      "count": 39984,
+      "max": [
+        0.999565839767456,
+        0.9998356103897095,
+        1.0
+      ],
+      "min": [
+        -0.9998477101325989,
+        -0.9996139407157898,
+        -0.999904990196228
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 961056,
+      "componentType": 5126,
+      "count": 39984,
+      "max": [
+        1.0,
+        0.9764705896377563,
+        1.0
+      ],
+      "min": [
+        0.6274510025978088,
+        0.0,
+        0.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 240,
+      "componentType": 5125,
+      "count": 59976,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Loïc Norgeot (https://sketchfab.com/norgeotloic)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/our-corner-of-universe-37476c8aaba148fbaf4b6c3664545995",
+      "title": "Our corner of universe"
+    },
+    "generator": "Sketchfab-12.65.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 240144,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1440864,
+      "byteOffset": 240144,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1681008,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_transmission"
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.16000000238,
+        0.16000000238,
+        0.16000000238
+      ],
+      "name": "Material",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1.0,
+          1.0,
+          1.0,
+          0.487654321
+        ],
+        "roughnessFactor": 0.6296296296
+      }
+    },
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 0.5802469136
+        }
+      },
+      "name": "earth",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.004275796891156811,
+          0.010139914171127765,
+          0.025724065098789453,
+          0.4197530864
+        ],
+        "metallicFactor": 0.537037037,
+        "roughnessFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Earth_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Plane.8968_0",
+      "primitives": [
+        {
+          "attributes": {
+            "COLOR_0": 5,
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 6,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.00811469554901123,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.8018243672671087e-18,
+        -0.00811469554901123,
+        0.0,
+        0.0,
+        0.00811469554901123,
+        1.8018243672671087e-18,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2,
+        4
+      ],
+      "name": "Root"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "Earth"
+    },
+    {
+      "mesh": 0,
+      "name": "Earth_0"
+    },
+    {
+      "children": [
+        5
+      ],
+      "matrix": [
+        -0.17308,
+        -0.07041,
+        -0.60357,
+        0.0,
+        0.54896,
+        -0.28723,
+        -0.12391,
+        0.0,
+        -0.26057,
+        -0.5583400000000001,
+        0.13986,
+        0.0,
+        -7.65117,
+        -2.72466,
+        -2.6878,
+        1.0
+      ],
+      "name": "Plane.8968"
+    },
+    {
+      "mesh": 1,
+      "name": "Plane.8968_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
