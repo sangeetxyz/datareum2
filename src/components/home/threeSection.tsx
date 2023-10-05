@@ -10,8 +10,8 @@ import {
 import React, { lazy, useEffect, useRef } from "react";
 import { motion as motion3d } from "framer-motion-3d";
 import { useLoader } from "@react-three/fiber";
-import Model from "./model";
-const ModelComponent = lazy(() => import("./model"));
+import Model from "../three/model";
+const ModelComponent = lazy(() => import("../three/model"));
 const Three = () => {
   const mainDivRef = useRef(null);
   const { scrollYProgress } = useScroll({

@@ -1,35 +1,12 @@
 import React from "react";
-import waves from "../../../public/waves.png";
-import hero from "../../../public/hero.svg";
-import av1 from "../../../public/avatar-1.png";
-import av3 from "../../../public/avatar-3.png";
-import av4 from "../../../public/avatar-4.png";
-import av5 from "../../../public/avatar-5.png";
-import av6 from "../../../public/avatar-6.png";
-import s from "../../../public/Blood test-bro.svg";
-import { AiOutlineArrowRight, AiOutlineDown } from "react-icons/ai";
+import heroSvg from "../../../public/hero/Blood test-bro.svg";
 import { motion } from "framer-motion";
-import Magnetic from "../containers/magnetic";
-import Particles from "react-particles";
-import {
-  TbBrandFirebase,
-  TbBrandNextjs,
-  TbBrandPrisma,
-  TbBrandSupabase,
-  TbBrandTailwind,
-} from "react-icons/tb";
 import { Inknut_Antiqua } from "next/font/google";
 import { cn } from "@/lib/utils";
-import {
-  SiFirebase,
-  SiNextdotjs,
-  SiPrisma,
-  SiSupabase,
-  SiTailwindcss,
-} from "react-icons/si";
 import { BsMouse } from "react-icons/bs";
 import { useAuth } from "@/context/context";
 import { useRouter } from "next/navigation";
+import { AiOutlineDown } from "react-icons/ai";
 const Inknut = Inknut_Antiqua({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
@@ -157,7 +134,7 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
           </div>
         </div>
         <div className="bg-red-90 flex w-full items-center justify-center overflow-hidden ">
-          <img src={s.src} alt="" className="xl:-scale-x-11 h-full w-full" />
+          <img src={heroSvg.src} alt="" className="xl:-scale-x-11 h-full w-full" />
         </div>
       </div>
       <div className="absolute bottom-10 hidden flex-col items-center justify-center xl:flex">

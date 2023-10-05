@@ -8,9 +8,9 @@ import Toaster from "@/components/containers/Toaster";
 import Container from "@/components/containers/container";
 import Se from "@/components/home/se";
 import ReverseSection from "@/components/home/reverseSection";
-import A from "@/components/home/a";
+import A from "@/components/home/featureSection";
 import BrandSection from "@/components/home/brandSection";
-import Three from "@/components/home/three";
+import Three from "@/components/home/threeSection";
 
 const Home = () => {
   const [variant, setVariant] = useState("default");

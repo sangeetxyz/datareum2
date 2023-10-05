@@ -20,22 +20,22 @@ const ReverseSection = () => {
               className="flex h-full w-full"
             >
               <img
-                src="./world.png"
+                src="./reverse/world.png"
                 alt=""
                 className="h-full w-full shrink-0 object-cover opacity-50"
               />
               <img
-                src="./cctv.png"
+                src="./reverse/cctv.png"
                 alt=""
                 className="h-full w-full shrink-0 object-cover opacity-50"
               />
               <motion.img
-                src="./world.png"
+                src="./reverse/world.png"
                 alt=""
                 className="h-full w-full shrink-0 object-cover opacity-50"
               />
               <motion.img
-                src="./world.png"
+                src="./reverse/world.png"
                 alt=""
                 className="h-full w-full shrink-0 object-cover opacity-50"
               />
