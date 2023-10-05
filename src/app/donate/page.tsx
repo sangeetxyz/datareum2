@@ -53,7 +53,6 @@ const Donate = () => {
       console.log(error);
     }
   };
-  useEffect(() => {}, []);
 
   return (
     <div className="relative flex h-screen items-center justify-center bg-stone-950 pt-20 outline outline-1 outline-stone-600">
