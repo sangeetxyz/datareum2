@@ -199,3 +199,14 @@ export const combineDataAndSecretKeys = (
 
   return combinedObjects;
 };
+export const verifyToken = (
+  objList: userData[],
+  tokenToCheck: string,
+): boolean => {
+  for (const obj of objList) {
+    if (obj.token === tokenToCheck) {
+      return true;
+    }
+  }
+  return false;
+};

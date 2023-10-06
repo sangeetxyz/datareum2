@@ -1,4 +1,4 @@
-import { combineDataAndSecretKeys, getAllUsersData } from "@/utils/helpers";
+import { combineDataAndSecretKeys, getAllUsersData, verifyToken } from "@/utils/helpers";
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
@@ -32,14 +32,3 @@ export async function GET(request: NextRequest, response: NextResponse) {
   }
 }
 
-export const verifyToken = (
-  objList: userData[],
-  tokenToCheck: string,
-): boolean => {
-  for (const obj of objList) {
-    if (obj.token === tokenToCheck) {
-      return true;
-    }
-  }
-  return false;
-};

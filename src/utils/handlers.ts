@@ -486,14 +486,14 @@ export const handleUserUpdateOnAdmin = async (
     isTac: userData.isTac,
   };
   console.log(newUserData);
-  await axios
+  const res = await axios
     .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData, {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
       },
     })
     .then(() => {
-      console.log("first");
+      console.log(res);
       toast.success("Information updated!", {
         position: "top-right",
         autoClose: 5000,
