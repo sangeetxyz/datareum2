@@ -42,7 +42,11 @@ export const handleProfilePhotoUpload = async (
       isTac: userData.isTac,
     };
     await axios
-      .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData)
+      .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData, {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+        },
+      })
       .then(() => {
         console.log("updated");
       });
@@ -74,7 +78,11 @@ export const handleProfileUpdateOnDash = async (
     isTac: userData.isTac,
   };
   await axios
-    .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData)
+    .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+      },
+    })
     .then(() => {
       console.log("updated");
     });
@@ -414,7 +422,11 @@ export const handleGetVerifiedClicked = async (userData: userData) => {
       isTac: userData.isTac,
     };
     await axios
-      .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData)
+      .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData, {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+        },
+      })
       .then(() => {
         window.location.reload();
         toast.success("God Mode activated!", {
@@ -475,7 +487,11 @@ export const handleUserUpdateOnAdmin = async (
   };
   console.log(newUserData);
   await axios
-    .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData)
+    .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+      },
+    })
     .then(() => {
       console.log("first");
       toast.success("Information updated!", {
@@ -493,14 +509,27 @@ export const handleUserUpdateOnAdmin = async (
 };
 
 export const handlePatientUploadToDb = async (data: PatientDB[]) => {
-  await axios.post(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/patients`, {
-    data,
-  });
+  await axios.post(
+    `${process.env.NEXT_PUBLIC_WEB_URL}api/dev/patients`,
+    {
+      data,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+      },
+    },
+  );
 };
 
 export const getPatientsDataFromDb = async () => {
   const { data } = await axios.get(
     `${process.env.NEXT_PUBLIC_WEB_URL}api/dev/patients`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+      },
+    },
   );
   return data;
 };

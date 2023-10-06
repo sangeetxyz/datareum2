@@ -36,22 +36,30 @@ export const uploadUserFull = async (
   isContributing: boolean,
   isTacAccepted: boolean,
 ) => {
-  await axios.post(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, {
-    name: name,
-    org: org,
-    email: email,
-    phone: phoneNumber,
-    isOrgVerified: false,
-    isEmailVerified: false,
-    isPhoneVerified: true,
-    canContribute: true,
-    isGod: false,
-    canDownload: false,
-    token: "initial",
-    fireUid: auth.currentUser?.uid,
-    isContributor: isContributing,
-    isTac: isTacAccepted,
-  });
+  await axios.post(
+    `${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`,
+    {
+      name: name,
+      org: org,
+      email: email,
+      phone: phoneNumber,
+      isOrgVerified: false,
+      isEmailVerified: false,
+      isPhoneVerified: true,
+      canContribute: true,
+      isGod: false,
+      canDownload: false,
+      token: "initial",
+      fireUid: auth.currentUser?.uid,
+      isContributor: isContributing,
+      isTac: isTacAccepted,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+      },
+    },
+  );
 };
 
 export const isPhoneNumberPresent = (
@@ -135,7 +143,11 @@ export const tokenGenerator = async (userData: userData) => {
     isTac: userData.isTac,
   };
   await axios
-    .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData)
+    .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+      },
+    })
     .then(() => {
       window.location.reload();
     });
@@ -144,6 +156,11 @@ export const tokenGenerator = async (userData: userData) => {
 export const getAllUsersData = async () => {
   const { data } = await axios.get(
     `${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+      },
+    },
   );
   return data;
 };
@@ -151,6 +168,11 @@ export const getAllUsersData = async () => {
 export const getDashUserData = async (user: User) => {
   const { data } = await axios.get(
     `${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+      },
+    },
   );
   const thisUser: userData | undefined = findObjectByFireUid(data, user?.uid);
   return thisUser;
