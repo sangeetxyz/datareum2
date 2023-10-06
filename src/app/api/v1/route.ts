@@ -32,7 +32,6 @@ function combineDataAndSecretKeys(
         identifier: dbObj.identifier,
         secretKey: matchingSecretKeyObj.secretKey,
         data: dbObj.data,
-        // Add other attributes here
       };
       combinedObjects.push(combinedObj);
     }

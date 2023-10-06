@@ -1,5 +1,11 @@
 import { auth } from "@/firebase/firebase";
-import { objectType, userData } from "@/types/types";
+import {
+  InputObject,
+  PatientBC,
+  PatientDB,
+  objectType,
+  userData,
+} from "@/types/types";
 import axios from "axios";
 import { User } from "firebase/auth";
 
@@ -131,7 +137,6 @@ export const tokenGenerator = async (userData: userData) => {
   await axios
     .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData)
     .then(() => {
-      console.log("updated");
       window.location.reload();
     });
 };
@@ -149,4 +154,26 @@ export const getDashUserData = async (user: User) => {
   );
   const thisUser: userData | undefined = findObjectByFireUid(data, user?.uid);
   return thisUser;
+};
+
+export const combineDataAndSecretKeys = (
+  dataFromDb: PatientDB[],
+  dataFromBc: PatientBC[],
+): InputObject[] => {
+  const combinedObjects: InputObject[] = [];
+  for (const dbObj of dataFromDb) {
+    const matchingSecretKeyObj = dataFromBc.find(
+      (bcObj) => bcObj.identifier === dbObj.identifier,
+    );
+    if (matchingSecretKeyObj) {
+      const combinedObj: InputObject = {
+        identifier: dbObj.identifier,
+        secretKey: matchingSecretKeyObj.secretKey,
+        data: dbObj.data,
+      };
+      combinedObjects.push(combinedObj);
+    }
+  }
+
+  return combinedObjects;
 };
