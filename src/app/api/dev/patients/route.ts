@@ -7,9 +7,8 @@ import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 export async function GET(request: Request, response: Response) {
-  const userData = await prisma.patient.findMany();
-  return NextResponse.json(convertBigIntsToInts(userData));
-  // asd
+  // const userData = await prisma.patient.findMany();
+  // return NextResponse.json(convertBigIntsToInts(userData));
   try {
     const authHeader = request.headers.get("authorization");
     if (authHeader) {
@@ -17,8 +16,8 @@ export async function GET(request: Request, response: Response) {
       if (token === process.env.NEXT_PUBLIC_API_SECRET) {
         return NextResponse.json({ error: "Unauthorized" });
       } else {
-        const userData = await prisma.patient.findMany();
-        return NextResponse.json(convertBigIntsToInts(userData));
+        const patientData = await prisma.patient.findMany();
+        return NextResponse.json(convertBigIntsToInts(patientData));
       }
     } else {
       return NextResponse.json({ error: "Unauthorized" });
@@ -30,14 +29,31 @@ export async function GET(request: Request, response: Response) {
 }
 
 export async function POST(request: Request, response: Response) {
-  const body = await request.json();
-  const res = await prisma.patient.createMany({
-    data: body.data,
-    skipDuplicates: true,
-  });
-  return NextResponse.json({ status: "file uploade" });
+  // const body = await request.json();
+  // const res = await prisma.patient.createMany({
+  //   data: body.data,
+  //   skipDuplicates: true,
+  // });
+  // return NextResponse.json({ status: "file uploade" });
+  try {
+    const authHeader = request.headers.get("authorization");
+    if (authHeader) {
+      const token = authHeader?.split(" ")[1];
+      if (token === process.env.NEXT_PUBLIC_API_SECRET) {
+        return NextResponse.json({ error: "Unauthorized" });
+      } else {
+        const body = await request.json();
+        const res = await prisma.patient.createMany({
+          data: body.data,
+          skipDuplicates: true,
+        });
+        return NextResponse.json({ status: "Patient Uploaded" });
+      }
+    } else {
+      return NextResponse.json({ error: "Unauthorized" });
+    }
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: "Internal Server Error" });
+  }
 }
-
-export async function DELETE(request: Request) {}
-
-export async function PUT(request: Request) {}
