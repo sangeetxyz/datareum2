@@ -123,7 +123,7 @@ const LeftItem = ({
     if (isInMiddle) {
       setKey(id);
     }
-  }, [isInMiddle]);
+  }, [isInMiddle, setKey]);
 
   return (
     <AnimatePresence>

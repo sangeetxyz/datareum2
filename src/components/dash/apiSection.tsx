@@ -34,7 +34,7 @@ export const ApiSection: React.FC<APIProps> = ({ userData }) => {
       setToken(userData.token!);
       setIsNew(false);
     }
-  }, []);
+  }, [userData]);
   return (
     <div>
       <div className="my-4 text-xl uppercase">api token</div>

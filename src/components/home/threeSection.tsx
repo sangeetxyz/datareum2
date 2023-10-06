@@ -44,6 +44,7 @@ const Three = () => {
     x: useSpring(useMotionValue(0), { damping: 30 }),
     y: useSpring(useMotionValue(0), { damping: 30 }),
   };
+  
   const handleMouseMove = (event: MouseEvent) => {
     const { innerHeight, innerWidth } = window;
     const { clientX, clientY } = event;
@@ -52,11 +53,10 @@ const Three = () => {
     mouse.x.set(x);
     mouse.y.set(y);
   };
-
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [handleMouseMove]);
+  }, []);
   const t = ["this", "is", "the", "blockchain"];
   return (
     <div ref={mainDivRef} className="h-[500vh] bg-red-950">

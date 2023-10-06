@@ -32,7 +32,7 @@ const Privacy = () => {
             We collect various types of data, including user information, health
             data, and usage data. This data is used for purposes such as data
             exchange, research collaboration, and platform improvement. Your
-            data's security is of utmost importance to us, and we employ
+            security of data is of utmost importance to us, and we employ
             industry-standard measures to protect it. You have control over your
             data and can exercise your rights by contacting our Privacy Officer.
           </div>

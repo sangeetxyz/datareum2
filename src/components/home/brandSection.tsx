@@ -30,7 +30,7 @@ const BrandSection = () => {
     console.log(
       carousel.current?.scrollWidth! - carousel.current?.offsetWidth!,
     );
-  }, [carousel.current]);
+  }, []);
 
   return (
     <div ref={mainDivRef} className="relative">
