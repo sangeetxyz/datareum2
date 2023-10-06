@@ -11,9 +11,7 @@ const prisma = new PrismaClient();
 export async function GET(request: Request, response: Response) {
   const dataFromDb = await prisma.patient.findMany();
   const dataFromBc = await getPatientsDataFromBc();
-  const a = combineDataAndSecretKeys(dataFromDb, dataFromBc);
-  const b = decryptList(a);
-  return NextResponse.json(b);
+  return NextResponse.json(dataFromBc);
 }
 
 function combineDataAndSecretKeys(

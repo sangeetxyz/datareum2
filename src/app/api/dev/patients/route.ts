@@ -8,8 +8,25 @@ const prisma = new PrismaClient();
 
 export async function GET(request: Request, response: Response) {
   const userData = await prisma.patient.findMany();
-  console.log(userData);
   return NextResponse.json(convertBigIntsToInts(userData));
+  // asd
+  try {
+    const authHeader = request.headers.get("authorization");
+    if (authHeader) {
+      const token = authHeader?.split(" ")[1];
+      if (token === process.env.NEXT_PUBLIC_API_SECRET) {
+        return NextResponse.json({ error: "Unauthorized" });
+      } else {
+        const userData = await prisma.patient.findMany();
+        return NextResponse.json(convertBigIntsToInts(userData));
+      }
+    } else {
+      return NextResponse.json({ error: "Unauthorized" });
+    }
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: "Internal Server Error" });
+  }
 }
 
 export async function POST(request: Request, response: Response) {
