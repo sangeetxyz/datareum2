@@ -77,6 +77,7 @@ export const handleProfileUpdateOnDash = async (
     fireUid: userData.fireUid,
     isTac: userData.isTac,
   };
+  console.log(newUserData);
   await axios
     .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData, {
       headers: {

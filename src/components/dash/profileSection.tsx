@@ -21,7 +21,7 @@ import {
 } from "@/utils/handlers";
 import { toast } from "react-toastify";
 
-const ProfileSection = (props: { userData: userData }) => {
+const ProfileSection = (props: { userData: userData; refresher: () => {} }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [name, setName] = useState(props.userData.name);
   const [email, setEmail] = useState(props.userData.email);
@@ -307,8 +307,13 @@ const ProfileSection = (props: { userData: userData }) => {
                 whileTap={{
                   scale: 0.95,
                 }}
-                onClick={() => {
-                  handleProfileUpdateOnDash(name, org, email, props.userData);
+                onClick={async () => {
+                  await handleProfileUpdateOnDash(
+                    name,
+                    org,
+                    email,
+                    props.userData,
+                  );
                   toast.success("Profile updated!", {
                     position: "top-right",
                     autoClose: 5000,
@@ -321,6 +326,7 @@ const ProfileSection = (props: { userData: userData }) => {
                     theme: "dark",
                   });
                   setIsUpadateOpened(false);
+                  props.refresher();
                 }}
                 className="mt-6 w-full cursor-pointer rounded-xl bg-acc py-2 text-center font-bold text-stone-950"
               >

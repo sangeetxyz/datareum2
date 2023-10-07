@@ -8,7 +8,6 @@ const prisma = new PrismaClient();
 
 export async function GET(request: Request, response: Response) {
   const userData = await prisma.user.findMany();
-  console.log(userData);
   if (userData) {
     return NextResponse.json(convertBigIntsToInts(userData));
   }
@@ -67,7 +66,6 @@ export async function POST(request: Request, response: Response) {
         return NextResponse.json({ error: "Unauthorized" });
       } else {
         const body: userData = await request.json();
-        console.log(body);
         const userData: userData = {
           name: body.name,
           org: body.org,
@@ -124,7 +122,6 @@ export async function DELETE(request: Request) {
         return NextResponse.json({ error: "Unauthorized" });
       } else {
         const body = await request.json();
-        console.log(body);
         const user = await prisma.user.findFirst({
           where: {
             id: body.id,
@@ -191,10 +188,7 @@ export async function PUT(request: Request) {
     if (authHeader) {
       const token = authHeader?.split(" ")[1];
       if (token === process.env.NEXT_PUBLIC_API_SECRET) {
-        return NextResponse.json({ error: "Unauthorized" });
-      } else {
         const body = await request.json();
-        console.log(body);
         const user = await prisma.user.findFirst({
           where: {
             phone: body.phone,
@@ -223,12 +217,17 @@ export async function PUT(request: Request) {
             },
           });
         } else {
-          return NextResponse.json({ status: "no user" });
-          throw Error("No User Found");
+          console.log("no user found");
+          return NextResponse.json({ status: "no user found" });
         }
-        return NextResponse.json({ status: "deleted" });
+        console.log("updated");
+        return NextResponse.json({ status: "updated" });
+      } else {
+        return NextResponse.json({ error: "Unauthorized" });
       }
     } else {
+      console.log("un auth");
+
       return NextResponse.json({ error: "Unauthorized" });
     }
   } catch (error) {

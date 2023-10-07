@@ -66,7 +66,7 @@ const Dashboard = () => {
         <DashHeader />
         <div className="bg-pink-95 flex min-h-screen w-full flex-col items-center pt-20">
           <div className="h-full w-full max-w-6xl p-4">
-            <ProfileSection userData={userData} />
+            <ProfileSection userData={userData} refresher={setUserDataHelper} />
             <God userData={userData} />
             <ApiSection userData={userData} />
             <ContributionSection userData={userData} />
