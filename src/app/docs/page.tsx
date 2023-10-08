@@ -116,9 +116,9 @@ const Introduction = () => {
         </div>
         <div>
           Welcome to the Datareum Documentation. This comprehensive guide
-          provides detailed information on how to interact with our platform's
-          API, understand the database schema for data submission, and access
-          valuable patient data for research purposes.
+          provides detailed information on how to interact with our
+          platform&apos;s API, understand the database schema for data
+          submission, and access valuable patient data for research purposes.
         </div>
       </div>
       <div className="flex flex-col space-y-4">
@@ -128,7 +128,7 @@ const Introduction = () => {
         <div>
           Datareum is a cutting-edge platform designed to facilitate medical
           research by providing access to patient data while ensuring data
-          security and privacy. Whether you're a researcher, developer, or
+          security and privacy. Whether you&apos;re a researcher, developer, or
           healthcare professional, this documentation will guide you through the
           process of utilizing our services effectively.
         </div>
@@ -161,8 +161,8 @@ const Introduction = () => {
           <span className="underline decoration-acc">Getting</span> Started
         </div>
         <div>
-          To begin using Datareum's services, explore the sections above to
-          access the information you need. Whether you're a newcomer or an
+          To begin using Datareum&apos;s services, explore the sections above to
+          access the information you need. Whether you&apos;re a newcomer or an
           experienced user, this documentation will help you navigate our
           platform seamlessly.
         </div>
@@ -173,7 +173,7 @@ const Introduction = () => {
                   Started
                 </div> */}
         <div>
-          Now, let's delve into the specifics of utilizing the Datareum
+          Now, let&apos;s delve into the specifics of utilizing the Datareum
           platform, starting with our API documentation and database schema.
         </div>
       </div>
@@ -304,7 +304,7 @@ axios
         <div className="flex flex-col space-y-2">
           <div className="flex flex-col space-y-2">
             <div>
-              <span className="font-bold">Sign Up:</span> If you haven't
+              <span className="font-bold">Sign Up:</span> If you haven&apos;t
               already, sign up for a Datareum account.
             </div>
             <div>
@@ -329,8 +329,9 @@ axios
         </div>
         <div className="flex w-full flex-col space-y-2">
           <div>
-            Certainly, here's an example of a curl command to make a GET request
-            to retrieve patient data from the Datareum API using an API token:
+            Certainly, here&apos;s an example of a curl command to make a GET
+            request to retrieve patient data from the Datareum API using an API
+            token:
           </div>
           <CodeHighlighter
             language="curl"
@@ -341,16 +342,16 @@ axios
             Datareum.
           </div>
           <div>
-            Here's an example of an Axios code snippet in TypeScript to make a
-            GET request to retrieve patient data from the Datareum API using an
-            API token:
+            Here&apos;s an example of an Axios code snippet in TypeScript to
+            make a GET request to retrieve patient data from the Datareum API
+            using an API token:
           </div>
           <CodeHighlighter language="typescript" code={ts} />
           <div>
-            Make sure to replace 'YOUR_API_TOKEN' with the actual API token
-            provided by Datareum. This code sets up an Axios request to make a
-            GET request to the /patients endpoint with the API token included in
-            the headers.
+            Make sure to replace &apos;YOUR_API_TOKEN&apos; with the actual API
+            token provided by Datareum. This code sets up an Axios request to
+            make a GET request to the /patients endpoint with the API token
+            included in the headers.
           </div>
         </div>
       </div>
