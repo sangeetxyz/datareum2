@@ -17,7 +17,8 @@ import {
 } from "react-icons/bs";
 import { toast } from "react-toastify";
 
-export const ApiSection: React.FC<APIProps> = ({ userData }) => {
+export const ApiSection: React.FC<APIProps> = ({ userData, refresher }) => {
+  console.log(userData.token)
   const router = useRouter();
   const [isNew, setIsNew] = useState(false);
   const [reveal, setReveal] = useState(true);
@@ -38,7 +39,7 @@ export const ApiSection: React.FC<APIProps> = ({ userData }) => {
   return (
     <div>
       <div className="my-4 text-xl uppercase">api token</div>
-      <div className="relative rounded-xl bg-stone-800 text-stone-100 bg-opacity-30 outline outline-2 outline-stone-700 backdrop-blur-sm">
+      <div className="relative rounded-xl bg-stone-800 bg-opacity-30 text-stone-100 outline outline-2 outline-stone-700 backdrop-blur-sm">
         <div className="flex flex-col items-center justify-between space-y-4 px-6 py-6 md:flex-row md:space-y-0">
           <div className="text-center text-xl font-bold">
             Generate your secret API token now!
@@ -66,7 +67,8 @@ export const ApiSection: React.FC<APIProps> = ({ userData }) => {
                 console.log("you already have your token");
               } else {
                 if (userData.canDownload) {
-                  await tokenGenerator(userData);
+                  await tokenGenerator(userData, refresher);
+                  setToken(userData.token!);
                 } else {
                   toast.error("You don't have API access!", {
                     position: "top-right",
@@ -83,7 +85,7 @@ export const ApiSection: React.FC<APIProps> = ({ userData }) => {
                 }
               }
             }}
-            className="cursor-pointer rounded-lg bg-acc font-bold text-stone-950 px-4 py-2 text-sm uppercase"
+            className="cursor-pointer rounded-lg bg-acc px-4 py-2 text-sm font-bold uppercase text-stone-950"
           >
             generate
           </motion.div>

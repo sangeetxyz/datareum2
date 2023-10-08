@@ -399,7 +399,10 @@ export const handleProceedClickedForSignin = (OTP: string) => {
   }
 };
 
-export const handleGetVerifiedClicked = async (userData: userData) => {
+export const handleGetVerifiedClicked = async (
+  userData: userData,
+  refresher: () => {},
+) => {
   if (
     userData.canDownload === false ||
     userData.isEmailVerified === false ||
@@ -429,7 +432,7 @@ export const handleGetVerifiedClicked = async (userData: userData) => {
         },
       })
       .then(() => {
-        window.location.reload();
+        refresher();
         toast.success("God Mode activated!", {
           position: "top-right",
           autoClose: 5000,

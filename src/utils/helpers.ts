@@ -125,7 +125,10 @@ export const randomStringGenerator = (length: number): string => {
   return result;
 };
 
-export const tokenGenerator = async (userData: userData) => {
+export const tokenGenerator = async (
+  userData: userData,
+  refresher: () => {},
+) => {
   const newToken: string = randomStringGenerator(50);
   const newUserData: userData = {
     name: userData.name,
@@ -142,15 +145,16 @@ export const tokenGenerator = async (userData: userData) => {
     fireUid: userData.fireUid,
     isTac: userData.isTac,
   };
-  await axios
-    .put(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`, newUserData, {
+  await axios.put(
+    `${process.env.NEXT_PUBLIC_WEB_URL}api/dev/users`,
+    newUserData,
+    {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
       },
-    })
-    .then(() => {
-      window.location.reload();
-    });
+    },
+  );
+  refresher();
 };
 
 export const getAllUsersData = async () => {

@@ -26,6 +26,7 @@ export interface objectType {
 
 export interface APIProps {
   userData: userData;
+  refresher: () => {};
 }
 
 export type Payment = {
@@ -69,7 +70,6 @@ export type PatientBC = {
   identifier: string;
   secretKey: string;
 };
-
 
 export interface MousePosition {
   x: number | null;

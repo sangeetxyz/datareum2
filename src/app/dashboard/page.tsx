@@ -29,6 +29,7 @@ const Dashboard = () => {
   const setUserDataHelper = async () => {
     const data = await getDashUserData(user!);
     setUserData(data);
+    console.log(data)
   };
 
   useEffect(() => {
@@ -54,7 +55,7 @@ const Dashboard = () => {
   ) : (
     // <CatLoader/>
     <Container>
-      <div className="relative min-h-screen bg-stone-950 via-stone-900 from-stone-950 to-stone-950">
+      <div className="relative min-h-screen bg-stone-950 from-stone-950 via-stone-900 to-stone-950">
         {/* <div className="absolute left-0 top-0 -z-10 h-full w-full bg-black">
           <img
             src={waves.src}
@@ -67,8 +68,8 @@ const Dashboard = () => {
         <div className="bg-pink-95 flex min-h-screen w-full flex-col items-center pt-20">
           <div className="h-full w-full max-w-6xl p-4">
             <ProfileSection userData={userData} refresher={setUserDataHelper} />
-            <God userData={userData} />
-            <ApiSection userData={userData} />
+            <God userData={userData} refresher={setUserDataHelper} />
+            <ApiSection userData={userData} refresher={setUserDataHelper} />
             <ContributionSection userData={userData} />
           </div>
         </div>

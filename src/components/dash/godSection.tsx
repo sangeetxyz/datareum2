@@ -6,7 +6,7 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { TiTick } from "react-icons/ti";
 import { handleGetVerifiedClicked } from "@/utils/handlers";
 import ThemeButton from "../custom/themeButton";
-const God = (props: { userData: userData }) => {
+const God = (props: { userData: userData; refresher: () => {} }) => {
   const router = useRouter();
   return (
     <div>
@@ -69,10 +69,10 @@ const God = (props: { userData: userData }) => {
                   }}
                   className="mt-4 flex cursor-pointer items-center space-x-2 rounded-lg bg-acc px-3 py-2 text-center text-sm font-bold uppercase text-stone-950 xl:mt-0"
                   onClick={() => {
-                    router.push("/dashboard/admin");
+                    handleGetVerifiedClicked(props.userData, props.refresher);
                   }}
                 >
-                  <div>get access</div>
+                  <div>get verified</div>
                 </motion.div>
               </div>
               <div className="mt-4 flex justify-center">
