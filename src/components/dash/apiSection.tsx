@@ -18,7 +18,6 @@ import {
 import { toast } from "react-toastify";
 
 export const ApiSection: React.FC<APIProps> = ({ userData, refresher }) => {
-  console.log(userData.token)
   const router = useRouter();
   const [isNew, setIsNew] = useState(false);
   const [reveal, setReveal] = useState(true);
@@ -31,11 +30,12 @@ export const ApiSection: React.FC<APIProps> = ({ userData, refresher }) => {
   useEffect(() => {
     if (userData.token === "initial") {
       setIsNew(true);
-    } else {
-      setToken(userData.token!);
+    } else if (userData.token) {
+      setToken(userData.token);
       setIsNew(false);
     }
   }, [userData]);
+
   return (
     <div>
       <div className="my-4 text-xl uppercase">api token</div>
@@ -68,7 +68,6 @@ export const ApiSection: React.FC<APIProps> = ({ userData, refresher }) => {
               } else {
                 if (userData.canDownload) {
                   await tokenGenerator(userData, refresher);
-                  setToken(userData.token!);
                 } else {
                   toast.error("You don't have API access!", {
                     position: "top-right",
@@ -92,7 +91,8 @@ export const ApiSection: React.FC<APIProps> = ({ userData, refresher }) => {
         </div>
         <div className="bg-yellow-80 flex items-center justify-center px-4">
           <input
-            defaultValue={token}
+            value={token}
+            onChange={() => {}}
             type={inputState}
             className="h-8 w-[600px] rounded-l-lg bg-gray-300 px-3 text-center font-mono font-bold text-gray-800  focus:outline-none lg:w-[700px] xl:w-[800px]"
           />

@@ -29,7 +29,6 @@ const Dashboard = () => {
   const setUserDataHelper = async () => {
     const data = await getDashUserData(user!);
     setUserData(data);
-    console.log(data)
   };
 
   useEffect(() => {
