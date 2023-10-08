@@ -20,24 +20,24 @@ const Home = () => {
   useEffect(() => {
     const scroller = async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll();
+      // const locomotiveScroll = new LocomotiveScroll();
     };
     scroller();
   }, []);
 
   return (
-    <div className="md:cursor-non">
-      <Container>
-        <HomeHeader setVariant={variantCB} />
-        {/* <Cursor variant={variant} /> */}
-        <HeroSection setVariant={variantCB} />
-        <ReverseSection />
-        <BrandSection />
-        <FeatureSection />
-        <Three />
-        <Footer />
-      </Container>
-    </div>
+    // <div className="md:cursor-non">
+    <Container>
+      <HomeHeader setVariant={variantCB} />
+      {/* <Cursor variant={variant} /> */}
+      <HeroSection setVariant={variantCB} />
+      <ReverseSection />
+      <BrandSection />
+      <FeatureSection />
+      <Three />
+      <Footer />
+    </Container>
+    // </div>
   );
 };
 

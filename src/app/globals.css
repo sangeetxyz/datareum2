@@ -4,13 +4,26 @@
 
 
 @layer base {
-    input[type='number']::-webkit-outer-spin-button,
-      input[type='number']::-webkit-inner-spin-button,
-      input[type='number'] {
-        -webkit-appearance: none;
-        margin: 0;
-        -moz-appearance: textfield !important;
-      }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number'] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
   :root {
 
     --background: 0 0% 100%;
