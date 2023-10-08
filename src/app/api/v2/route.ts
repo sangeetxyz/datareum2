@@ -1,4 +1,8 @@
-import { combineDataAndSecretKeys, getAllUsersData, verifyToken } from "@/utils/helpers";
+import {
+  combineDataAndSecretKeys,
+  getAllUsersData,
+  verifyToken,
+} from "@/utils/helpers";
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
@@ -31,4 +35,3 @@ export async function GET(request: NextRequest, response: NextResponse) {
     return NextResponse.json({ error: "Internal Server Error" });
   }
 }
-

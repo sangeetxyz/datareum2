@@ -7,6 +7,13 @@ import { BsMouse } from "react-icons/bs";
 import { useAuth } from "@/context/context";
 import { useRouter } from "next/navigation";
 import { AiOutlineDown } from "react-icons/ai";
+import {
+  TbBrandFirebase,
+  TbBrandNextjs,
+  TbBrandPrisma,
+  TbBrandSupabase,
+  TbBrandTailwind,
+} from "react-icons/tb";
 const Inknut = Inknut_Antiqua({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
