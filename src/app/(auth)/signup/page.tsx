@@ -82,8 +82,7 @@ const Signup = () => {
                   <div
                     className="w-72 cursor-pointer text-3xl font-bold text-stone-200 md:w-80"
                     onClick={() => {
-                      window.location.reload();
-                      router.refresh();
+                      setIsOtpClicked(false);
                     }}
                   >
                     Back
@@ -165,6 +164,7 @@ const Signup = () => {
                   }}
                   transition={{
                     duration: 1,
+                    delay: 0.5,
                   }}
                   className="flex flex-col rounded-xl border-2 border-stone-700 bg-stone-800 bg-opacity-50 p-6 backdrop-blur-sm"
                 >
