@@ -365,18 +365,20 @@ axios
           </div>
           <div className="flex flex-col">
             <div>
-              <span className="font-bold">400</span> Bad Request: Invalid request format or
-              parameters.
+              <span className="font-bold">400 Bad Request:</span> Invalid
+              request format or parameters.
             </div>
             <div>
-              <span className="font-bold">401</span> Unauthorized: Missing or invalid API token.
+              <span className="font-bold">401 Unauthorized:</span> Missing or
+              invalid API token.
             </div>
             <div>
-              <span className="font-bold">404</span> Not Found: Resource not found.
+              <span className="font-bold">404 Not Found:</span> Resource not
+              found.
             </div>
             <div>
-              <span className="font-bold">500</span> Internal Server Error: Unexpected server
-              error.
+              <span className="font-bold">500 Internal Server Error:</span>{" "}
+              Unexpected server error.
             </div>
           </div>
         </div>
