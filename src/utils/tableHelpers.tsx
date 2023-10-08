@@ -21,6 +21,8 @@ import { Switch } from "@/components/ui/switch";
 import { handleUserUpdateOnAdmin } from "./handlers";
 import { getAllUsersData } from "./helpers";
 import { useRouter } from "next/navigation";
+import { useAtom } from "jotai";
+import { allUserData } from "@/jotai/atom";
 
 {
   /* TODO: delete token if download revoked */
@@ -210,7 +212,8 @@ export const columns: ColumnDef<userData>[] = [
       const [isPhoneVerified, setIsPhoneVerified] = useState<boolean>(
         userData.isPhoneVerified,
       );
-      const router = useRouter();
+      const [allUsersData, setAllUsersData] = useAtom(allUserData);
+
       return (
         <div className="flex justify-end">
           {/* <Dialog open={isDialogOpened}>
@@ -329,7 +332,7 @@ export const columns: ColumnDef<userData>[] = [
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel
-                className="bg-stone-900"
+                  className="bg-stone-900"
                   onClick={() => {
                     setIsGod(userData.isGod);
                     setCanContribute(userData.canContribute);
@@ -342,8 +345,8 @@ export const columns: ColumnDef<userData>[] = [
                   CANCEL
                 </AlertDialogCancel>
                 <AlertDialogAction
-                  onClick={() => {
-                    handleUserUpdateOnAdmin(
+                  onClick={async () => {
+                    await handleUserUpdateOnAdmin(
                       isGod,
                       canContribute,
                       canDownload,
@@ -352,9 +355,11 @@ export const columns: ColumnDef<userData>[] = [
                       isPhoneVerified,
                       userData,
                     );
-                    window.location.reload();
+                    // window.location.reload();
+                    const data = await getAllUsersData();
+                    setAllUsersData(data);
                   }}
-                  className="cursor-pointer rounded-lg bg-acc px-3 py-2 text-center text-sm uppercase font-bold text-stone-950 hover:opacity-90 xl:mt-0"
+                  className="cursor-pointer rounded-lg bg-acc px-3 py-2 text-center text-sm font-bold uppercase text-stone-950 hover:opacity-90 xl:mt-0"
                 >
                   update
                 </AlertDialogAction>

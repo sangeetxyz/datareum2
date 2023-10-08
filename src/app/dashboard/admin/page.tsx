@@ -13,13 +13,15 @@ import TableSection from "@/components/admin/tableSection";
 import { columns, allUsersData } from "@/utils/tableHelpers";
 import AdminHeader from "@/components/headers/adminHeader";
 import Spinner from "@/components/loaders/spinner";
+import { useAtom } from "jotai";
+import { allUserData } from "@/jotai/atom";
 
 const AdminPanel = () => {
   const { user } = useAuth();
   const router = useRouter();
   const [userData, setUserData] = useState<userData | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [allUsersData, setAllUsersData] = useState<userData[]>([]);
+  const [allUsersData, setAllUsersData] = useAtom(allUserData);
   const waiter = async () => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
@@ -78,7 +80,7 @@ const AdminPanel = () => {
     </div>
   ) : (
     <Container>
-      <div className="relative min-h-screen bg-stone-950 w-full">
+      <div className="relative min-h-screen w-full bg-stone-950">
         <AdminHeader />
         <div className="bg-pink-95 flex min-h-screen w-full flex-col items-center pt-20">
           <div className="h-full w-full max-w-6xl px-4">

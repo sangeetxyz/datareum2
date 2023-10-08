@@ -494,7 +494,6 @@ export const handleUserUpdateOnAdmin = async (
       },
     })
     .then(() => {
-      console.log(res);
       toast.success("Information updated!", {
         position: "top-right",
         autoClose: 5000,
