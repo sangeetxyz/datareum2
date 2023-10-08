@@ -182,7 +182,7 @@ const Introduction = () => {
 };
 
 const ApiRefs = () => {
-  const code = `[
+  const responseExample = `[
     {
       PreviousDiseases: "Diabetes",
       BloodPressure: "Migraine",
@@ -215,6 +215,31 @@ const ApiRefs = () => {
     },
     // ... more patient records
   ]`;
+  const ts = `
+import axios, { AxiosResponse } from 'axios';
+
+// Replace 'YOUR_API_TOKEN' with the actual API token provided by Datareum
+const API_TOKEN = 'YOUR_API_TOKEN';
+
+const apiUrl = '${process.env.NEXT_PUBLIC_WEB_URL}/api/v2/patients';
+
+const config = {
+  headers: {
+    Authorization: \`Bearer \${API_TOKEN}\`,
+  },
+};
+
+axios
+  .get(apiUrl, config)
+  .then((response: AxiosResponse) => {
+    // Handle successful response here
+    console.log('Patient data:', response.data);
+  })
+  .catch((error) => {
+    // Handle error here
+    console.error('Error:', error);
+  });
+`;
   return (
     <div className="flex flex-col space-y-16 rounded-xl border-y border-r border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-stone-200">
       <div>
@@ -268,7 +293,7 @@ const ApiRefs = () => {
         </div>
         <div className="flex flex-col space-y-2">
           <div className="font-bold">Response Example: </div>
-          <CodeHighlighter language="json" code={code} />
+          <CodeHighlighter language="json" code={responseExample} />
         </div>
       </div>
       <div className="flex flex-col space-y-4">
@@ -314,6 +339,45 @@ const ApiRefs = () => {
           <div>
             Replace YOUR_API_TOKEN with the actual API token provided by
             Datareum.
+          </div>
+          <div>
+            Here's an example of an Axios code snippet in TypeScript to make a
+            GET request to retrieve patient data from the Datareum API using an
+            API token:
+          </div>
+          <CodeHighlighter language="typescript" code={ts} />
+          <div>
+            Make sure to replace 'YOUR_API_TOKEN' with the actual API token
+            provided by Datareum. This code sets up an Axios request to make a
+            GET request to the /patients endpoint with the API token included in
+            the headers.
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col space-y-4">
+        <div className="text-3xl capitalize">
+          <span className="underline decoration-acc">Error</span> Handling
+        </div>
+        <div className="flex w-full flex-col space-y-2">
+          <div>
+            In case of errors, the Datareum API will return appropriate HTTP
+            status codes and error messages. Common status codes include:
+          </div>
+          <div className="flex flex-col">
+            <div>
+              <span className="font-bold">400</span> Bad Request: Invalid request format or
+              parameters.
+            </div>
+            <div>
+              <span className="font-bold">401</span> Unauthorized: Missing or invalid API token.
+            </div>
+            <div>
+              <span className="font-bold">404</span> Not Found: Resource not found.
+            </div>
+            <div>
+              <span className="font-bold">500</span> Internal Server Error: Unexpected server
+              error.
+            </div>
           </div>
         </div>
       </div>
