@@ -98,9 +98,10 @@ const Docs = () => {
         </div>
         <div className="border-stone-70 fixed top-20 flex h-10 w-full justify-center px-4 pt-4 xl:hidden">
           <div className="flex h-10 w-full max-w-6xl items-center justify-around space-x-2 rounded-xl bg-stone-900 px-4 outline outline-1 outline-stone-700">
-            {tabList.map((tab) => {
+            {tabList.map((tab, index) => {
               return (
                 <div
+                  key={index}
                   onClick={() => {
                     setCurrentTab(tab.id);
                   }}
