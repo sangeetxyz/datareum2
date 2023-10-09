@@ -1,5 +1,5 @@
-const { createObjectCsvWriter } = require("csv-writer");
-const faker = require("faker");
+import { createObjectCsvWriter } from "csv-writer";
+import faker from "faker";
 
 const medicalDataFieldsPrivate = [
   {
@@ -391,56 +391,31 @@ const medicalDataFieldsPrivate = [
     minValue: 0, // Minimum QRS duration value
     maxValue: 200, // Maximum QRS duration value
   },
-];
-function getRandomNumberOrEmptyString() {
-  const randomNumber = Math.random();
-  if (randomNumber < 0.5) {
-    return faker.random.number();
-  } else {
-    return "";
-  }
-}
-const generateRandomData = (errorPercentage) => {
+]
+const generatePerfectData = () => {
   const rowData = {};
   medicalDataFieldsPrivate.forEach((field) => {
     const { name, dataType, minValue, maxValue, customFunction } = field;
 
-    // Determine if there should be an error in this field
-    const hasError = Math.random() * 100 < errorPercentage;
-
-    if (hasError || errorPercentage === 100) {
-      // Generate an error by choosing random data type and always incorrect value
+    // Generate correct data using custom function if available
+    if (customFunction) {
+      rowData[name] = customFunction();
+    } else {
+      // Generate correct data based on data type
       switch (dataType) {
         case "string":
-          rowData[name] = getRandomNumberOrEmptyString(); // Empty string as an incorrect value
+          rowData[name] = faker.lorem.word();
           break;
         case "number":
-          rowData[name] = faker.random.word(); // Always generate incorrect data type
+          if (minValue !== undefined && maxValue !== undefined) {
+            rowData[name] = faker.random.number({
+              min: minValue,
+              max: maxValue,
+            });
+          }
           break;
         default:
-          rowData[name] = null; // Incorrect column name
-      }
-    } else {
-      // Generate correct data using custom function if available
-      if (customFunction) {
-        rowData[name] = customFunction();
-      } else {
-        // Generate correct data based on data type
-        switch (dataType) {
-          case "string":
-            rowData[name] = faker.lorem.word();
-            break;
-          case "number":
-            if (minValue !== undefined && maxValue !== undefined) {
-              rowData[name] = faker.random.number({
-                min: minValue,
-                max: maxValue,
-              });
-            }
-            break;
-          default:
-            rowData[name] = null;
-        }
+          rowData[name] = null;
       }
     }
   });
@@ -448,15 +423,15 @@ const generateRandomData = (errorPercentage) => {
 };
 
 // Set the error percentage (e.g., 100%)
-const errorPercentage = 1;
+const errorPercentage = 10;
 
 // Generate rows with error percentage
 const rows = Array.from({ length: 200 }, () =>
-  generateRandomData(errorPercentage),
+  generatePerfectData(errorPercentage),
 );
 
 const csvWriter = createObjectCsvWriter({
-  path: "error_data.csv",
+  path: "wrong_names_data.csv",
   header: medicalDataFieldsPrivate.map((field) => ({
     id: field.name,
     title: field.name,

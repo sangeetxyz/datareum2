@@ -1,7 +1,12 @@
-const { createObjectCsvWriter } = require("csv-writer");
-const faker = require("faker");
-
-const medicalDataFieldsPrivate = [
+const medicalDataFields: {
+  name: string;
+  dataType: string;
+  allowedValues?: (value: string) => boolean;
+  minValue?: number;
+  maxValue?: number;
+  description?: string;
+  constraints?: string;
+}[] = [
   {
     name: "dateOfBirth",
     dataType: "string",
@@ -25,7 +30,7 @@ const medicalDataFieldsPrivate = [
     dataType: "string",
     description: "Blood group of the patient.",
     constraints: "Must be one of: 'A,' 'B,' 'AB,' 'O'",
-    allowedValues: (value) =>
+    allowedValues: (value: string) =>
       ["A", "B", "AB", "O"].includes(value.toUpperCase()),
   },
   {
@@ -33,7 +38,7 @@ const medicalDataFieldsPrivate = [
     dataType: "string",
     description: "Rh factor of the blood.",
     constraints: "Must be 'Positive' or 'Negative'",
-    allowedValues: (value) =>
+    allowedValues: (value: string) =>
       ["Positive", "Negative"].includes(
         value.charAt(0).toUpperCase() + value.slice(1).toLowerCase(),
       ),
@@ -79,7 +84,7 @@ const medicalDataFieldsPrivate = [
     dataType: "string",
     description: "Gender of the patient.",
     constraints: "Must be 'Male,' 'Female,' or 'Other'",
-    allowedValues: (value) =>
+    allowedValues: (value: string) =>
       ["Male", "Female", "Other"].includes(
         value.charAt(0).toUpperCase() + value.slice(1).toLowerCase(),
       ),
@@ -392,77 +397,5 @@ const medicalDataFieldsPrivate = [
     maxValue: 200, // Maximum QRS duration value
   },
 ];
-function getRandomNumberOrEmptyString() {
-  const randomNumber = Math.random();
-  if (randomNumber < 0.5) {
-    return faker.random.number();
-  } else {
-    return "";
-  }
-}
-const generateRandomData = (errorPercentage) => {
-  const rowData = {};
-  medicalDataFieldsPrivate.forEach((field) => {
-    const { name, dataType, minValue, maxValue, customFunction } = field;
 
-    // Determine if there should be an error in this field
-    const hasError = Math.random() * 100 < errorPercentage;
-
-    if (hasError || errorPercentage === 100) {
-      // Generate an error by choosing random data type and always incorrect value
-      switch (dataType) {
-        case "string":
-          rowData[name] = getRandomNumberOrEmptyString(); // Empty string as an incorrect value
-          break;
-        case "number":
-          rowData[name] = faker.random.word(); // Always generate incorrect data type
-          break;
-        default:
-          rowData[name] = null; // Incorrect column name
-      }
-    } else {
-      // Generate correct data using custom function if available
-      if (customFunction) {
-        rowData[name] = customFunction();
-      } else {
-        // Generate correct data based on data type
-        switch (dataType) {
-          case "string":
-            rowData[name] = faker.lorem.word();
-            break;
-          case "number":
-            if (minValue !== undefined && maxValue !== undefined) {
-              rowData[name] = faker.random.number({
-                min: minValue,
-                max: maxValue,
-              });
-            }
-            break;
-          default:
-            rowData[name] = null;
-        }
-      }
-    }
-  });
-  return rowData;
-};
-
-// Set the error percentage (e.g., 100%)
-const errorPercentage = 1;
-
-// Generate rows with error percentage
-const rows = Array.from({ length: 200 }, () =>
-  generateRandomData(errorPercentage),
-);
-
-const csvWriter = createObjectCsvWriter({
-  path: "error_data.csv",
-  header: medicalDataFieldsPrivate.map((field) => ({
-    id: field.name,
-    title: field.name,
-  })),
-});
-csvWriter
-  .writeRecords(rows)
-  .then(() => console.log("CSV file has been written successfully"))
-  .catch((error) => console.error("Error writing CSV file:", error));
+export default medicalDataFields;

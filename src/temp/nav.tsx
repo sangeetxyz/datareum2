@@ -1,4 +1,4 @@
-export const medicalDataFields: {
+const medicalDataFields: {
   name: string;
   dataType: string;
   allowedValues?: (value: string) => boolean;

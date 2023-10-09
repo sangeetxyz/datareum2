@@ -18,7 +18,7 @@ import { SiFastapi } from "react-icons/si";
 import { PiCopy } from "react-icons/pi";
 import { toast } from "react-toastify";
 import Container from "@/components/containers/container";
-import { medicalDataFields } from "@/temp/nav";
+import medicalDataFields from "@/utils/helper/dataSets";
 
 const Docs = () => {
   const [currentTab, setCurrentTab] = useState(2);
@@ -105,7 +105,7 @@ const Docs = () => {
                   onClick={() => {
                     setCurrentTab(tab.id);
                   }}
-                  className="flex h-full items-center space-x-1 border-stone-700"
+                  className="flex h-full cursor-pointer items-center space-x-1 border-stone-700"
                 >
                   <tab.icon />
                   <div className="capitalize">{tab.title}</div>
@@ -438,7 +438,9 @@ const Database = () => {
             <TableHeader>
               <TableRow>
                 <TableHead>Attribute Name</TableHead>
-                <TableHead className="whitespace-nowrap w-">Data Type</TableHead>
+                <TableHead className="w- whitespace-nowrap">
+                  Data Type
+                </TableHead>
                 <TableHead>Description</TableHead>
                 <TableHead className="text-right">Constraints</TableHead>
               </TableRow>
