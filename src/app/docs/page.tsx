@@ -4,22 +4,22 @@ import React, { useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { a11yDark, docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command";
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { FaEthereum } from "react-icons/fa";
 import { BsDatabaseFill, BsStars } from "react-icons/bs";
 import { SiFastapi } from "react-icons/si";
 import { PiCopy } from "react-icons/pi";
 import { toast } from "react-toastify";
 import Container from "@/components/containers/container";
+import { medicalDataFields } from "@/temp/nav";
+
 const Docs = () => {
   const [currentTab, setCurrentTab] = useState(2);
   const tabList = [
@@ -407,6 +407,7 @@ axios
 };
 
 const Database = () => {
+  const invoices = medicalDataFields;
   return (
     <div className="flex flex-col space-y-16 rounded-xl border-x border-y border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-center text-stone-200 xl:text-left">
       <div className="flex w-full justify-center xl:justify-start">
@@ -432,7 +433,30 @@ const Database = () => {
           The following table lists the attributes used in the Datareum database
           schema, along with their data types and any additional constraints:
         </div>
-        <div></div>
+        <div className="text-start">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Attribute Name</TableHead>
+                <TableHead className="whitespace-nowrap w-">Data Type</TableHead>
+                <TableHead>Description</TableHead>
+                <TableHead className="text-right">Constraints</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {invoices.map((invoice) => (
+                <TableRow key={invoice.name}>
+                  <TableCell className="font-medium">{invoice.name}</TableCell>
+                  <TableCell>{invoice.dataType}</TableCell>
+                  <TableCell>{invoice.description}</TableCell>
+                  <TableCell className="text-right">
+                    {invoice.constraints}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
       <div className="flex flex-col space-y-4">
         <div className="text-3xl capitalize">
@@ -494,7 +518,7 @@ const CodeHighlighter = ({
   code: string;
 }) => {
   return (
-    <div className="outline outline-1 text-start outline-stone-700">
+    <div className="text-start outline outline-1 outline-stone-700">
       <div className="flex">
         <div className="w-full bg-stone-800 p-2 text-sm capitalize">
           {language}
