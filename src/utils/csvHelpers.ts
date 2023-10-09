@@ -260,9 +260,9 @@ export const calculateColumnCounts = (
   return result;
 };
 
-export function countAttributes(
+export const countAttributes = (
   obj: object[],
-): { name: string; attributeCount: number }[] {
+): { name: string; attributeCount: number }[] => {
   const result: { name: string; attributeCount: number }[] = [];
 
   for (const key in obj) {
@@ -274,4 +274,4 @@ export function countAttributes(
   }
 
   return result;
-}
+};
