@@ -494,7 +494,7 @@ const CodeHighlighter = ({
   code: string;
 }) => {
   return (
-    <div className="outline outline-1 outline-stone-700">
+    <div className="outline outline-1 text-start outline-stone-700">
       <div className="flex">
         <div className="w-full bg-stone-800 p-2 text-sm capitalize">
           {language}
