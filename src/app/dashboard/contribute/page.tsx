@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/context/context";
-import { getDashUserData } from "@/utils/helpers";
+import { getDashUserData } from "@/utils/helper/helpers";
 import { userData } from "@/types/types";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
@@ -14,7 +14,7 @@ import {
   analyzeObjectList,
   calculateColumnCounts,
   processCsvData,
-} from "@/utils/csvHelpers";
+} from "@/components/contribute/csvHelpers/csvHelpers";
 import { QuickStatsSection } from "@/components/contribute/quickStatsSection";
 import { AnalyticsSection } from "@/components/contribute/analyticsSection";
 import { RetentionSection } from "@/components/contribute/retentionSection";

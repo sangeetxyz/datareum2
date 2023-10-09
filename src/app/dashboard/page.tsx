@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/context/context";
-import { getDashUserData } from "@/utils/helpers";
+import { getDashUserData } from "@/utils/helper/helpers";
 import { userData } from "@/types/types";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";

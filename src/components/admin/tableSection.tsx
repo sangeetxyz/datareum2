@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../ui/button";
 import {
   flexRender,
   SortingState,
@@ -8,7 +7,6 @@ import {
   useReactTable,
   getSortedRowModel,
 } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import {
   Table,
   TableBody,

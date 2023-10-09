@@ -1,5 +1,5 @@
 "use client";
-import { tokenGenerator } from "@/utils/helpers";
+import { tokenGenerator } from "@/utils/helper/helpers";
 import { APIProps } from "@/types/types";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";

@@ -8,7 +8,7 @@ import {
   Legend,
 } from "recharts";
 import React, { useEffect, useState } from "react";
-import { calculateColumnCounts } from "@/utils/csvHelpers";
+import { calculateColumnCounts } from "@/components/contribute/csvHelpers/csvHelpers";
 import SmallSpinner from "../loaders/smallSpinner";
 import { set } from "zod";
 import LoadingText from "../loaders/loadingText";

@@ -1,16 +1,14 @@
 "use client";
 
-import CatLoader from "@/components/loaders/catLoader";
 import Container from "@/components/containers/container";
 import { useAuth } from "@/context/context";
 import { unSigner } from "@/firebase/firebase";
 import { userData } from "@/types/types";
-import { getAllUsersData, getDashUserData } from "@/utils/helpers";
+import { getAllUsersData, getDashUserData } from "@/utils/helper/helpers";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import waves from "../../../../public/waves.png";
 import TableSection from "@/components/admin/tableSection";
-import { columns, allUsersData } from "@/utils/tableHelpers";
+import { columns } from "@/components/admin/tableHelpers/tableHelpers";
 import AdminHeader from "@/components/headers/adminHeader";
 import Spinner from "@/components/loaders/spinner";
 import { useAtom } from "jotai";

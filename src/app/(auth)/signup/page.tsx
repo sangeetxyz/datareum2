@@ -17,13 +17,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/context";
 import { userData } from "@/types/types";
-import { getAllUsersData, switchSizeReturner } from "@/utils/helpers";
+import { getAllUsersData, switchSizeReturner } from "@/utils/helper/helpers";
 import { MdEmail } from "react-icons/md";
 import abstract from "../../../../public/auth/abstract.png";
 import {
   handleGetOtpClickedForSignup,
   handleProceedClickedForSignup,
-} from "@/utils/handlers";
+} from "@/utils/helper/handlers";
 import { Switch } from "@/components/ui/switch";
 
 import Container from "@/components/containers/container";

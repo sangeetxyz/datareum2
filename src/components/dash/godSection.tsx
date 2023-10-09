@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { BsArrowUpRight } from "react-icons/bs";
 import { TiTick } from "react-icons/ti";
-import { handleGetVerifiedClicked } from "@/utils/handlers";
+import { handleGetVerifiedClicked } from "@/utils/helper/handlers";
 import ThemeButton from "../custom/themeButton";
 const God = (props: { userData: userData; refresher: () => {} }) => {
   const router = useRouter();

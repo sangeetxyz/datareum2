@@ -1,10 +1,10 @@
-import { convertBigIntsToInts } from "@/utils/helpers";
+import { convertBigIntsToInts } from "@/utils/helper/helpers";
 import { InputObject, PatientBC, PatientDB, userData } from "@/types/types";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
-import { getPatientsDataFromBc } from "@/utils/handlers";
-import { decryptList } from "@/utils/crypt";
+import { getPatientsDataFromBc } from "@/utils/helper/handlers";
+import { decryptList } from "@/utils/cryptography/crypt";
 
 const prisma = new PrismaClient();
 

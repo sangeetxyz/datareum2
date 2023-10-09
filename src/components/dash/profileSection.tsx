@@ -1,7 +1,7 @@
 "use client";
 
 import { unSigner } from "@/firebase/firebase";
-import { getGreeting } from "@/utils/helpers";
+import { getGreeting } from "@/utils/helper/helpers";
 import { userData } from "@/types/types";
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -18,7 +18,7 @@ import DefaultProfilePhoto from "../../../public/defaults/default-profile-photo.
 import {
   handleProfilePhotoUpload,
   handleProfileUpdateOnDash,
-} from "@/utils/handlers";
+} from "@/utils/helper/handlers";
 import { toast } from "react-toastify";
 
 const ProfileSection = (props: { userData: userData; refresher: () => {} }) => {

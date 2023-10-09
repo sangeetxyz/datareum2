@@ -1,4 +1,4 @@
-import { convertBigIntsToInts } from "@/utils/helpers";
+import { convertBigIntsToInts } from "@/utils/helper/helpers";
 import { PatientDB, userData } from "@/types/types";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { NextApiRequest } from "next";

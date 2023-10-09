@@ -2,12 +2,12 @@ import {
   combineDataAndSecretKeys,
   getAllUsersData,
   verifyToken,
-} from "@/utils/helpers";
+} from "@/utils/helper/helpers";
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
-import { getPatientsDataFromBc } from "@/utils/handlers";
-import { decryptList } from "@/utils/crypt";
+import { getPatientsDataFromBc } from "@/utils/helper/handlers";
+import { decryptList } from "@/utils/cryptography/crypt";
 import { ForDbTypes, userData } from "@/types/types";
 
 const prisma = new PrismaClient();

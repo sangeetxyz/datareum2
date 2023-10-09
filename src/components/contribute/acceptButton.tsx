@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/context/context";
-import { getDashUserData } from "@/utils/helpers";
+import { getDashUserData } from "@/utils/helper/helpers";
 import { userData } from "@/types/types";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
@@ -12,7 +12,10 @@ import { unSigner } from "@/firebase/firebase";
 import Container from "@/components/containers/container";
 import AdminHeader from "@/components/headers/adminHeader";
 import { IoCloudUpload } from "react-icons/io5";
-import { analyzeObjectList, processCsvData } from "@/utils/csvHelpers";
+import {
+  analyzeObjectList,
+  processCsvData,
+} from "@/components/contribute/csvHelpers/csvHelpers";
 import { QuickStatsSection } from "@/components/contribute/quickStatsSection";
 import { AnalyticsSection } from "@/components/contribute/analyticsSection";
 import { RetentionSection } from "@/components/contribute/retentionSection";
@@ -36,11 +39,11 @@ import {
   objectIdentificator,
   objectSplitter,
   objectUserDataMixer,
-} from "@/utils/crypt";
+} from "@/utils/cryptography/crypt";
 import {
   handlePatientUploadToBc,
   handlePatientUploadToDb,
-} from "@/utils/handlers";
+} from "@/utils/helper/handlers";
 import { toast } from "react-toastify";
 
 export const AcceptButton = ({

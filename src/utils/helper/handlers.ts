@@ -11,8 +11,8 @@ import {
 } from "./helpers";
 import { toast } from "react-toastify";
 import { ethers } from "ethers";
-import { abi } from "./abi";
-import { contract } from "./contract";
+import { abi } from "../ethereum/abi";
+import { contract } from "../ethereum/contract";
 import { z } from "zod";
 
 export const handleProfilePhotoUpload = async (

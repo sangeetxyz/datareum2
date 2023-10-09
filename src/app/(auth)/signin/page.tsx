@@ -13,11 +13,11 @@ import { useAuth } from "@/context/context";
 import { userData } from "@/types/types";
 import abstract from "../../../../public/auth/abstract.png";
 
-import { getAllUsersData } from "@/utils/helpers";
+import { getAllUsersData } from "@/utils/helper/helpers";
 import {
   handleGetOtpClickedForSignin,
   handleProceedClickedForSignin,
-} from "@/utils/handlers";
+} from "@/utils/helper/handlers";
 import Toaster from "@/components/containers/Toaster";
 import Container from "@/components/containers/container";
 const Signup = () => {
