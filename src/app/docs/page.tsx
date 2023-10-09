@@ -50,8 +50,8 @@ const Docs = () => {
         <DashHeader />
         <div className="bg-stone-95 flex h-full w-full items-center justify-center pt-20">
           <div className="relative flex h-full w-full max-w-6xl bg-red-900 text-stone-100">
-            <div className="fixed top-20 h-full w-64 shrink-0 border border-stone-700 bg-stone-900">
-              <div className="flex w-full flex-col items-center justify-center space-y-8 border-b border-stone-700 bg-gradient-to-t from-stone-950 to-stone-900 py-8">
+            <div className="fixed top-20 my-4 rounded-xl h-full w-64 shrink-0 border border-stone-700 bg-stone-900">
+              <div className="flex w-full rounded-xl flex-col items-center justify-center space-y-8 border-b border-stone-700 bg-gradient-to-t from-stone-950 to-stone-900 py-8">
                 <div>
                   <FaEthereum size={100} color={"#facc15"} />
                 </div>
@@ -105,7 +105,7 @@ export default Docs;
 
 const Introduction = () => {
   return (
-    <div className="flex flex-col space-y-16 rounded-xl border-y border-r border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-stone-200">
+    <div className="flex flex-col space-y-16 rounded-xl border-y border-x border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-stone-200">
       <div>
         <BsStars size={100} color={"#facc15"} />
       </div>
@@ -241,7 +241,7 @@ axios
   });
 `;
   return (
-    <div className="flex flex-col space-y-16 rounded-xl border-y border-r border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-stone-200">
+    <div className="flex flex-col space-y-16 rounded-xl border-y border-x border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-stone-200">
       <div>
         <SiFastapi size={100} color={"#facc15"} />
       </div>
