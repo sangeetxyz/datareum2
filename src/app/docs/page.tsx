@@ -46,12 +46,12 @@ const Docs = () => {
   ];
   return (
     <Container>
-      <div className="min-h-screen bg-stone-950">
+      <div className="relative min-h-screen bg-stone-950">
         <DashHeader />
         <div className="bg-stone-95 flex h-full w-full items-center justify-center pt-20">
-          <div className="relative flex h-full w-full max-w-6xl bg-red-900 text-stone-100">
-            <div className="fixed top-20 my-4 rounded-xl h-full w-64 shrink-0 border border-stone-700 bg-stone-900">
-              <div className="flex w-full rounded-xl flex-col items-center justify-center space-y-8 border-b border-stone-700 bg-gradient-to-t from-stone-950 to-stone-900 py-8">
+          <div className="bg-red-9 relative flex h-full w-full max-w-6xl text-stone-100">
+            <div className="fixed bottom-4 top-24 hidden w-64 rounded-xl border border-stone-700 bg-stone-900 xl:block">
+              <div className="flex w-full flex-col items-center justify-center space-y-8 rounded-xl border-b border-stone-700 bg-gradient-to-t from-stone-950 to-stone-900 py-8">
                 <div>
                   <FaEthereum size={100} color={"#facc15"} />
                 </div>
@@ -63,7 +63,7 @@ const Docs = () => {
                   <div className="text-center text-xl">(v1)</div>
                 </div>
               </div>
-              <div className="flex h-full flex-col">
+              <div className="h-ful borde bordersto absolute bottom-0 top-0 flex w-full flex-col rounded-xl pt-[17.6rem]">
                 {tabList.map((tab, index) => {
                   return (
                     <div
@@ -80,20 +80,37 @@ const Docs = () => {
                     </div>
                   );
                 })}
-                <div className="h-full w-full bg-gradient-to-b from-stone-900 via-stone-950 to-stone-950"></div>
+                <div className="h-full w-full rounded-xl bg-gradient-to-b from-stone-900 via-stone-950 to-stone-950"></div>
               </div>
             </div>
-            <div className="borde w-full bg-stone-950 p-4 pl-[17rem]">
+            <div className="borde mt-14 w-full bg-stone-950 p-4 xl:mt-0 xl:pl-[17rem]">
               {currentTab === 1 ? (
                 <Introduction />
               ) : currentTab === 2 ? (
                 <ApiRefs />
               ) : currentTab === 3 ? (
-                <Introduction />
+                <Database />
               ) : (
                 <></>
               )}
             </div>
+          </div>
+        </div>
+        <div className="border-stone-70 fixed top-20 flex h-10 w-full justify-center px-4 pt-4 xl:hidden">
+          <div className="flex h-10 w-full max-w-6xl items-center justify-around space-x-2 rounded-xl bg-stone-900 px-4 outline outline-1 outline-stone-700">
+            {tabList.map((tab) => {
+              return (
+                <div
+                  onClick={() => {
+                    setCurrentTab(tab.id);
+                  }}
+                  className="flex h-full items-center space-x-1 border-stone-700"
+                >
+                  <tab.icon />
+                  <div className="capitalize">{tab.title}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -105,8 +122,8 @@ export default Docs;
 
 const Introduction = () => {
   return (
-    <div className="flex flex-col space-y-16 rounded-xl border-y border-x border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-stone-200">
-      <div>
+    <div className="flex flex-col space-y-16 rounded-xl border-x border-y border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-center text-stone-200 xl:text-left">
+      <div className="flex w-full justify-center xl:justify-start">
         <BsStars size={100} color={"#facc15"} />
       </div>
       <div className="flex flex-col space-y-4">
@@ -241,8 +258,8 @@ axios
   });
 `;
   return (
-    <div className="flex flex-col space-y-16 rounded-xl border-y border-x border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-stone-200">
-      <div>
+    <div className="flex flex-col space-y-16 rounded-xl border-x border-y border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-center text-stone-200 xl:text-left">
+      <div className="flex w-full justify-center xl:justify-start">
         <SiFastapi size={100} color={"#facc15"} />
       </div>
       <div className="flex flex-col space-y-4">
@@ -382,6 +399,86 @@ axios
               Unexpected server error.
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Database = () => {
+  return (
+    <div className="flex flex-col space-y-16 rounded-xl border-x border-y border-stone-700 bg-gradient-to-r from-stone-950 to-stone-900 px-4 py-8 pt-32 text-center text-stone-200 xl:text-left">
+      <div className="flex w-full justify-center xl:justify-start">
+        <BsDatabaseFill size={100} color={"#facc15"} />
+      </div>
+      <div className="flex flex-col space-y-4">
+        <div className="text-5xl capitalize">
+          <span className="underline decoration-acc">Database</span> Schema
+        </div>
+        <div>
+          The Datareum database stores patient data in a structured format to
+          ensure consistency and accuracy. This section provides an overview of
+          the database schema, including attribute names, data types, and
+          allowed values.
+        </div>
+      </div>
+      <div className="flex flex-col space-y-4">
+        <div className="text-3xl capitalize">
+          <span className="underline decoration-acc">Patient</span> Data
+          Attributes
+        </div>
+        <div>
+          The following table lists the attributes used in the Datareum database
+          schema, along with their data types and any additional constraints:
+        </div>
+        <div></div>
+      </div>
+      <div className="flex flex-col space-y-4">
+        <div className="text-3xl capitalize">
+          <span className="underline decoration-acc">CSV</span> File Submission
+          Guidelines
+        </div>
+        <div>
+          When submitting patient data via CSV files, adhere to the following
+          guidelines:
+        </div>
+        <div className="flex flex-col space-y-2">
+          <div>
+            1. <span className="font-bold">Column Names:</span> Ensure that
+            column names match the attribute names listed in the schema. Our
+            system can detect up to 50% column name errors in CSV files.
+          </div>
+          <div>
+            2. <span className="font-bold">Empty Cells:</span> Do not leave
+            cells empty. All cells should contain data, and any missing data
+            should be appropriately filled.
+          </div>
+          <div>
+            3. <span className="font-bold">Data Types:</span> Make sure that the
+            data in each cell matches the data type specified in the schema
+            (e.g., strings, numbers).
+          </div>
+          <div>
+            4. <span className="font-bold">Units:</span> Do not include units
+            (e.g., "mg/dL," "cm") in the cells. The schema defines specific
+            units for each attribute.
+          </div>
+          <div>
+            5. <span className="font-bold">Value Range:</span> Values should
+            fall within the specified minimum and maximum value ranges for
+            numerical attributes.
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col space-y-4">
+        {/* <div className="text-3xl capitalize">
+          <span className="underline decoration-acc">Database</span> Schema
+        </div> */}
+        <div>
+          This documentation section provides a comprehensive overview of the
+          database schema, attributes, data types, and submission guidelines for
+          CSV files. It ensures that users have a clear understanding of how to
+          format and submit data for research purposes.
         </div>
       </div>
     </div>
