@@ -460,8 +460,8 @@ const Database = () => {
           </div>
           <div>
             4. <span className="font-bold">Units:</span> Do not include units
-            (e.g., "mg/dL," "cm") in the cells. The schema defines specific
-            units for each attribute.
+            (e.g., &quot;mg/dL,&quot; &quot;cm&quot;) in the cells. The schema
+            defines specific units for each attribute.
           </div>
           <div>
             5. <span className="font-bold">Value Range:</span> Values should
