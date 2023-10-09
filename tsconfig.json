@@ -31,6 +31,6 @@
     "tailwind.config.ts",
     "next.config.js",
     "postcss.config.js"
-  ],
+, "src/utils/csvMakerBad.js"  ],
   "exclude": ["node_modules"]
 }

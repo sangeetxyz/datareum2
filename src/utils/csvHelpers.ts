@@ -165,10 +165,6 @@ export const medicalDataFields: {
     dataType: "string",
   },
   {
-    name: "familyMedicalHistory",
-    dataType: "string",
-  },
-  {
     name: "medicines",
     dataType: "string",
   },
@@ -191,13 +187,13 @@ export const medicalDataFields: {
     maxValue: 250, // Maximum heart rate value
   },
   {
-    name: "creatinineLevelMgDl",
+    name: "creatinineLevel",
     dataType: "number",
     minValue: 0, // Minimum creatinine level value
     maxValue: 10, // Maximum creatinine level value
   },
   {
-    name: "colonyCountCfuMl",
+    name: "colonyCount",
     dataType: "number",
     minValue: 0, // Minimum colony count value
     maxValue: 10000, // Maximum colony count value
@@ -233,13 +229,13 @@ export const medicalDataFields: {
     maxValue: 100, // Maximum monocytes count value
   },
   {
-    name: "cReactiveProtineMgDl",
+    name: "cReactiveProtine",
     dataType: "number",
     minValue: 0, // Minimum C-reactive protein value
     maxValue: 10, // Maximum C-reactive protein value
   },
   {
-    name: "epithelialCellsHpf",
+    name: "epithelialCells",
     dataType: "number",
     minValue: 0, // Minimum epithelial cells value
     maxValue: 100, // Maximum epithelial cells value
@@ -251,25 +247,25 @@ export const medicalDataFields: {
     maxValue: 14, // Maximum pH level value
   },
   {
-    name: "bilirubinTotalMgDl",
+    name: "bilirubinTotal",
     dataType: "number",
     minValue: 0, // Minimum total bilirubin value
     maxValue: 10, // Maximum total bilirubin value
   },
   {
-    name: "totalProtineGdl",
+    name: "totalProtine",
     dataType: "number",
     minValue: 0, // Minimum total protein value
     maxValue: 10, // Maximum total protein value
   },
   {
-    name: "albuminGdl",
+    name: "albumin",
     dataType: "number",
     minValue: 0, // Minimum albumin value
     maxValue: 10, // Maximum albumin value
   },
   {
-    name: "globulinGdl",
+    name: "globulin",
     dataType: "number",
     minValue: 0, // Minimum globulin value
     maxValue: 10, // Maximum globulin value
@@ -287,55 +283,55 @@ export const medicalDataFields: {
     maxValue: 10, // Maximum AST/ALT ratio value
   },
   {
-    name: "tshMuL",
+    name: "tsh",
     dataType: "number",
     minValue: 0, // Minimum TSH value
     maxValue: 10, // Maximum TSH value
   },
   {
-    name: "freeT4PmolL",
+    name: "freeT4",
     dataType: "number",
     minValue: 0, // Minimum free T4 value
     maxValue: 10, // Maximum free T4 value
   },
   {
-    name: "freeT3PmolL",
+    name: "freeT3",
     dataType: "number",
     minValue: 0, // Minimum free T3 value
     maxValue: 10, // Maximum free T3 value
   },
   {
-    name: "glucoseFastingMgDl",
+    name: "glucoseFasting",
     dataType: "number",
     minValue: 0, // Minimum fasting glucose value
     maxValue: 300, // Maximum fasting glucose value
   },
   {
-    name: "glucosePpMgDl",
+    name: "glucosePp",
     dataType: "number",
     minValue: 0, // Minimum post-prandial glucose value
     maxValue: 300, // Maximum post-prandial glucose value
   },
   {
-    name: "uricAcidLevelsMgDl",
+    name: "uricAcidLevels",
     dataType: "number",
     minValue: 0, // Minimum uric acid level value
     maxValue: 10, // Maximum uric acid level value
   },
   {
-    name: "prIntervalSec",
+    name: "prInterval",
     dataType: "number",
     minValue: 0, // Minimum PR interval value
     maxValue: 2, // Maximum PR interval value
   },
   {
-    name: "qtIntervalMs",
+    name: "qtInterval",
     dataType: "number",
     minValue: 0, // Minimum QT interval value
     maxValue: 500, // Maximum QT interval value
   },
   {
-    name: "qrsDurationMsec",
+    name: "qrsDuration",
     dataType: "number",
     minValue: 0, // Minimum QRS duration value
     maxValue: 200, // Maximum QRS duration value
