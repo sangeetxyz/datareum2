@@ -8,7 +8,7 @@ import { useAuth } from "@/context/context";
 import { useRouter } from "next/navigation";
 import { AiOutlineDown } from "react-icons/ai";
 // import puc from "../../../public/reverse/cctv.png";
-import puc from "../../../public/hero/pattern1.svg";
+import puc from "../../../public/hero/p2.svg";
 
 import {
   TbBrandFirebase,
