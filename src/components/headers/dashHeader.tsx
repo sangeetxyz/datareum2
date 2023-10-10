@@ -11,40 +11,9 @@ import { menuItem, menu1 } from "../custom/anim";
 import { cn } from "@/lib/utils";
 import { unSigner } from "@/firebase/firebase";
 import { Lora } from "next/font/google";
+import { pcItems, mobileItems } from "@/utils/navBars/dashNav";
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const DashHeader = () => {
-  const navbarItems = [
-    {
-      title: "documentation",
-      link: "/docs",
-    },
-    {
-      title: "explore stats",
-      link: "/explore",
-    },
-    {
-      title: "privacy policy",
-      link: "/docs",
-    },
-    {
-      title: "sign out",
-      link: "unsigner",
-    },
-  ];
-  const menuItems = [
-    {
-      title: "docs",
-      link: "/docs",
-    },
-    {
-      title: "explore",
-      link: "/explore",
-    },
-    {
-      title: "contact",
-      link: "/docs",
-    },
-  ];
   const [isNavOpened, setIsNavOpened] = useState(false);
   const router = useRouter();
   return (
@@ -64,7 +33,7 @@ const DashHeader = () => {
           </div>
         </div>
         <div className="hidden space-x-10 text-sm uppercase md:flex">
-          {menuItems.map((item, index) => {
+          {pcItems.map((item, index) => {
             return (
               <motion.div
                 whileHover={{ scale: 1.1, color: "#facc15" }}
@@ -115,7 +84,7 @@ const DashHeader = () => {
                 </div>
               </div>
               <div className="space- flex w-full flex-col items-center">
-                {navbarItems.map((item, index) => {
+                {mobileItems.map((item, index) => {
                   return (
                     <motion.div
                       variants={menuItem}

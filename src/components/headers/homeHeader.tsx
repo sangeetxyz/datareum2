@@ -1,88 +1,23 @@
 import { useAuth } from "@/context/context";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import {
-  AiOutlineArrowRight,
-  AiOutlineClose,
-  AiTwotoneExperiment,
-} from "react-icons/ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 import { FaEthereum } from "react-icons/fa";
 import { RiMenu4Fill } from "react-icons/ri";
-import {
-  AnimatePresence,
-  AnimationProps,
-  motion,
-  useTransform,
-} from "framer-motion";
-import { BiRightArrowAlt } from "react-icons/bi";
+import { AnimatePresence, motion } from "framer-motion";
 import { BsSuitHeartFill } from "react-icons/bs";
-
 import { menuItem, menu1 } from "../custom/anim";
 import { Lora } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { pcItems, mobileItems } from "@/utils/navBars/homeNav";
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
-const HomeHeader = (props: { setVariant: (data: string) => void }) => {
+const HomeHeader = ({ setVariant }: { setVariant: (data: string) => void }) => {
   const router = useRouter();
   const { user } = useAuth();
   const [isNavOpened, setIsNavOpened] = useState(false);
-  const navbarItems = [
-    {
-      title: "get started",
-      link: user ? "/dashboard" : "/signin",
-    },
-    {
-      title: "documentation",
-      link: "/docs",
-    },
-    {
-      title: "explore stats",
-      link: "/explore",
-    },
-    {
-      title: "who we are",
-      link: "/about",
-    },
-    {
-      title: "privacy policy",
-      link: "/privacy",
-    },
-    {
-      title: "contact us",
-      link: "/contact",
-    },
-    {
-      title: "help us",
-      link: "/donate",
-    },
-  ];
-  const menuItems = [
-    {
-      title: "docs",
-      link: "/docs",
-    },
-    {
-      title: "explore",
-      link: "/explore",
-    },
-    // {
-    //   title: "about",
-    //   link: "/about",
-    // },
-    {
-      title: "privacy",
-      link: "/privacy",
-    },
-    // {
-    //   title: "contact",
-    //   link: "/contact",
-    // },
-    {
-      title: "donate",
-      link: "/donate",
-    },
-  ];
+
   return (
     <div className="bg-stone-95 fixed top-0 z-10 flex h-20 w-full justify-center border-gray-700 outline outline-1 outline-stone-700 backdrop-blur-sm backdrop-brightness-90">
       <div className="bg-red-30 flex w-full max-w-[94rem] items-center justify-between px-4 2xl:pl-0 2xl:pr-0">
@@ -105,8 +40,8 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
             </div>
           </div>
         </div>
-        <div className="hidden space-x-10 text-sm uppercase lg:flex">
-          {menuItems.map((item, index) => {
+        <div className="hidden space-x-10 text-sm uppercase md:flex">
+          {pcItems.map((item, index) => {
             return (
               <motion.div
                 whileHover={{ scale: 1.1, color: "#facc15" }}
@@ -180,7 +115,7 @@ const HomeHeader = (props: { setVariant: (data: string) => void }) => {
                 </div>
               </div>
               <div className="space- flex w-full flex-col items-center">
-                {navbarItems.map((item, index) => {
+                {mobileItems.map((item, index) => {
                   return (
                     <motion.div
                       variants={menuItem}

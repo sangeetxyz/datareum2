@@ -9,55 +9,13 @@ import { menuItem, menu1 } from "../custom/anim";
 import { Lora } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { unSigner } from "@/firebase/firebase";
+import { pcItems, mobileItems } from "@/utils/navBars/adminNav";
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 const AdminHeader = () => {
   const [isNavOpened, setIsNavOpened] = useState(false);
   const router = useRouter();
-  const navbarItems = [
-    {
-      title: "dashboard",
-      link: "/dashboard",
-    },
-    {
-      title: "documentation",
-      link: "/docs",
-    },
-    {
-      title: "explore stats",
-      link: "/explore",
-    },
-    // {
-    //   title: "who we are",
-    //   link: "/explore",
-    // },
-    {
-      title: "privacy policy",
-      link: "/docs",
-    },
-    {
-      title: "sign out",
-      link: "unsigner",
-    },
-  ];
-  const menuItems = [
-    {
-      title: "dashboard",
-      link: "/dashboard",
-    },
-    {
-      title: "docs",
-      link: "/docs",
-    },
-    {
-      title: "explore",
-      link: "/explore",
-    },
-    {
-      title: "contact",
-      link: "/docs",
-    },
-  ];
+
   return (
     <div className="fixed top-0 z-10 flex h-20 w-full justify-center outline outline-1 outline-stone-700 backdrop-blur-sm backdrop-brightness-90">
       <div className="flex w-full max-w-6xl items-center justify-between px-4">
@@ -75,7 +33,7 @@ const AdminHeader = () => {
           </div>
         </div>
         <div className="hidden space-x-10 text-sm uppercase md:flex">
-          {menuItems.map((item, index) => {
+          {pcItems.map((item, index) => {
             return (
               <motion.div
                 whileHover={{ scale: 1.1, color: "#facc15" }}
@@ -132,7 +90,7 @@ const AdminHeader = () => {
                 </div>
               </div>
               <div className="space- flex w-full flex-col items-center">
-                {navbarItems.map((item, index) => {
+                {mobileItems.map((item, index) => {
                   return (
                     <motion.div
                       variants={menuItem}
