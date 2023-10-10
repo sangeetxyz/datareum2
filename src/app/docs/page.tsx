@@ -19,6 +19,8 @@ import { PiCopy } from "react-icons/pi";
 import { toast } from "react-toastify";
 import Container from "@/components/containers/container";
 import medicalDataFields from "@/utils/helper/dataSets";
+import Header from "@/components/headers/header";
+import { mobileItems, pcItems } from "@/utils/navBars/docsNav";
 
 const Docs = () => {
   const [currentTab, setCurrentTab] = useState(2);
@@ -47,7 +49,7 @@ const Docs = () => {
   return (
     <Container>
       <div className="relative min-h-screen bg-stone-950">
-        <DashHeader />
+        <Header pcItems={pcItems} mobileItems={mobileItems} />
         <div className="bg-stone-95 flex h-full w-full items-center justify-center pt-20">
           <div className="bg-red-9 relative flex h-full w-full max-w-6xl text-stone-100">
             <div className="fixed bottom-4 top-24 hidden w-64 rounded-xl border border-stone-700 bg-stone-900 xl:block">
@@ -97,7 +99,7 @@ const Docs = () => {
           </div>
         </div>
         <div className="border-stone-70 fixed top-20 flex h-10 w-full justify-center px-4 pt-4 xl:hidden">
-          <div className="flex h-10 w-full max-w-6xl items-center justify-around space-x-2 rounded-xl bg-stone-900 px-4 outline outline-1 outline-stone-700">
+          <div className="flex h-10 w-full max-w-6xl items-center justify-around space-x-2 mx-4 bg-opacity-50 rounded-full bg-stone-900 px-4 outline outline-1 outline-stone-700">
             {tabList.map((tab, index) => {
               return (
                 <div
