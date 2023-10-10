@@ -8,6 +8,8 @@ import { GrConnect } from "react-icons/gr";
 import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-toastify";
 import Container from "@/components/containers/container";
+import { mobileItems, pcItems } from "@/utils/navBars/donateNav";
+import Header from "@/components/headers/header";
 
 const Donate = () => {
   type windowExtended = {
@@ -125,7 +127,7 @@ const Donate = () => {
   return (
     <Container>
       <div className="relative flex h-screen items-center justify-center overflow-hidden bg-stone-950 pt-20 outline outline-1 outline-stone-600">
-        <DashHeader />
+        <Header pcItems={pcItems} mobileItems={mobileItems} />
         <motion.div
           initial={{
             opacity: 0,

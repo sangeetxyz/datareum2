@@ -32,7 +32,7 @@ const Docs = () => {
     },
     {
       id: 2,
-      title: "aPI Refs",
+      title: "aPI",
       icon: () => <SiFastapi size={20} color={"#facc15"} />,
     },
     {
@@ -40,11 +40,6 @@ const Docs = () => {
       title: "database",
       icon: () => <BsDatabaseFill size={20} color={"#facc15"} />,
     },
-    // {
-    //   id: 4,
-    //   title: "introduction",
-    //   icon: () => <BsStars size={20} color={"#facc15"} />,
-    // },
   ];
   return (
     <Container>

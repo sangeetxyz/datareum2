@@ -1,15 +1,17 @@
 "use client";
 import Footer from "@/components/footers/footer";
-import DashHeader from "@/components/headers/dashHeader";
+import Header from "@/components/headers/header";
+
 import React from "react";
 import contactSvg from "../../../public/contact/contact.svg";
+import { mobileItems, pcItems } from "@/utils/navBars/contactNav";
 
 const Contact = () => {
   return (
     <div className="h-screen bg-stone-950 pt-20 text-stone-100">
-      <DashHeader />
-      <div className="flex h-full flex-col md:flex-row items-center justify-center bg-gradient-to-b from-stone-950 to-stone-900">
-        <div className="px-8 flex w-full flex-col items-center justify-center text-stone-950">
+      <Header pcItems={pcItems} mobileItems={mobileItems} />
+      <div className="flex h-full flex-col items-center justify-center bg-gradient-to-b from-stone-950 to-stone-900 md:flex-row">
+        <div className="flex w-full flex-col items-center justify-center px-8 text-stone-950">
           <div className="flex w-full max-w-lg flex-col space-y-4">
             <div className="flex w-full flex-col">
               <div className="capitalize text-stone-100">Name</div>

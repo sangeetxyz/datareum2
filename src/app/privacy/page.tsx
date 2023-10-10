@@ -1,12 +1,14 @@
 "use client";
 import Footer from "@/components/footers/footer";
-import DashHeader from "@/components/headers/dashHeader";
 import React from "react";
 import privacySvg from "../../../public/privacy/privacy.svg";
+import Header from "@/components/headers/header";
+import { mobileItems, pcItems } from "@/utils/navBars/privacyNav";
+
 const Privacy = () => {
   return (
     <div className="min-h-screen bg-stone-950 pt-20 text-stone-100">
-      <DashHeader />
+      <Header pcItems={pcItems} mobileItems={mobileItems} />
       <div className="flex justify-center bg-gradient-to-b from-stone-950 to-stone-900">
         <img src={privacySvg.src} alt="" className="max-w-6xl " />
       </div>

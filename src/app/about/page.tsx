@@ -1,12 +1,14 @@
 "use client";
-import DashHeader from "@/components/headers/dashHeader";
+import Header from "@/components/headers/header";
 import React from "react";
 import aboutSvg from "../../../public/about/about.svg";
 import Footer from "@/components/footers/footer";
+import { mobileItems, pcItems } from "@/utils/navBars/aboutNav";
+
 const About = () => {
   return (
     <div className="min-h-screen bg-stone-950 pt-20 text-stone-100">
-      <DashHeader />
+      <Header pcItems={pcItems} mobileItems={mobileItems} />
       <div className="flex justify-center bg-gradient-to-b from-stone-950 to-stone-900">
         <img src={aboutSvg.src} alt="" className="max-w-6xl " />
       </div>
