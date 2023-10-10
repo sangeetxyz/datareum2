@@ -21,7 +21,7 @@ const FeatureSection = () => {
   const spring = useSpring(mainDivYProgess);
   const mainDivTrans = useTransform(spring, [0, 1], ["0%", "-300%"]);
   const mainDivTrans2 = useTransform(spring, [0, 1], ["0%", "300%"]);
-  const lust: {
+  const rightItemsList: {
     path: string;
     description: string;
     id: number;
@@ -80,7 +80,7 @@ const FeatureSection = () => {
       <div className="flex h-full w-full max-w-6xl">
         {/* left */}
         <div className="flex h-full w-full flex-col items-center space-y-10 bg-gradient-to-b from-stone-900 to-stone-950 px-[5vw] py-10 lg:justify-between lg:space-y-0 lg:px-8 lg:py-[50vh]">
-          {lust.map((el) => {
+          {rightItemsList.map((el) => {
             return (
               <LeftItem
                 text={el.text}
@@ -94,7 +94,10 @@ const FeatureSection = () => {
         {/* right */}
         <div className="bg-stone-90 sticky top-0 hidden h-screen w-full flex-col items-center justify-center overflow-hidden pt-20 lg:flex">
           <div className="bg-red-95 relative flex aspect-square w-full items-center justify-center">
-            <RightItem path={lust[key - 1].path} id={lust[key - 1].id} />
+            <RightItem
+              path={rightItemsList[key - 1].path}
+              id={rightItemsList[key - 1].id}
+            />
           </div>
         </div>
       </div>
@@ -172,7 +175,7 @@ const RightItem = ({ path, id }: { path: string; id: number }) => {
         }}
         transition={{
           duration: 1,
-          type: "spring"
+          type: "spring",
         }}
         exit={{
           // scale: 0,

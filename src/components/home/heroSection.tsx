@@ -7,6 +7,9 @@ import { BsMouse } from "react-icons/bs";
 import { useAuth } from "@/context/context";
 import { useRouter } from "next/navigation";
 import { AiOutlineDown } from "react-icons/ai";
+// import puc from "../../../public/reverse/cctv.png";
+import puc from "../../../public/hero/pattern1.svg";
+
 import {
   TbBrandFirebase,
   TbBrandNextjs,
@@ -23,8 +26,15 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
   const user = useAuth();
   const router = useRouter();
   return (
-    <div className="via-stone-95 relative flex h-screen w-full justify-center bg-gradient-to-t from-stone-950 to-stone-900 pt-20 text-white xl:pt-10">
-      <div className="bg-neutral-70 flex h-full w-full max-w-[94rem] flex-col justify-center xl:flex-row">
+    <div className="via-stone-95 relative flex h-screen w-full justify-center bg-stone-950 to-stone-900 pt-20 text-white xl:pt-10">
+      <div className="absolute left-0 top-0 z-0 h-screen w-full">
+        <img
+          src={puc.src}
+          alt=""
+          className="h-full w-full object-cover opacity-30"
+        />
+      </div>
+      <div className="bg-neutral-70 z-10 flex h-full w-full max-w-[94rem] flex-col justify-center xl:flex-row">
         <div className="bg-red-95 lg justify-cente flex w-full items-center justify-center md:mt-10 xl:ml-8 xl:mt-0 2xl:ml-0">
           <div className="mt-8 flex flex-col items-center md:mt-0 xl:items-start">
             <div className="mb-4 hidden h-[2px] w-[30rem] bg-gradient-radial from-acc xl:block xl:bg-gradient-to-l xl:from-transparent xl:to-acc"></div>
@@ -114,30 +124,6 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
               </motion.div>
             </div>
             <div className="mt-6 hidden h-[2px] w-[30rem] bg-gradient-radial from-acc xl:block xl:bg-gradient-to-l xl:from-transparent xl:to-acc"></div>
-            {/* 2nd page */}
-            {/* <div className="mt-7 hidden flex-col items-center space-y-4 xl:flex">
-              <div className="h-[2px] w-[30rem] bg-gradient-radial from-acc xl:bg-gradient-to-l xl:from-transparent xl:to-acc"></div>
-              <div className="flex w-full justify-center">
-                <div className="flex w-full justify-around">
-                  <div className="h-full">
-                    <TbBrandNextjs size={80} color={"#d6d3d1"} />
-                  </div>
-                  <div>
-                    <TbBrandSupabase size={80} color={"#d6d3d1"} />
-                  </div>
-                  <div>
-                    <TbBrandTailwind size={80} color={"#d6d3d1"} />
-                  </div>
-                  <div>
-                    <TbBrandPrisma size={80} color={"#d6d3d1"} />
-                  </div>
-                  <div>
-                    <TbBrandFirebase size={80} color={"#d6d3d1"} />
-                  </div>
-                </div>
-              </div>
-              <div className="h-[2px] w-[30rem] bg-gradient-radial from-acc to-transparent xl:bg-gradient-to-l xl:from-transparent xl:to-acc"></div>
-            </div> */}
           </div>
         </div>
         <div className="bg-red-90 flex w-full items-center justify-center overflow-hidden ">
