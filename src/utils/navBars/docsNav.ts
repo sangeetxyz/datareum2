@@ -19,7 +19,7 @@ export const mobileItems = [
 
 export const pcItems = [
   {
-    title: "sign in",
+    title: "onboard",
     link: "/dashboard",
   },
   {
