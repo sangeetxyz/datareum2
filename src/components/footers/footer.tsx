@@ -44,7 +44,7 @@ const Footer = () => {
           <div className="bg-yellow-95 flex w-full items-center justify-around py-4">
             <div className="flex flex-col space-y-2 text-sm">
               <div className="text-lg font-bold capitalize underline decoration-acc">
-                services
+                quick links
               </div>
               <div
                 className="cursor-pointer capitalize"
@@ -75,17 +75,59 @@ const Footer = () => {
               <div className="text-lg font-bold capitalize underline decoration-acc">
                 Resources
               </div>
-              <div className="cursor-pointer capitalize">docs</div>
-              <div className="cursor-pointer capitalize">dashboard</div>
-              <div className="cursor-pointer capitalize">API</div>
+              <div
+                className="cursor-pointer capitalize"
+                onClick={() => {
+                  router.push("/docs");
+                }}
+              >
+                docs
+              </div>
+              <div
+                className="cursor-pointer capitalize"
+                onClick={() => {
+                  router.push("/docs");
+                }}
+              >
+                aPI
+              </div>
+              <div
+                className="cursor-pointer capitalize"
+                onClick={() => {
+                  router.push("/docs");
+                }}
+              >
+                database
+              </div>
             </div>
             <div className="flex flex-col space-y-2 text-sm">
               <div className="text-lg font-bold capitalize underline decoration-acc">
-                Contact
+                more
               </div>
-              <div className="cursor-pointer capitalize">dashboard</div>
-              <div className="cursor-pointer capitalize">docs</div>
-              <div className="cursor-pointer capitalize">API</div>
+              <div
+                className="cursor-pointer capitalize"
+                onClick={() => {
+                  router.push("/donate");
+                }}
+              >
+                donate
+              </div>
+              <div
+                className="cursor-pointer capitalize"
+                onClick={() => {
+                  router.push("/explore");
+                }}
+              >
+                explore
+              </div>
+              <div
+                className="cursor-pointer capitalize"
+                onClick={() => {
+                  router.replace("https://www.youtube.com/watch?v=_1Zgbzsl76A");
+                }}
+              >
+                meaw
+              </div>
             </div>
           </div>
         </div>
