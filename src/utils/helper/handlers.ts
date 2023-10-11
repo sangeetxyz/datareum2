@@ -14,6 +14,7 @@ import { ethers } from "ethers";
 import { abi } from "../ethereum/abi";
 import { contract } from "../ethereum/contract";
 import { z } from "zod";
+import { Dispatch, SetStateAction } from "react";
 
 export const handleProfilePhotoUpload = async (
   photo: File | undefined,
@@ -569,4 +570,47 @@ export const getPatientsDataFromBc = async () => {
   }
 
   return data;
+};
+
+export const handleDeleteDbAll = async (
+  event: any,
+  next: Dispatch<SetStateAction<boolean>>,
+) => {
+  event.stopPropagation();
+  await axios
+    .delete(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/patients`)
+    .then(() => {
+      toast.success("Deleted everything!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        pauseOnFocusLoss: false,
+        theme: "dark",
+      });
+      next(false);
+    });
+};
+
+export const handleDeleteBcAll = async (
+  event: any,
+  next: Dispatch<SetStateAction<boolean>>,
+) => {
+  event.stopPropagation();
+  // await contract.deleteAllData();
+  toast.success("Deleted everything!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    pauseOnFocusLoss: false,
+    theme: "dark",
+  });
+  next(false);
 };
