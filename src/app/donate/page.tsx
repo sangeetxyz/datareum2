@@ -19,6 +19,7 @@ const Donate = () => {
   const [amount, setAmount] = useState(0.0);
   const [provider, setProvider] = useState<any>(null);
   const [signer, setSigner] = useState<any>(null);
+  
   const connectMetamask = async (): Promise<{
     provider: object;
     signer: object;
@@ -56,6 +57,7 @@ const Donate = () => {
       return { provider, signer };
     }
   };
+
   const handleConnect = () => {
     connectMetamask().then((result) => {
       if (result) {
@@ -76,6 +78,7 @@ const Donate = () => {
       }
     });
   };
+
   const handlePayment = async () => {
     if (amount <= 0) {
       toast.error("Enter a valid amount!", {

@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import { abi } from "./abi";
 
-const provider = new ethers.JsonRpcProvider(
+export const provider = new ethers.JsonRpcProvider(
   process.env.NEXT_PUBLIC_ALCHEMY_HTTP,
 );
 const wallet = new ethers.Wallet(
