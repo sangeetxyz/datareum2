@@ -4,6 +4,8 @@ import { PatientBC, PatientDB, userData } from "@/types/types";
 import { checker, signer, storage } from "@/firebase/firebase";
 import axios from "axios";
 import {
+  countObjectsWithNonInitialToken,
+  getAllUsersData,
   isEmailValid,
   isPhoneNumber,
   isPhoneNumberPresent,
@@ -513,7 +515,7 @@ export const handleUserUpdateOnAdmin = async (
 };
 
 export const handlePatientUploadToDb = async (data: PatientDB[]) => {
-  await axios.post(
+  const res = await axios.post(
     `${process.env.NEXT_PUBLIC_WEB_URL}api/dev/patients`,
     {
       data,
@@ -524,6 +526,7 @@ export const handlePatientUploadToDb = async (data: PatientDB[]) => {
       },
     },
   );
+  console.log(res);
 };
 
 export const getPatientsDataFromDb = async () => {
@@ -575,42 +578,89 @@ export const getPatientsDataFromBc = async () => {
 export const handleDeleteDbAll = async (
   event: any,
   next: Dispatch<SetStateAction<boolean>>,
+  refresher: () => {},
 ) => {
   event.stopPropagation();
-  await axios
-    .delete(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/patients`)
-    .then(() => {
-      toast.success("Deleted everything!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        pauseOnFocusLoss: false,
-        theme: "dark",
-      });
-      next(false);
+  const awaiter = async () => {
+    await axios.delete(`${process.env.NEXT_PUBLIC_WEB_URL}api/dev/patients`, {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_SECRET}`,
+      },
     });
+    refresher();
+  };
+  next(false);
+  toast.promise(
+    awaiter,
+    {
+      pending: "Deleting...",
+      success: "Deleted everything!",
+      error: "Rejected 🤯",
+    },
+    {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      pauseOnFocusLoss: false,
+      theme: "dark",
+    },
+  );
 };
 
 export const handleDeleteBcAll = async (
   event: any,
   next: Dispatch<SetStateAction<boolean>>,
+  refresher: () => {},
 ) => {
   event.stopPropagation();
-  // await contract.deleteAllData();
-  toast.success("Deleted everything!", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    progress: undefined,
-    pauseOnFocusLoss: false,
-    theme: "dark",
-  });
+  const awaiter = async () => {
+    await contract.deleteAllData();
+    setTimeout(refresher, 3000);
+  };
   next(false);
+  toast.promise(
+    awaiter,
+    {
+      pending: "Deleting...",
+      success: "Deleted everything!",
+      error: "Rejected 🤯",
+    },
+    {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      pauseOnFocusLoss: false,
+      theme: "dark",
+    },
+  );
+
+  next(false);
+};
+
+export const getAdminStats = async () => {
+  let stats = {
+    dbRows: 0,
+    bcRows: 0,
+    totalUsers: 0,
+    apiUsers: 0,
+  };
+  const allUserData = await getAllUsersData();
+  const allPatientDataFromDb = await getPatientsDataFromDb();
+  stats.totalUsers = allUserData.length;
+  stats.dbRows = allPatientDataFromDb.length;
+  const contractRowsCount: BigInt = await contract.getDataLength();
+  stats.bcRows = parseInt(contractRowsCount.toString());
+  if (allUserData.length > 0) {
+    stats.apiUsers = countObjectsWithNonInitialToken(allUserData);
+  }
+  console.log(stats);
+  return stats;
 };

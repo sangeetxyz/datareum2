@@ -91,6 +91,7 @@ const Contribute = () => {
       setUserDataHelper();
     }
   }, [user, isLoading]);
+
   return !userData ? (
     <div>
       <Spinner />

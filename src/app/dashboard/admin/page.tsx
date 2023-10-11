@@ -18,7 +18,11 @@ import { provider } from "@/utils/ethereum/contract";
 import { ethers } from "ethers";
 import { motion } from "framer-motion";
 import axios from "axios";
-import { handleDeleteBcAll, handleDeleteDbAll } from "@/utils/helper/handlers";
+import {
+  getAdminStats,
+  handleDeleteBcAll,
+  handleDeleteDbAll,
+} from "@/utils/helper/handlers";
 
 const AdminPanel = () => {
   const { user } = useAuth();
@@ -26,24 +30,40 @@ const AdminPanel = () => {
   const [userData, setUserData] = useState<userData | undefined>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [allUsersData, setAllUsersData] = useAtom(allUserData);
+  const [dbRows, setDbRows] = useState(0);
+  const [bcRows, setBcRows] = useState(0);
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [apiUsers, setApiUsers] = useState(0);
+
   const waiter = async () => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     setIsLoading(false);
   };
+
   const getAndSetAllUsersData = async () => {
     const data = await getAllUsersData();
     setAllUsersData(data);
   };
+
   const setUserDataHelper = async () => {
     const data = await getDashUserData(user!);
     setUserData(data);
   };
+
   const dataRefresher = () => {
     getAndSetAllUsersData();
     setUserDataHelper();
   };
+
+  const valueSetter = async () => {
+    const results = await getAdminStats();
+    setApiUsers(results.apiUsers);
+    setBcRows(results.bcRows);
+    setDbRows(results.dbRows);
+    setTotalUsers(results.totalUsers);
+  };
+
   useEffect(() => {
-    // getAndSetAllUsersData();
     waiter();
     if (!user && !isLoading) {
       router.push("/");
@@ -51,6 +71,12 @@ const AdminPanel = () => {
       dataRefresher();
     }
   }, [user, isLoading]);
+
+  useEffect(() => {
+    valueSetter();
+    setTimeout(valueSetter, 3000);
+  }, []);
+
   return !userData ? (
     <div>
       <Spinner />
@@ -88,9 +114,15 @@ const AdminPanel = () => {
         <AdminHeader />
         <div className="bg-pink-95 flex min-h-screen w-full flex-col items-center pt-20">
           <div className="flex h-full w-full max-w-6xl flex-col px-4">
+            <AdminStats
+              apiUsers={apiUsers}
+              bcRows={bcRows}
+              dbRows={dbRows}
+              totalUsers={totalUsers}
+            />
             <TableSection columns={columns} data={allUsersData} />
             <WalletSection />
-            <DangerSection />
+            <DangerSection refresher={valueSetter} />
           </div>
         </div>
       </div>
@@ -99,6 +131,46 @@ const AdminPanel = () => {
 };
 
 export default AdminPanel;
+
+const AdminStats = ({
+  dbRows,
+  bcRows,
+  totalUsers,
+  apiUsers,
+}: {
+  dbRows: number;
+  bcRows: number;
+  totalUsers: number;
+  apiUsers: number;
+}) => {
+  return (
+    <>
+      <div className="my-4 text-xl uppercase">database stats</div>
+      <div className="bg-whit flex w-full space-x-4">
+        <div className="flex w-full flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+          <div className="flex h-48 w-full flex-col items-center justify-center rounded-xl bg-stone-800 bg-opacity-50 outline outline-2 outline-stone-700 backdrop-blur-md">
+            <div className="text-7xl">{dbRows}</div>
+            <div className="mx-4 text-center uppercase">db rows</div>
+          </div>
+          <div className="flex h-48 w-full flex-col items-center justify-center rounded-xl bg-stone-800 bg-opacity-50 outline outline-2 outline-stone-700 backdrop-blur-md">
+            <div className="text-7xl">{bcRows}</div>
+            <div className="mx-4 text-center uppercase">bc rows</div>
+          </div>
+        </div>
+        <div className="flex w-full flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+          <div className="flex h-48 w-full flex-col items-center justify-center rounded-xl bg-stone-800 bg-opacity-50 outline outline-2 outline-stone-700 backdrop-blur-md">
+            <div className="text-7xl">{totalUsers}</div>
+            <div className="mx-4 text-center uppercase">total users</div>
+          </div>
+          <div className="flex h-48 w-full flex-col items-center justify-center rounded-xl bg-stone-800 bg-opacity-50 outline outline-2 outline-stone-700 backdrop-blur-md">
+            <div className="text-7xl">{apiUsers}</div>
+            <div className="mx-4 text-center uppercase">api users</div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 const WalletSection = () => {
   const [wei, setWei] = useState("Loading... ");
@@ -176,13 +248,13 @@ const WalletSection = () => {
   );
 };
 
-const DangerSection = () => {
+const DangerSection = ({ refresher }: { refresher: () => {} }) => {
   const [dbCaution, setDbCaution] = useState(false);
   const [bcCaution, setBcCaution] = useState(false);
   return (
     <>
       <div className="my-4 text-xl uppercase text-red-500">danger zone</div>
-      <div className="w-full mb-4 space-y-4 rounded-xl border border-red-500 bg-stone-800 bg-opacity-70 p-4 backdrop-blur-md">
+      <div className="mb-4 w-full space-y-4 rounded-xl border border-red-500 bg-stone-800 bg-opacity-70 p-4 backdrop-blur-md">
         <div className="flex flex-col items-start justify-between space-y-4 md:flex-row md:items-center md:space-y-0">
           <div className="flex flex-col">
             <div className="text-2xl font-bold capitalize">
@@ -233,7 +305,7 @@ const DangerSection = () => {
           onClick={() => {
             setDbCaution(false);
           }}
-          className="absolute left-0 top-0 flex h-full w-full items-center justify-center backdrop-blur-sm"
+          className="fixed left-0 top-0 flex h-screen  w-full items-center justify-center backdrop-blur-sm"
         >
           <div className="flex w-64 flex-col space-y-4 rounded-xl border border-stone-700 bg-stone-950 bg-opacity-70 p-4 backdrop-blur-md">
             <div className="text-center font-bold">
@@ -247,7 +319,7 @@ const DangerSection = () => {
                 scale: 0.95,
               }}
               onClick={async (event) => {
-                handleDeleteDbAll(event, setDbCaution);
+                handleDeleteDbAll(event, setDbCaution, refresher);
               }}
               className="cursor-pointer rounded-lg bg-acc px-3 py-2 text-center text-sm font-bold uppercase text-stone-950"
             >
@@ -261,7 +333,7 @@ const DangerSection = () => {
           onClick={() => {
             setBcCaution(false);
           }}
-          className="absolute left-0 top-0 flex h-full w-full items-center justify-center backdrop-blur-sm"
+          className="fixed left-0 top-0 flex h-screen w-full items-center justify-center backdrop-blur-sm"
         >
           <div className="flex w-64 flex-col space-y-4 rounded-xl border border-stone-700 bg-stone-950 bg-opacity-70 p-4 backdrop-blur-md">
             <div className="text-center font-bold">
@@ -275,7 +347,7 @@ const DangerSection = () => {
                 scale: 0.95,
               }}
               onClick={async (event) => {
-                handleDeleteBcAll(event, setBcCaution);
+                handleDeleteBcAll(event, setBcCaution, refresher);
               }}
               className="cursor-pointer rounded-lg bg-acc px-3 py-2 text-center text-sm font-bold uppercase text-stone-950"
             >

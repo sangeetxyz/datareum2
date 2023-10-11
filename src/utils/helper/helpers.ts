@@ -203,6 +203,7 @@ export const combineDataAndSecretKeys = (
 
   return combinedObjects;
 };
+
 export const verifyToken = (
   objList: userData[],
   tokenToCheck: string,
@@ -213,4 +214,18 @@ export const verifyToken = (
     }
   }
   return false;
+};
+
+export const countObjectsWithNonInitialToken = (
+  objects: userData[],
+): number => {
+  let count = 0;
+
+  for (const obj of objects) {
+    if (obj.hasOwnProperty("token") && obj.token !== "initial") {
+      count++;
+    }
+  }
+
+  return count;
 };

@@ -1,27 +1,8 @@
 export const abi = [
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "Data",
-    outputs: [
-      {
-        internalType: "string",
-        name: "identifier",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "secretKey",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
+    inputs: [],
+    stateMutability: "nonpayable",
+    type: "constructor",
   },
   {
     inputs: [
@@ -39,6 +20,30 @@ export const abi = [
     name: "addDataBatch",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "data",
+    outputs: [
+      {
+        internalType: "string",
+        name: "identifier",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "secretKey",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -81,7 +86,7 @@ export const abi = [
   },
   {
     inputs: [],
-    name: "status",
+    name: "getStatus",
     outputs: [
       {
         internalType: "string",
@@ -90,6 +95,19 @@ export const abi = [
       },
     ],
     stateMutability: "pure",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "status",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
 ];
