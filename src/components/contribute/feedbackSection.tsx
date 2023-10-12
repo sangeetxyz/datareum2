@@ -26,10 +26,14 @@ export const FeedbackSection = ({
       <div className="flex w-full flex-col space-y-4 rounded-xl bg-stone-900 bg-opacity-30 p-4 outline outline-2 outline-stone-700 backdrop-blur-md">
         {!rawStats || !parsedStats ? <LoadingText /> : <></>}
         {rawStats?.shortestObjectLength === parsedStats?.shortestObjectLength &&
-        parsedStats?.shortestObjectLength ? (
+        parsedStats?.shortestObjectLength &&
+        parsedStats.objectCount > 0 ? (
           <GoodFeedback text="Every Column Name has been detected and parsed successfully!" />
         ) : rawStats?.shortestObjectLength! >
-          parsedStats?.longestObjectLength! ? (
+            parsedStats?.longestObjectLength! &&
+          rawStats?.objectCount &&
+          parsedStats?.objectCount &&
+          parsedStats.objectCount > 0 ? (
           <BadFeedback text="We cannot identify every column of your data!" />
         ) : parsedStats?.longestObjectLength === 0 ? (
           <BadFeedback text="None of your columns are detected!" />
@@ -41,11 +45,11 @@ export const FeedbackSection = ({
         )}
         {rawStats?.objectCount === parsedStats?.objectCount &&
         parsedStats?.objectCount ? (
-          <GoodFeedback text=" Each and every row of your data has been parsed successfully!" />
+          <GoodFeedback text="Each and every row of your data has been parsed successfully!" />
         ) : rawStats?.objectCount! > parsedStats?.objectCount! ? (
           <BadFeedback text="Not every row has been parsed from your data!" />
         ) : parsedStats?.objectCount === 0 ? (
-          <BadFeedback text="Not every row has been parsed from your data!" />
+          <BadFeedback text="No data has been parsed from your data!" />
         ) : (
           <></>
         )}

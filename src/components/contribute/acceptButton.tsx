@@ -98,7 +98,7 @@ export const AcceptButton = ({
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={async () => {
-                if (parsedData) {
+                if (parsedData && parsedData?.length > 0) {
                   const awaiter = async () => {
                     setIsUploading(true);
                     const p1 = objectEncryptor(parsedData);
@@ -132,6 +132,18 @@ export const AcceptButton = ({
                       theme: "dark",
                     },
                   );
+                } else {
+                  toast.error("Not enough data!", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    pauseOnFocusLoss: false,
+                    theme: "dark",
+                  });
                 }
               }}
               className="cursor-pointer rounded-lg bg-acc px-3 py-2 text-center text-sm font-bold uppercase text-stone-950 hover:opacity-90 xl:mt-0"
