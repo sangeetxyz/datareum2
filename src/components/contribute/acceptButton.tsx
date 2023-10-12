@@ -45,6 +45,7 @@ import {
   handlePatientUploadToDb,
 } from "@/utils/helper/handlers";
 import { toast } from "react-toastify";
+import { cn } from "@/lib/utils";
 
 export const AcceptButton = ({
   parsedData,
@@ -53,6 +54,7 @@ export const AcceptButton = ({
   parsedData: object[] | null;
   userData: userData;
 }) => {
+  const [isUploading, setIsUploading] = useState(false);
   const router = useRouter();
   return (
     <div className="mb-4 mt-8 flex w-full items-center overflow-x-clip rounded-xl">
@@ -65,7 +67,10 @@ export const AcceptButton = ({
             whileTap={{
               scale: 0.95,
             }}
-            className="cursor-pointer rounded-lg bg-acc px-4 py-2 text-sm font-bold uppercase text-stone-950"
+            className={cn(
+              "cursor-pointer rounded-lg bg-acc px-4 py-2 text-sm font-bold uppercase text-stone-950",
+              !isUploading ? "" : "hidden cursor-not-allowed opacity-50",
+            )}
           >
             submit data
           </motion.div>
@@ -95,6 +100,7 @@ export const AcceptButton = ({
               onClick={async () => {
                 if (parsedData) {
                   const awaiter = async () => {
+                    setIsUploading(true);
                     const p1 = objectEncryptor(parsedData);
                     const p2 = objectIdentificator(p1);
                     const p3 = objectSplitter(p2);
@@ -103,7 +109,9 @@ export const AcceptButton = ({
                     await handlePatientUploadToDb(p4);
                     await handlePatientUploadToBc(p3.forBc);
 
-                    setTimeout(router.back, 3000);
+                    setIsUploading(false);
+                    router.back();
+                    // setTimeout(router.back, 3000);
                   };
                   toast.promise(
                     awaiter,
@@ -126,7 +134,7 @@ export const AcceptButton = ({
                   );
                 }
               }}
-              className="cursor-pointer rounded-lg bg-acc text-stone-950 font-bold px-3 py-2 text-center text-sm uppercase hover:opacity-90 xl:mt-0"
+              className="cursor-pointer rounded-lg bg-acc px-3 py-2 text-center text-sm font-bold uppercase text-stone-950 hover:opacity-90 xl:mt-0"
             >
               accept
             </AlertDialogAction>

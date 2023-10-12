@@ -124,72 +124,61 @@ const Contribute = () => {
       </div>
     </div>
   ) : (
-    <Container>
-      <div className="relative min-h-screen w-full">
-        <AdminHeader />
-        {file ? (
-          // has file
-          <div className="mih-h-screen flex w-full flex-col items-center bg-stone-950 pt-20">
-            <div className="h-full w-full max-w-6xl p-4">
-              <div className="bg-red-95 h-full">
-                {/* stats */}
-                <QuickStatsSection
-                  rawData={rawData}
-                  parsedData={parsedData}
-                  rawStats={rawStats}
-                  parsedStats={parsedStats}
-                />
+    <div className="relative min-h-screen w-full">
+      <AdminHeader />
+      {file ? (
+        // has file
+        <div className="mih-h-screen flex w-full flex-col items-center bg-stone-950 pt-20">
+          <div className="h-full w-full max-w-6xl p-4">
+            <div className="bg-red-95 h-full">
+              {/* stats */}
+              <QuickStatsSection
+                rawData={rawData}
+                parsedData={parsedData}
+                rawStats={rawStats}
+                parsedStats={parsedStats}
+              />
 
-                <AnalyticsSection rawData={rawData} parsedData={parsedData} />
+              <AnalyticsSection rawData={rawData} parsedData={parsedData} />
 
-                <RetentionSection
-                  rawStats={rawStats}
-                  parsedStats={parsedStats}
-                />
-                <FeedbackSection
-                  rawStats={rawStats}
-                  parsedStats={parsedStats}
-                />
-                <AcceptButton parsedData={parsedData} userData={userData} />
+              <RetentionSection rawStats={rawStats} parsedStats={parsedStats} />
+              <FeedbackSection rawStats={rawStats} parsedStats={parsedStats} />
+              <AcceptButton parsedData={parsedData} userData={userData} />
+            </div>
+          </div>
+        </div>
+      ) : (
+        // no file
+        <div className="flex h-screen w-full flex-col items-center bg-stone-950 pt-20">
+          <div className="h-full w-full max-w-6xl p-4">
+            <div
+              onClick={(event) => {
+                fileRef.current?.click();
+              }}
+              className="relative flex h-full items-center justify-center rounded-xl bg-stone-800 bg-opacity-30 outline outline-2 outline-stone-700 backdrop-blur-md"
+            >
+              <div className="flex flex-col items-center">
+                <div className="w-24">
+                  <IoCloudUpload className="h-full w-full" color={"#facc15"} />
+                </div>
+                <div>Select your file to get started</div>
+              </div>
+              <div className="absolute bottom-0 right-0 mx-2 my-1 text-sm">
+                .csv only
               </div>
             </div>
           </div>
-        ) : (
-          // no file
-          <div className="flex h-screen w-full flex-col items-center bg-stone-950 pt-20">
-            <div className="h-full w-full max-w-6xl p-4">
-              <div
-                onClick={(event) => {
-                  fileRef.current?.click();
-                }}
-                className="relative flex h-full items-center justify-center rounded-xl bg-stone-800 bg-opacity-30 outline outline-2 outline-stone-700 backdrop-blur-md"
-              >
-                <div className="flex flex-col items-center">
-                  <div className="w-24">
-                    <IoCloudUpload
-                      className="h-full w-full"
-                      color={"#facc15"}
-                    />
-                  </div>
-                  <div>Select your file to get started</div>
-                </div>
-                <div className="absolute bottom-0 right-0 mx-2 my-1 text-sm">
-                  .csv only
-                </div>
-              </div>
-            </div>
-            <input
-              ref={fileRef}
-              onChange={onFileChangeHandler}
-              type="file"
-              name="file"
-              className="hidden"
-              accept=".csv"
-            />
-          </div>
-        )}
-      </div>
-    </Container>
+          <input
+            ref={fileRef}
+            onChange={onFileChangeHandler}
+            type="file"
+            name="file"
+            className="hidden"
+            accept=".csv"
+          />
+        </div>
+      )}
+    </div>
   );
 };
 

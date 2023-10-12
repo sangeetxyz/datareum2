@@ -103,24 +103,22 @@ const AdminPanel = () => {
       </div>
     </div>
   ) : (
-    <Container>
-      <div className="relative min-h-screen w-full bg-stone-950">
-        <AdminHeader />
-        <div className="bg-pink-95 flex min-h-screen w-full flex-col items-center pt-20">
-          <div className="flex h-full w-full max-w-6xl flex-col px-4">
-            <AdminStats
-              apiUsers={apiUsers}
-              bcRows={bcRows}
-              dbRows={dbRows}
-              totalUsers={totalUsers}
-            />
-            <TableSection columns={columns} data={allUsersData} />
-            <WalletSection />
-            <DangerSection refresher={valueSetter} />
-          </div>
+    <div className="relative min-h-screen w-full bg-stone-950">
+      <AdminHeader />
+      <div className="bg-pink-95 flex min-h-screen w-full flex-col items-center pt-20">
+        <div className="flex h-full w-full max-w-6xl flex-col px-4">
+          <AdminStats
+            apiUsers={apiUsers}
+            bcRows={bcRows}
+            dbRows={dbRows}
+            totalUsers={totalUsers}
+          />
+          <TableSection columns={columns} data={allUsersData} />
+          <WalletSection />
+          <DangerSection refresher={valueSetter} />
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 

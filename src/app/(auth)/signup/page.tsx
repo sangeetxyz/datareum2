@@ -55,7 +55,7 @@ const Signup = () => {
     setAllUsersDataHelper();
   }, [user]);
   return (
-    <Container>
+    
       <div className="h-screen bg-gradient-to-b from-stone-900 to-stone-950">
         <div className="grid h-full grid-cols-3">
           {/* for mobile */}
@@ -358,7 +358,7 @@ const Signup = () => {
         </div>
         <div id="sign-in"></div>
       </div>
-    </Container>
+
   );
 };
 

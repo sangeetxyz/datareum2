@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Providers from "@/jotai/jotai";
+import Container from "@/components/containers/container";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -23,9 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <AuthContextProvider>
-          <Providers>{children}</Providers>
+          <Providers>
+            <Container>{children}</Container>
+          </Providers>
         </AuthContextProvider>
-
       </body>
     </html>
   );
