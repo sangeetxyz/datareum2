@@ -20,6 +20,7 @@ import {
   handleProfileUpdateOnDash,
 } from "@/utils/helper/handlers";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 const ProfileSection = (props: { userData: userData; refresher: () => {} }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -49,9 +50,11 @@ const ProfileSection = (props: { userData: userData; refresher: () => {} }) => {
       <div className="grid grid-cols-8 rounded-xl outline outline-2 outline-stone-700">
         <div className="col-span-8 flex justify-center rounded-xl bg-stone-800 bg-opacity-30 p-4 backdrop-blur-md md:col-span-3 md:rounded-r-none">
           <div className="relative flex items-center">
-            <img
+            <Image
               src={profilePhotoUrl}
-              alt=""
+              alt="profile_photo"
+              height={500}
+              width={500}
               className="h-72 w-72 rounded-full border-2 border-stone-100 bg-stone-950 object-cover md:h-64 md:w-64 lg:h-72 lg:w-72"
             />
             <div
