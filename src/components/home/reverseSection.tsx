@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
 const ReverseSection = () => {
   const mainDivRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: mainDivYProgess } = useScroll({
@@ -12,23 +13,23 @@ const ReverseSection = () => {
   const itemList = [
     {
       id: 1,
-      path: "",
-      text: "You got data?",
+      path: "/privacy.jpg",
+      text: "privacy?",
     },
     {
       id: 2,
-      path: "",
-      text: "We need it!",
+      path: "/research.jpg",
+      text: "research?",
     },
     {
       id: 3,
-      path: "",
-      text: "You need data?",
+      path: "/safety.jpg",
+      text: "safety?",
     },
     {
       id: 4,
-      path: "",
-      text: "We got it!",
+      path: "/data.jpg",
+      text: "datareum.",
     },
   ];
   return (
@@ -38,28 +39,21 @@ const ReverseSection = () => {
           <div className="relative flex h-full w-full overflow-hidden rounded-2xl outline  outline-1 outline-acc">
             <motion.div
               style={{ x: mainDivTrans }}
-              className="flex h-full w-full"
+              className="relative flex h-full w-full"
             >
-              <img
-                src="./reverse/world.png"
-                alt=""
-                className="h-full w-full shrink-0 object-cover opacity-50"
-              />
-              <img
-                src="./reverse/cctv.png"
-                alt=""
-                className="h-full w-full shrink-0 object-cover opacity-50"
-              />
-              <motion.img
-                src="./reverse/world.png"
-                alt=""
-                className="h-full w-full shrink-0 object-cover opacity-50"
-              />
-              <motion.img
-                src="./reverse/world.png"
-                alt=""
-                className="h-full w-full shrink-0 object-cover opacity-50"
-              />
+              {itemList.map((item) => {
+                return (
+                  <Image
+                    key={item.id}
+                    className="h-full w-full shrink-0 object-cover opacity-50"
+                    height={1000}
+                    width={1000}
+                    // quality={1}
+                    alt={item.text}
+                    src={`/reverse${item.path}`}
+                  />
+                );
+              })}
             </motion.div>
             <motion.div
               style={{
@@ -67,14 +61,19 @@ const ReverseSection = () => {
               }}
               className="absolute left-0 top-0 flex h-full w-full items-center justify-end text-9xl text-acc"
             >
-              <div className="w-full shrink-0 text-center font-bold">one</div>
-              <div className="w-full shrink-0 text-center font-bold">You!</div>
-              <div className="w-full shrink-0 text-center font-bold">
-                Privacy is everything
-              </div>
-              <div className="w-full shrink-0 text-center font-bold">
-                In this world
-              </div>
+              {itemList
+                .slice()
+                .reverse()
+                .map((item) => {
+                  return (
+                    <div
+                      key={item.id}
+                      className="w-full shrink-0 text-center font-bold capitalize"
+                    >
+                      {item.text}
+                    </div>
+                  );
+                })}
             </motion.div>
           </div>
         </div>
