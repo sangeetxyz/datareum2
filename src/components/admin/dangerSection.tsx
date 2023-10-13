@@ -13,7 +13,7 @@ export const DangerSection = ({ refresher }: { refresher: () => {} }) => {
       <div className="mb-4 w-full space-y-4 rounded-xl border border-red-500 bg-stone-800 bg-opacity-70 p-4 backdrop-blur-md">
         <div className="flex flex-col items-start justify-between space-y-4 md:flex-row md:items-center md:space-y-0">
           <div className="flex flex-col">
-            <div className="text-2xl font-bold capitalize">
+            <div className="text-2xl w-full font-bold capitalize">
               database storage:
             </div>
             <div>Delete every patient data stored in the database</div>
