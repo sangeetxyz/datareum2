@@ -3,10 +3,12 @@ const faker = require("faker");
 
 const medicalDataFieldsPrivate = [
   {
-    name: "dateOfBirth",
-    dataType: "string",
-    description: "Date of birth of the patient.",
-    constraints: "Valid date string format",
+    name: "age",
+    dataType: "number",
+    description: "Hemoglobin count in Years.",
+    constraints: "Value between 0 and 200",
+    minValue: 0, 
+    maxValue: 200, 
   },
   {
     name: "disease",
@@ -392,77 +394,70 @@ const medicalDataFieldsPrivate = [
     maxValue: 200, // Maximum QRS duration value
   },
 ];
-function getRandomNumberOrEmptyString() {
-  const randomNumber = Math.random();
-  if (randomNumber < 0.5) {
-    return faker.random.number();
-  } else {
-    return "";
-  }
-}
-const generateRandomData = (errorPercentage) => {
-  const rowData = {};
-  medicalDataFieldsPrivate.forEach((field) => {
-    const { name, dataType, minValue, maxValue, customFunction } = field;
 
-    // Determine if there should be an error in this field
-    const hasError = Math.random() * 100 < errorPercentage;
+const numRows = 100; // Number of rows to generate
 
-    if (hasError || errorPercentage === 100) {
-      // Generate an error by choosing random data type and always incorrect value
-      switch (dataType) {
-        case "string":
-          rowData[name] = getRandomNumberOrEmptyString(); // Empty string as an incorrect value
-          break;
-        case "number":
-          rowData[name] = faker.random.word(); // Always generate incorrect data type
-          break;
-        default:
-          rowData[name] = null; // Incorrect column name
-      }
-    } else {
-      // Generate correct data using custom function if available
-      if (customFunction) {
-        rowData[name] = customFunction();
-      } else {
-        // Generate correct data based on data type
-        switch (dataType) {
-          case "string":
-            rowData[name] = faker.lorem.word();
-            break;
-          case "number":
-            if (minValue !== undefined && maxValue !== undefined) {
-              rowData[name] = faker.random.number({
-                min: minValue,
-                max: maxValue,
-              });
-            }
-            break;
-          default:
-            rowData[name] = null;
-        }
-      }
-    }
-  });
-  return rowData;
-};
+const realDiseases = [
+  "Hypertension",
+  "Diabetes",
+  "Asthma",
+  "Arthritis",
+  "Cancer",
+  "Alzheimer",
+  "Heart Disease",
+  "Stroke",
+  "Parkinson",
+  "Sclerosis",
+];
 
-// Set the error percentage (e.g., 100%)
-const errorPercentage = 1;
-
-// Generate rows with error percentage
-const rows = Array.from({ length: 200 }, () =>
-  generateRandomData(errorPercentage),
-);
-
+// Create a CSV writer
 const csvWriter = createObjectCsvWriter({
-  path: "csvs/error_data.csv",
+  path: "csvs/medical_data.csv",
   header: medicalDataFieldsPrivate.map((field) => ({
     id: field.name,
     title: field.name,
   })),
 });
+
+// Helper function to generate fake data based on field type and constraints
+function generateFakeData(field) {
+  switch (field.dataType) {
+    case "string":
+      if (field.name === "gender") {
+        return faker.random.arrayElement(["Male", "Female", "Other"]);
+      } else if (field.name === "rhFactor") {
+        return faker.random.arrayElement(["Positive", "Negative"]);
+      } else if (field.name === "bloodGroup") {
+        return faker.random.arrayElement(["A", "B", "AB", "O"]);
+      }
+      return faker.lorem.word();
+    case "number":
+      return faker.random
+        .number({
+          min: field.minValue,
+          max: field.maxValue,
+        })
+        .toFixed(2);
+    default:
+      return "";
+  }
+}
+
+// Generate fake data for each row
+const data = [];
+for (let i = 0; i < numRows; i++) {
+  const rowData = {};
+  for (const field of medicalDataFieldsPrivate) {
+    if (field.name === "disease") {
+      rowData[field.name] = faker.random.arrayElement(realDiseases);
+    } else {
+      rowData[field.name] = generateFakeData(field);
+    }
+  }
+  data.push(rowData);
+}
+// Write the data to a CSV file
 csvWriter
-  .writeRecords(rows)
-  .then(() => console.log("CSV file has been written successfully"))
-  .catch((error) => console.error("Error writing CSV file:", error));
+  .writeRecords(data)
+  .then(() => console.log("CSV file created with fake medical data."))
+  .catch((error) => console.error("Error writing to CSV:", error));

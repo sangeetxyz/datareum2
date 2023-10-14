@@ -8,10 +8,12 @@ const medicalDataFields: {
   constraints?: string;
 }[] = [
   {
-    name: "dateOfBirth",
-    dataType: "string",
-    description: "Date of birth of the patient.",
-    constraints: "Valid date string format",
+    name: "age",
+    dataType: "number",
+    description: "Hemoglobin count in Years.",
+    constraints: "Value between 0 and 200",
+    minValue: 0,
+    maxValue: 200,
   },
   {
     name: "disease",
