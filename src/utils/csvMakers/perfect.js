@@ -5,10 +5,10 @@ const medicalDataFieldsPrivate = [
   {
     name: "age",
     dataType: "number",
-    description: "Hemoglobin count in Years.",
+    description: "Age count in Years.",
     constraints: "Value between 0 and 200",
-    minValue: 0, 
-    maxValue: 200, 
+    minValue: 0,
+    maxValue: 200,
   },
   {
     name: "disease",
