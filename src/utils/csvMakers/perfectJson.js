@@ -6,7 +6,7 @@ const medicalDataFieldsPrivate = [
     dataType: "number",
     description: "Age count in Years.",
     constraints: "Value between 0 and 200",
-    minValue: 0,
+    minValue: 1,
     maxValue: 100,
   },
   {

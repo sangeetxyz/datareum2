@@ -57,7 +57,10 @@ export function filterDiseaseData(
   data: DiseaseInfo[],
   disease: string,
 ): DiseaseAnalytics[] | null {
-  const diseaseInfo = data.find((item) => item.disease === disease);
+  const lowerCaseDisease = disease.toLowerCase();
+  const diseaseInfo = data.find(
+    (item) => item.disease.toLowerCase() === lowerCaseDisease,
+  );
 
   if (diseaseInfo) {
     return diseaseInfo.analytics;
