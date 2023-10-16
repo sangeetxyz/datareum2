@@ -8,7 +8,7 @@ import Toaster from "@/components/containers/Toaster";
 import Container from "@/components/containers/container";
 import Se from "@/components/home/se";
 import ReverseSection from "@/components/home/reverseSection";
-import FeatureSection from "@/components/home/featureSection";
+import FeatureSection from "@/components/home/featureSection/featureSection";
 import BrandSection from "@/components/home/brandSection";
 import Three from "@/components/home/threeSection";
 import { scroller } from "@/utils/helper/helpers";
