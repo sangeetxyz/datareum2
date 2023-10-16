@@ -14,22 +14,22 @@ const ReverseSection = () => {
     {
       id: 1,
       path: "/privacy.jpg",
-      text: "privacy?",
+      text: "privacy.",
     },
     {
       id: 2,
       path: "/research.jpg",
-      text: "research?",
+      text: "research.",
     },
     {
       id: 3,
       path: "/safety.jpg",
-      text: "safety?",
+      text: "safety.",
     },
     {
       id: 4,
       path: "/data.jpg",
-      text: "datareum.",
+      text: "analytics.",
     },
   ];
   return (
