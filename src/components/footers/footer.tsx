@@ -1,11 +1,22 @@
+import { cursorVariant } from "@/jotai/atom";
+import { useAtom } from "jotai";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FaEthereum } from "react-icons/fa";
 
 const Footer = () => {
   const router = useRouter();
+  const [variant, setVariant] = useAtom(cursorVariant);
   return (
-    <div className="flex w-full justify-center bg-stone-950 py-4">
+    <div
+      onMouseEnter={() => {
+        setVariant("hide");
+      }}
+      onMouseLeave={() => {
+        setVariant("default");
+      }}
+      className="flex w-full cursor-default justify-center bg-stone-950 py-4"
+    >
       <div className="flex w-full max-w-6xl flex-col items-center p-4">
         <div className="mx-4 flex shrink flex-col items-center justify-between space-y-4 rounded-xl px-4 py-4 sm:bg-acc md:w-full md:flex-row md:space-y-0 md:rounded-full">
           <div className="px-4 text-xl font-bold text-acc sm:text-stone-950">
