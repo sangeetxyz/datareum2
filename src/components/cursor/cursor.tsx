@@ -28,7 +28,7 @@ const Cursor = () => {
       borderRadius: `9999px`,
       height: 300,
       width: 300,
-      backgroundColor: "#facc15",
+      backgroundColor: "#facc50",
       mixBlendMode: "difference",
     },
     text: {

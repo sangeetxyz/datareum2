@@ -68,20 +68,13 @@ const AdminPanel = () => {
 
   useEffect(() => {
     valueSetter();
-    setTimeout(valueSetter, 3000);
+    setTimeout(valueSetter, 5000);
+    setTimeout(valueSetter, 10000);
+    setTimeout(valueSetter, 15000);
   }, []);
 
   return !userData ? (
-    <div>
-      <Spinner />
-      <div
-        onClick={() => {
-          unSigner();
-        }}
-      >
-        signout
-      </div>
-    </div>
+    <Spinner />
   ) : !userData.isGod ? (
     <div className="flex h-screen items-center justify-center bg-zinc-950">
       <div className="flex flex-col items-center justify-center text-zinc-50">

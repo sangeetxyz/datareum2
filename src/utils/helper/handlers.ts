@@ -626,7 +626,10 @@ export const handleDeleteBcAll = async (
   event.stopPropagation();
   const awaiter = async () => {
     await contract.deleteAllData();
-    setTimeout(refresher, 3000);
+    setTimeout(refresher, 5000);
+    setTimeout(refresher, 10000);
+    setTimeout(refresher, 15000);
+
   };
   next(false);
   toast.promise(

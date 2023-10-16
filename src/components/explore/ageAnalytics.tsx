@@ -13,6 +13,7 @@ import {
 import SmallSpinner from "@/components/loaders/smallSpinner";
 
 export const AgeAnalytics = ({ data }: { data: {}[] | null }) => {
+  console.log(data)
   const CustomTooltip = ({
     active,
     payload,

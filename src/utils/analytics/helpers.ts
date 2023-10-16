@@ -56,7 +56,7 @@ export function filterDiseaseData(
   );
 
   if (diseaseInfo) {
-    return diseaseInfo.analytics;
+    return diseaseInfo.analytics.slice().sort((a, b) => a.age - b.age);
   } else {
     return null;
   }

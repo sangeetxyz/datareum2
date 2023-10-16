@@ -42,11 +42,11 @@ export const DiseaseSelector = ({ diseaseList }: { diseaseList: string[] }) => {
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px]  p-0">
+      <PopoverContent className="max-h-96 w-[200px] p-0">
         <Command>
           <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup className="max-h-96">
+          <CommandEmpty>No diseases found.</CommandEmpty>
+          <CommandGroup>
             {diseaseList.map((disease, index) => (
               <CommandItem
                 key={index}
