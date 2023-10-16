@@ -7,8 +7,8 @@ const medicalDataFieldsPrivate = [
     dataType: "number",
     description: "Age count in Years.",
     constraints: "Value between 0 and 200",
-    minValue: 0,
-    maxValue: 200,
+    minValue: 1,
+    maxValue: 100,
   },
   {
     name: "disease",
@@ -395,7 +395,7 @@ const medicalDataFieldsPrivate = [
   },
 ];
 
-const numRows = 100; // Number of rows to generate
+const numRows = 600; // Number of rows to generate
 
 const realDiseases = [
   "Hypertension",
@@ -412,7 +412,7 @@ const realDiseases = [
 
 // Create a CSV writer
 const csvWriter = createObjectCsvWriter({
-  path: "csvs/medical_data.csv",
+  path: "csvs/perfect.csv",
   header: medicalDataFieldsPrivate.map((field) => ({
     id: field.name,
     title: field.name,
@@ -432,7 +432,7 @@ function generateFakeData(field) {
       }
       return faker.lorem.word();
     case "number":
-      return faker.random
+      return faker.datatype
         .number({
           min: field.minValue,
           max: field.maxValue,

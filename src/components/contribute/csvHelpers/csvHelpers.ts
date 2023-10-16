@@ -47,7 +47,7 @@ export const isInvalidString = (value: string): boolean => {
 };
 
 export const isInvalidNumber = (value: string): boolean => {
-  return !/^\d+$/.test(value);
+ return !/^[+-]?\d+(\.\d+)?$/.test(value);
 };
 
 export const processCsvData = (csvData: object[]): object[] => {

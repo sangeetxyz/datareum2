@@ -1,8 +1,3 @@
-interface PatientData {
-  age: number;
-  disease: string;
-}
-
 interface DiseaseAnalytics {
   age: number;
   count: number;
@@ -13,44 +8,42 @@ interface DiseaseInfo {
   analytics: DiseaseAnalytics[];
 }
 
-export function processData(inputData: PatientData[]): DiseaseInfo[] {
+export function processData(inputData: any[]): DiseaseInfo[] {
   const diseaseData: { [disease: string]: DiseaseInfo } = {};
 
   for (const patient of inputData) {
     const { disease, age } = patient;
 
-    if (!diseaseData[disease]) {
-      diseaseData[disease] = {
-        disease,
-        analytics: [],
-      };
-    }
+    if (disease !== undefined) {
+      if (!diseaseData[disease]) {
+        diseaseData[disease] = {
+          disease,
+          analytics: [],
+        };
+      }
 
-    const analyticsObject = diseaseData[disease].analytics.find(
-      (item) => item.age === age,
-    );
+      const analyticsObject = diseaseData[disease].analytics.find(
+        (item) => item.age === age,
+      );
 
-    if (analyticsObject) {
-      analyticsObject.count += 1;
-    } else {
-      diseaseData[disease].analytics.push({
-        age,
-        count: 1,
-      });
+      if (analyticsObject) {
+        analyticsObject.count += 1;
+      } else {
+        diseaseData[disease].analytics.push({
+          age,
+          count: 1,
+        });
+      }
     }
   }
-
-  const result = Object.values(diseaseData);
-
-  result.forEach((entry) => {
-    entry.analytics.sort((a, b) => a.age - b.age);
-  });
-
+  const result: DiseaseInfo[] = Object.values(diseaseData);
   return result;
 }
 
 export function extractDiseases(data: DiseaseInfo[]): string[] {
-  return data.map((diseaseInfo) => diseaseInfo.disease);
+  return data
+    .map((diseaseInfo) => diseaseInfo.disease)
+    .filter((disease) => disease); // Filters out empty or falsy values
 }
 
 export function filterDiseaseData(

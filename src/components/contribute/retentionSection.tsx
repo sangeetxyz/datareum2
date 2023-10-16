@@ -12,7 +12,6 @@ import {
 } from "recharts";
 import React, { useEffect, useState } from "react";
 import SmallSpinner from "../loaders/smallSpinner";
-import LoadingText from "../loaders/loadingText";
 
 export const RetentionSection = ({
   rawStats,
@@ -147,7 +146,7 @@ export const RetentionSection = ({
             </BarChart>
           </ResponsiveContainer>
         ) : (
-          <LoadingText />
+          <SmallSpinner />
         )}
       </div>
     </>

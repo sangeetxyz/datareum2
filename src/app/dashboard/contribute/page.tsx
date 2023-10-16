@@ -70,6 +70,7 @@ const Contribute = () => {
             setRawStats(rawAnalytics);
             if (typeof data === "object") {
               const processed = processCsvData(data);
+              console.log(processed);
               setParsedData(processed);
               const parsedAnalytics = analyzeObjectList(processed);
               setParsedStats(parsedAnalytics);
@@ -93,16 +94,7 @@ const Contribute = () => {
   }, [user, isLoading]);
 
   return !userData ? (
-    <div>
-      <Spinner />
-      <div
-        onClick={() => {
-          unSigner();
-        }}
-      >
-        signout
-      </div>
-    </div>
+    <Spinner />
   ) : !userData.canContribute ? (
     <div className="flex h-screen items-center justify-center bg-zinc-950">
       <div className="flex flex-col items-center justify-center text-zinc-50">

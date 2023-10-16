@@ -8,10 +8,6 @@ export const mobileItems = [
     link: "/docs",
   },
   {
-    title: "explore stats",
-    link: "/explore",
-  },
-  {
     title: "privacy policy",
     link: "/privacy",
   },
@@ -25,10 +21,6 @@ export const pcItems = [
   {
     title: "docs",
     link: "/docs",
-  },
-  {
-    title: "explore",
-    link: "/explore",
   },
   {
     title: "privacy",

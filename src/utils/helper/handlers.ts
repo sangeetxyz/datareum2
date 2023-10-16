@@ -551,13 +551,20 @@ export const getPatientsDataFromDb = async () => {
 //   console.log("done");
 // };
 
-export const handlePatientUploadToBc = async (data: PatientBC[]) => {
-  const status = await contract.status();
-  console.log(status);
-  const identifiers = data.map((obj) => obj.identifier);
-  const secretKeys = data.map((obj) => obj.secretKey);
-  await contract.addDataBatch(identifiers, secretKeys);
-  console.log("done");
+export const handlePatientUploadToBc = async (
+  data: PatientBC[],
+): Promise<boolean> => {
+  try {
+    const status = await contract.status();
+    console.log(status);
+    const identifiers = data.map((obj) => obj.identifier);
+    const secretKeys = data.map((obj) => obj.secretKey);
+    await contract.addDataBatch(identifiers, secretKeys);
+    return true;
+  } catch (error: any) {
+    console.log(error.message);
+    return false;
+  }
 };
 
 export const getPatientsDataFromBc = async () => {

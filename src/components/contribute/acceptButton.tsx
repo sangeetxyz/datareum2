@@ -106,11 +106,27 @@ export const AcceptButton = ({
                     const p3 = objectSplitter(p2);
                     const p4 = objectUserDataMixer(p3.forDb, userData.phone);
 
-                    await handlePatientUploadToDb(p4);
-                    await handlePatientUploadToBc(p3.forBc);
+                    const resFromDb = await handlePatientUploadToBc(p3.forBc);
+                    if (resFromDb) {
+                      await handlePatientUploadToDb(p4);
+                      setIsUploading(false);
+                      router.back();
+                    } else {
+                      toast.error("Data overloaded!", {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        pauseOnFocusLoss: false,
+                        theme: "dark",
+                      });
+                      setIsUploading(false);
+                      throw new Error("Data overloaded");
+                    }
 
-                    setIsUploading(false);
-                    router.back();
                     // setTimeout(router.back, 3000);
                   };
                   toast.promise(

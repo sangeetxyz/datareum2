@@ -395,7 +395,7 @@ const medicalDataFieldsPrivate = [
 function getRandomNumberOrEmptyString() {
   const randomNumber = Math.random();
   if (randomNumber < 0.5) {
-    return faker.random.number();
+    return faker.datatype.number();
   } else {
     return "";
   }
@@ -432,7 +432,7 @@ const generateRandomData = (errorPercentage) => {
             break;
           case "number":
             if (minValue !== undefined && maxValue !== undefined) {
-              rowData[name] = faker.random.number({
+              rowData[name] = faker.datatype.number({
                 min: minValue,
                 max: maxValue,
               });
@@ -448,10 +448,10 @@ const generateRandomData = (errorPercentage) => {
 };
 
 // Set the error percentage (e.g., 100%)
-const errorPercentage = 1;
+const errorPercentage = 50;
 
 // Generate rows with error percentage
-const rows = Array.from({ length: 200 }, () =>
+const rows = Array.from({ length: 1000 }, () =>
   generateRandomData(errorPercentage),
 );
 

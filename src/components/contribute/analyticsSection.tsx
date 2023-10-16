@@ -7,11 +7,9 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { calculateColumnCounts } from "@/components/contribute/csvHelpers/csvHelpers";
 import SmallSpinner from "../loaders/smallSpinner";
-import { set } from "zod";
-import LoadingText from "../loaders/loadingText";
 
 export const AnalyticsSection = ({
   rawData,
@@ -126,7 +124,7 @@ export const AnalyticsSection = ({
             </AreaChart>
           </ResponsiveContainer>
         ) : (
-          <LoadingText />
+          <SmallSpinner />
         )}
       </div>
     </>

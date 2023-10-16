@@ -40,6 +40,13 @@ const DashHeader = () => {
                 whileTap={{ scale: 0.9 }}
                 className="cursor-pointer text-stone-100"
                 key={index}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  if (item.link === "unsigner") {
+                    unSigner();
+                  }
+                  router.push(item.link);
+                }}
               >
                 {item.title}
               </motion.div>

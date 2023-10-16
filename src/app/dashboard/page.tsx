@@ -5,17 +5,12 @@ import { getDashUserData } from "@/utils/helper/helpers";
 import { userData } from "@/types/types";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import CatLoader from "@/components/loaders/catLoader";
 import { ApiSection } from "@/components/dash/apiSection";
-import waves from "../../../public/waves.png";
 import ProfileSection from "@/components/dash/profileSection";
 import DashHeader from "@/components/headers/dashHeader";
-import { unSigner } from "@/firebase/firebase";
 import God from "@/components/dash/godSection";
-import Container from "@/components/containers/container";
 import { ContributionSection } from "@/components/dash/contributionSection";
 import Spinner from "@/components/loaders/spinner";
-import HomeHeader from "@/components/headers/homeHeader";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -41,19 +36,8 @@ const Dashboard = () => {
   }, [user, isLoading]);
 
   return !userData ? (
-    <div>
-      <Spinner />
-      <div
-        onClick={() => {
-          unSigner();
-        }}
-      >
-        signout
-      </div>
-    </div>
+    <Spinner />
   ) : (
-    // <CatLoader/>
-
     <div className="relative min-h-screen bg-stone-950 from-stone-950 via-stone-900 to-stone-950">
       {/* <div className="absolute left-0 top-0 -z-10 h-full w-full bg-black">
           <img

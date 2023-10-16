@@ -3,7 +3,6 @@
 import { BsFillExclamationDiamondFill } from "react-icons/bs";
 import { TiTick } from "react-icons/ti";
 import SmallSpinner from "../loaders/smallSpinner";
-import LoadingText from "../loaders/loadingText";
 
 export const FeedbackSection = ({
   rawStats,
@@ -24,7 +23,7 @@ export const FeedbackSection = ({
     <>
       <div className="mb-4 mt-8 text-xl uppercase">feedback</div>
       <div className="flex w-full flex-col space-y-4 rounded-xl bg-stone-900 bg-opacity-30 p-4 outline outline-2 outline-stone-700 backdrop-blur-md">
-        {!rawStats || !parsedStats ? <LoadingText /> : <></>}
+        {!rawStats || !parsedStats ? <SmallSpinner /> : <></>}
         {rawStats?.shortestObjectLength === parsedStats?.shortestObjectLength &&
         parsedStats?.shortestObjectLength &&
         parsedStats.objectCount > 0 ? (

@@ -1,9 +1,9 @@
 import React from "react";
-import HashLoader from "react-spinners/HashLoader";
+import PuffLoader from "react-spinners/PuffLoader";
 const SmallSpinner = () => {
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <HashLoader
+      <PuffLoader
         color={"#facc15"}
         loading={true}
         size={30}
