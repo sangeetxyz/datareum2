@@ -3,6 +3,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useAtom } from "jotai";
 import { cursorVariant } from "@/jotai/atom";
+import { reverseItemList } from "@/utils/helper/listHolders";
 const ReverseSection = () => {
   const mainDivRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: mainDivYProgess } = useScroll({
@@ -12,28 +13,7 @@ const ReverseSection = () => {
   const spring = useSpring(mainDivYProgess);
   const mainDivTrans = useTransform(mainDivYProgess, [0, 1], ["0%", "-300%"]);
   const mainDivTrans2 = useTransform(mainDivYProgess, [0, 1], ["0%", "300%"]);
-  const itemList = [
-    {
-      id: 1,
-      path: "/privacy.jpg",
-      text: "privacy.",
-    },
-    {
-      id: 2,
-      path: "/research.jpg",
-      text: "research.",
-    },
-    {
-      id: 3,
-      path: "/safety.jpg",
-      text: "safety.",
-    },
-    {
-      id: 4,
-      path: "/data.jpg",
-      text: "analytics.",
-    },
-  ];
+  
   const [variant, setVariant] = useAtom(cursorVariant);
 
   return (
@@ -53,7 +33,7 @@ const ReverseSection = () => {
               style={{ x: mainDivTrans }}
               className="relative flex h-full w-full"
             >
-              {itemList.map((item) => {
+              {reverseItemList.map((item) => {
                 return (
                   <Image
                     key={item.id}
@@ -74,7 +54,7 @@ const ReverseSection = () => {
               }}
               className="absolute left-0 top-0 flex h-full w-full items-center justify-end"
             >
-              {itemList
+              {reverseItemList
                 .slice()
                 .reverse()
                 .map((item) => {

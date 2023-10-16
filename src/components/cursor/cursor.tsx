@@ -30,9 +30,6 @@ const Cursor = () => {
       width: 300,
       backgroundColor: "#facc15",
       mixBlendMode: "difference",
-      transition: {
-        // duration: 0.5,s
-      },
     },
     text: {
       x: cursor.x - 20,
@@ -71,6 +68,15 @@ const Cursor = () => {
       mixBlendMode: "difference",
       color: "black",
     },
+    features: {
+      x: cursor.x - 50,
+      y: cursor.y - 50,
+      display: `flex`,
+      height: 100,
+      width: 100,
+      backgroundColor: "transparent",
+      color: "#facc15",
+    },
     hide: {
       opacity: "0%",
     },
@@ -105,6 +111,16 @@ const Cursor = () => {
         >
           <div className="text-center text-sm font-bold capitalize">
             <HiOutlineCursorClick size={40} />
+          </div>
+        </motion.div>
+      ) : variant === "features" ? (
+        <motion.div
+          variants={cursorVariants}
+          animate={variant}
+          className="pointer-events-none fixed left-0 top-0 z-50 flex items-center justify-center outline outline-2 outline-stone-100 md:block"
+        >
+          <div className="whitespace-nowrap text-sm font-bold capitalize">
+            features
           </div>
         </motion.div>
       ) : (

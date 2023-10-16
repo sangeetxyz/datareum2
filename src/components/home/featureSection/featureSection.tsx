@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useAtom } from "jotai";
 import { cursorVariant, keyHolder } from "@/jotai/atom";
 import { LeftItem } from "./leftItem";
@@ -16,7 +16,15 @@ const FeatureSection = () => {
     >
       <div className="flex h-full w-full max-w-6xl">
         {/* left */}
-        <div className="flex h-full w-full flex-col items-center space-y-10 bg-gradient-to-b from-stone-900 to-stone-950 px-[5vw] py-10 lg:justify-between lg:space-y-0 lg:px-8 lg:py-[50vh]">
+        <div
+          onMouseEnter={() => {
+            setVariant("features");
+          }}
+          onMouseLeave={() => {
+            setVariant("default");
+          }}
+          className="flex h-full w-full flex-col items-center space-y-10 bg-gradient-to-b from-stone-900 to-stone-950 px-[5vw] py-10 lg:justify-between lg:space-y-0 lg:px-8 lg:py-[50vh]"
+        >
           {rightItemsList.map((el) => {
             return (
               <LeftItem
