@@ -11,9 +11,8 @@ import Introduction from "@/components/docs/introduction";
 import ApiRefs from "@/components/docs/apiRefs";
 import Database from "@/components/docs/database";
 
-
 const Docs = () => {
-  const [currentTab, setCurrentTab] = useState(2);
+  const [currentTab, setCurrentTab] = useState(1);
   const tabList = [
     {
       id: 1,
