@@ -1,3 +1,4 @@
+import { cursorVariant } from "@/jotai/atom";
 import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import {
@@ -7,6 +8,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import { useAtom } from "jotai";
 import React, { lazy, useEffect, useRef } from "react";
 
 const ModelComponent = lazy(() => import("../three/model"));
@@ -16,6 +18,8 @@ const Three = () => {
     target: mainDivRef,
     offset: ["0 0", "1 1"],
   });
+  const [variant, setVariant] = useAtom(cursorVariant);
+
   const threeZoom = useTransform(scrollYProgress, [0, 1], [10, 200]);
   const textOneOpa = useTransform(scrollYProgress, [0, 0.1, 0.2], [0, 1, 0]);
   const textOneSca = useTransform(scrollYProgress, [0, 0.1, 0.2], [0, 1, 10]);
@@ -39,12 +43,10 @@ const Three = () => {
   );
   const textFiveOpa = useTransform(scrollYProgress, [0.8, 0.9, 1], [0, 1, 0]);
   const textFiveSca = useTransform(scrollYProgress, [0.8, 0.9, 1], [0, 1, 10]);
-
   const mouse = {
     x: useSpring(useMotionValue(0), { damping: 30 }),
     y: useSpring(useMotionValue(0), { damping: 30 }),
   };
-  
   const handleMouseMove = (event: MouseEvent) => {
     const { innerHeight, innerWidth } = window;
     const { clientX, clientY } = event;
@@ -53,14 +55,55 @@ const Three = () => {
     mouse.x.set(x);
     mouse.y.set(y);
   };
+
+  const threeItemList = [
+    {
+      id: 1,
+      text: "this",
+      scale: textOneSca,
+      opacity: textOneOpa,
+    },
+    {
+      id: 2,
+      text: "is",
+      scale: textTwoSca,
+      opacity: textTwoOpa,
+    },
+    {
+      id: 3,
+      text: "the",
+      scale: textThreeSca,
+      opacity: textThreeOpa,
+    },
+    {
+      id: 4,
+      text: "new",
+      scale: textFourSca,
+      opacity: textFourOpa,
+    },
+    {
+      id: 5,
+      text: "world",
+      scale: textFiveSca,
+      opacity: textFiveOpa,
+    },
+  ];
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
-  const t = ["this", "is", "the", "blockchain"];
+
   return (
     <div ref={mainDivRef} className="h-[500vh] bg-red-950">
-      <div className="sticky top-0 h-screen bg-stone-950">
+      <div
+        onMouseEnter={() => {
+          setVariant("three");
+        }}
+        onMouseLeave={() => {
+          setVariant("default");
+        }}
+        className="sticky top-0 h-screen bg-stone-950"
+      >
         <Canvas>
           <ambientLight intensity={100} />
           <directionalLight
@@ -73,51 +116,19 @@ const Three = () => {
           <ModelComponent mouse={mouse} zoom={threeZoom} />
         </Canvas>
         <div className="absolute left-0 top-0 -mt-20 flex h-full w-full flex-col items-center justify-center overflow-hidden bg-stone-950 bg-opacity-20 text-9xl capitalize">
-          <motion.div
-            style={{
-              opacity: textOneOpa,
-              scale: textOneSca,
-            }}
-            className="absolute top-1/2 w-full text-center"
-          >
-            this
-          </motion.div>
-          <motion.div
-            style={{
-              opacity: textTwoOpa,
-              scale: textTwoSca,
-            }}
-            className="absolute top-1/2 w-full text-center"
-          >
-            is
-          </motion.div>
-          <motion.div
-            style={{
-              opacity: textThreeOpa,
-              scale: textThreeSca,
-            }}
-            className="absolute top-1/2 w-full text-center"
-          >
-            the
-          </motion.div>
-          <motion.div
-            style={{
-              opacity: textFourOpa,
-              scale: textFourSca,
-            }}
-            className="absolute top-1/2 w-full text-center"
-          >
-            new
-          </motion.div>
-          <motion.div
-            style={{
-              opacity: textFiveOpa,
-              scale: textFiveSca,
-            }}
-            className="absolute top-1/2 w-full text-center"
-          >
-            WEB3
-          </motion.div>
+          {threeItemList.map((item) => {
+            return (
+              <motion.div
+                style={{
+                  opacity: item.opacity,
+                  scale: item.scale,
+                }}
+                className="absolute top-1/2 w-full text-center"
+              >
+                {item.text}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </div>

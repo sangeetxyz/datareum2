@@ -77,6 +77,16 @@ const Cursor = () => {
       backgroundColor: "transparent",
       color: "#facc15",
     },
+    three: {
+      x: cursor.x - 50,
+      y: cursor.y - 50,
+      display: `flex`,
+      height: 100,
+      width: 100,
+      backgroundColor: "transparent",
+      color: "#facc15",
+      mixBlendMode: "difference",
+    },
     hide: {
       opacity: "0%",
     },
@@ -121,6 +131,16 @@ const Cursor = () => {
         >
           <div className="whitespace-nowrap text-sm font-bold capitalize">
             features
+          </div>
+        </motion.div>
+      ) : variant === "three" ? (
+        <motion.div
+          variants={cursorVariants}
+          animate={variant}
+          className="pointer-events-none fixed left-0 top-0 z-50 flex items-center justify-center outline outline-2 outline-stone-100 md:block"
+        >
+          <div className="whitespace-nowrap text-sm font-bold capitalize">
+            explore
           </div>
         </motion.div>
       ) : (
