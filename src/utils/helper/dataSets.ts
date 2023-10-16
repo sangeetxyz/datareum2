@@ -11,9 +11,9 @@ const medicalDataFields: {
     name: "age",
     dataType: "number",
     description: "Age count in Years.",
-    constraints: "Value between 0 and 200",
+    constraints: "Value between 0 and 100",
     minValue: 0,
-    maxValue: 200,
+    maxValue: 100,
   },
   {
     name: "disease",

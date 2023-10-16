@@ -1,25 +1,8 @@
 "use client";
 
-import { useAuth } from "@/context/context";
-import { getDashUserData } from "@/utils/helper/helpers";
 import { userData } from "@/types/types";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
-import CatLoader from "@/components/loaders/catLoader";
-import Papa from "papaparse";
-import waves from "../../../../public/waves.png";
-import { unSigner } from "@/firebase/firebase";
-import Container from "@/components/containers/container";
-import AdminHeader from "@/components/headers/adminHeader";
-import { IoCloudUpload } from "react-icons/io5";
-import {
-  analyzeObjectList,
-  processCsvData,
-} from "@/components/contribute/csvHelpers/csvHelpers";
-import { QuickStatsSection } from "@/components/contribute/quickStatsSection";
-import { AnalyticsSection } from "@/components/contribute/analyticsSection";
-import { RetentionSection } from "@/components/contribute/retentionSection";
-import { FeedbackSection } from "@/components/contribute/feedbackSection";
+import React, {  useState } from "react";
 import { motion } from "framer-motion";
 import {
   AlertDialog,
@@ -32,8 +15,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-
-import ThemeButton from "@/components/custom/themeButton";
 import {
   objectEncryptor,
   objectIdentificator,

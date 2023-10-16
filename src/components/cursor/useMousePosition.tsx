@@ -1,4 +1,4 @@
-import { MousePosition } from "@/types/types";
+
 import { useState, useEffect } from "react";
 
 const useMousePosition = (): {

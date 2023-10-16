@@ -123,8 +123,6 @@ const HeroSection = () => {
               <motion.div
                 whileHover={{
                   scale: 1.05,
-                  // backgroundColor: "#facc15",
-                  // color: "#000"
                 }}
                 whileTap={{
                   scale: 0.95,
@@ -134,6 +132,9 @@ const HeroSection = () => {
                 }}
                 onMouseLeave={() => {
                   setVariant("default");
+                }}
+                onClick={() => {
+                  router.push("/explore");
                 }}
                 className="hidden rounded-lg px-5 py-3 text-center font-bold uppercase text-stone-50 outline outline-2 outline-acc md:block"
               >
