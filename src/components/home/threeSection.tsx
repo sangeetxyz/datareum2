@@ -119,6 +119,7 @@ const Three = () => {
           {threeItemList.map((item) => {
             return (
               <motion.div
+                key={item.id}
                 style={{
                   opacity: item.opacity,
                   scale: item.scale,
