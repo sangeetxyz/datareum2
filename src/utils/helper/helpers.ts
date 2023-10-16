@@ -229,3 +229,8 @@ export const countObjectsWithNonInitialToken = (
 
   return count;
 };
+
+export const scroller = async () => {
+  const LocomotiveScroll = (await import("locomotive-scroll")).default;
+  new LocomotiveScroll();
+};

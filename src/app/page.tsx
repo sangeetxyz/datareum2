@@ -11,18 +11,15 @@ import ReverseSection from "@/components/home/reverseSection";
 import FeatureSection from "@/components/home/featureSection";
 import BrandSection from "@/components/home/brandSection";
 import Three from "@/components/home/threeSection";
+import { scroller } from "@/utils/helper/helpers";
 
 const Home = () => {
   useEffect(() => {
-    const scroller = async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      new LocomotiveScroll();
-    };
     scroller();
   }, []);
 
   return (
-    <div className="md:cursor-non">
+    <div className="cursor-none">
       <HomeHeader />
       <Cursor />
       <HeroSection />

@@ -103,6 +103,12 @@ const HeroSection = () => {
                 whileTap={{
                   scale: 0.95,
                 }}
+                onMouseEnter={() => {
+                  setVariant("button");
+                }}
+                onMouseLeave={() => {
+                  setVariant("default");
+                }}
                 onClick={() => {
                   if (user.user) {
                     router.push("/dashboard");
@@ -110,7 +116,7 @@ const HeroSection = () => {
                     router.push("/signin");
                   }
                 }}
-                className="cursor-pointer rounded-lg bg-acc px-5 py-3 text-center font-bold uppercase text-stone-950"
+                className="rounded-lg bg-acc px-5 py-3 text-center font-bold uppercase text-stone-950"
               >
                 get started
               </motion.div>
@@ -123,7 +129,13 @@ const HeroSection = () => {
                 whileTap={{
                   scale: 0.95,
                 }}
-                className="hidden cursor-pointer rounded-lg px-5 py-3 text-center font-bold uppercase text-stone-50 outline outline-2 outline-acc md:block"
+                onMouseEnter={() => {
+                  setVariant("button");
+                }}
+                onMouseLeave={() => {
+                  setVariant("default");
+                }}
+                className="hidden rounded-lg px-5 py-3 text-center font-bold uppercase text-stone-50 outline outline-2 outline-acc md:block"
               >
                 explore now
               </motion.div>

@@ -49,6 +49,7 @@ const ReverseSection = () => {
                     height={1000}
                     width={1000}
                     // quality={1}
+                    priority
                     alt={item.text}
                     src={`/reverse${item.path}`}
                   />
@@ -59,7 +60,7 @@ const ReverseSection = () => {
               style={{
                 x: mainDivTrans2,
               }}
-              className="absolute left-0 top-0 flex h-full w-full items-center justify-end text-9xl text-acc"
+              className="absolute left-0 top-0 flex h-full w-full items-center justify-end"
             >
               {itemList
                 .slice()
@@ -68,7 +69,7 @@ const ReverseSection = () => {
                   return (
                     <div
                       key={item.id}
-                      className="w-full shrink-0 text-center font-bold capitalize"
+                      className="w-full shrink-0 text-center text-5xl font-bold capitalize text-acc md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
                     >
                       {item.text}
                     </div>
