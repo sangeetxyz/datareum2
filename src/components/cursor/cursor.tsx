@@ -18,12 +18,10 @@ import { useRouter } from "next/navigation";
 import { BsBookHalf } from "react-icons/bs";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase/firebase";
+import useMousePosition from "./useMousePosition";
 
 const Cursor = (props: { variant: string }) => {
-  const [cursor, setCursor] = useState({
-    x: 0,
-    y: 0,
-  });
+  const cursor = useMousePosition();
   const cursorVariants: AnimationProps["variants"] = {
     default: {
       x: cursor.x - 8,
@@ -34,7 +32,7 @@ const Cursor = (props: { variant: string }) => {
       y: cursor.y - 150,
       height: 300,
       width: 300,
-      backgroundColor: "white",
+      backgroundColor: "#facc15",
       mixBlendMode: "difference",
       transition: {
         // duration: 0.5,
@@ -52,18 +50,6 @@ const Cursor = (props: { variant: string }) => {
       opacity: "0%",
     },
   };
-  const handleMouseMove = (event: MouseEvent) => {
-    setCursor({
-      x: event.clientX,
-      y: event.clientY,
-    });
-  };
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
   return (
     <motion.div
       variants={cursorVariants}

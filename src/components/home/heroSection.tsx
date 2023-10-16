@@ -114,6 +114,8 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
               <motion.div
                 whileHover={{
                   scale: 1.05,
+                  // backgroundColor: "#facc15",
+                  // color: "#000"
                 }}
                 whileTap={{
                   scale: 0.95,
