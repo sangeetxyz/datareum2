@@ -13,10 +13,6 @@ import BrandSection from "@/components/home/brandSection";
 import Three from "@/components/home/threeSection";
 
 const Home = () => {
-  const [variant, setVariant] = useState("default");
-  const variantCB = (data: string) => {
-    setVariant(data);
-  };
   useEffect(() => {
     const scroller = async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
@@ -27,9 +23,9 @@ const Home = () => {
 
   return (
     <div className="md:cursor-non">
-      <HomeHeader setVariant={variantCB} />
-      <Cursor variant={variant} />
-      <HeroSection setVariant={variantCB} />
+      <HomeHeader />
+      <Cursor />
+      <HeroSection />
       <ReverseSection />
       <BrandSection />
       <FeatureSection />

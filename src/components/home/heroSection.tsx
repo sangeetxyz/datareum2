@@ -17,14 +17,17 @@ import {
   TbBrandSupabase,
   TbBrandTailwind,
 } from "react-icons/tb";
+import { useAtom } from "jotai";
+import { cursorVariant } from "@/jotai/atom";
 const Inknut = Inknut_Antiqua({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
-const HeroSection = (props: { setVariant: (data: string) => void }) => {
+const HeroSection = () => {
   const user = useAuth();
   const router = useRouter();
+  const [variant, setVariant] = useAtom(cursorVariant);
   return (
     <div className="via-stone-95 relative flex h-screen w-full justify-center bg-stone-950 to-stone-900 pt-20 text-white xl:pt-10">
       <div className="absolute left-0 top-0 z-0 h-screen w-full bg-stone-950">
@@ -49,10 +52,10 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
                   Inknut.className,
                 )}
                 onMouseEnter={() => {
-                  props.setVariant("hero");
+                  setVariant("hero");
                 }}
                 onMouseLeave={() => {
-                  props.setVariant("default");
+                  setVariant("default");
                 }}
               >
                 Blockchain powered
@@ -63,10 +66,10 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
                   Inknut.className,
                 )}
                 onMouseEnter={() => {
-                  props.setVariant("hero");
+                  setVariant("hero");
                 }}
                 onMouseLeave={() => {
-                  props.setVariant("default");
+                  setVariant("default");
                 }}
               >
                 data exchange
@@ -77,10 +80,10 @@ const HeroSection = (props: { setVariant: (data: string) => void }) => {
                   Inknut.className,
                 )}
                 onMouseEnter={() => {
-                  props.setVariant("hero");
+                  setVariant("hero");
                 }}
                 onMouseLeave={() => {
-                  props.setVariant("default");
+                  setVariant("default");
                 }}
               >
                 for the healthcare

@@ -6,3 +6,5 @@ export const keyHolder = atom(1);
 export const allUserData = atom<userData[]>([]);
 
 export const currentDisease = atom<string>("");
+
+export const cursorVariant = atom<string>("default");

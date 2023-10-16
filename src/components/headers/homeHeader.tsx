@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { pcItems, mobileItems } from "@/utils/navBars/homeNav";
 const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
-const HomeHeader = ({ setVariant }: { setVariant: (data: string) => void }) => {
+const HomeHeader = () => {
   const router = useRouter();
   const { user } = useAuth();
   const [isNavOpened, setIsNavOpened] = useState(false);

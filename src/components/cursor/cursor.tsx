@@ -19,9 +19,12 @@ import { BsBookHalf } from "react-icons/bs";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase/firebase";
 import useMousePosition from "./useMousePosition";
+import { useAtom } from "jotai";
+import { cursorVariant } from "@/jotai/atom";
 
-const Cursor = (props: { variant: string }) => {
+const Cursor = () => {
   const cursor = useMousePosition();
+  const [variant, setVariant] = useAtom(cursorVariant);
   const cursorVariants: AnimationProps["variants"] = {
     default: {
       x: cursor.x - 8,
@@ -53,7 +56,7 @@ const Cursor = (props: { variant: string }) => {
   return (
     <motion.div
       variants={cursorVariants}
-      animate={props.variant}
+      animate={variant}
       className="pointer-events-none fixed left-0 top-0 z-50 hidden h-4 w-4 rounded-full bg-white md:block"
     ></motion.div>
   );
