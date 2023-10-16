@@ -21,6 +21,7 @@ import { auth } from "@/firebase/firebase";
 import useMousePosition from "./useMousePosition";
 import { useAtom } from "jotai";
 import { cursorVariant } from "@/jotai/atom";
+import { HiOutlineCursorClick } from "react-icons/hi";
 
 const Cursor = () => {
   const cursor = useMousePosition();
@@ -62,8 +63,26 @@ const Cursor = () => {
       height: 50,
       width: 50,
       backgroundColor: "black",
-      // mixBlendMode: "difference",
       color: "#facc15",
+    },
+    reverse: {
+      x: cursor.x - 50,
+      y: cursor.y - 50,
+      display: `flex`,
+      height: 100,
+      width: 100,
+      backgroundColor: "transparent",
+      color: "#facc15",
+    },
+    brand: {
+      x: cursor.x - 30,
+      y: cursor.y - 30,
+      display: `flex`,
+      height: 60,
+      width: 60,
+      backgroundColor: "#facc15",
+      mixBlendMode: "difference",
+      color: "black",
     },
     hide: {
       opacity: "0%",
@@ -75,10 +94,30 @@ const Cursor = () => {
         <motion.div
           variants={cursorVariants}
           animate={variant}
-          className="pointer-events-none outline outline-acc outline-2 fixed left-0 top-0 z-50 flex items-center justify-center md:block"
+          className="pointer-events-none fixed left-0 top-0 z-50 flex items-center justify-center outline outline-2 outline-acc md:block"
         >
           <div className="whitespace-nowrap text-xs font-bold capitalize">
             click
+          </div>
+        </motion.div>
+      ) : variant === "reverse" ? (
+        <motion.div
+          variants={cursorVariants}
+          animate={variant}
+          className="pointer-events-none fixed left-0 top-0 z-50 flex items-center justify-center outline outline-2 outline-acc md:block"
+        >
+          <div className="whitespace-nowrap text-sm font-bold capitalize">
+            we provide
+          </div>
+        </motion.div>
+      ) : variant === "brand" ? (
+        <motion.div
+          variants={cursorVariants}
+          animate={variant}
+          className="pointer-events-none fixed left-0 top-0 z-50 flex items-center justify-center md:block"
+        >
+          <div className="text-center text-sm font-bold capitalize">
+            <HiOutlineCursorClick size={40} />
           </div>
         </motion.div>
       ) : (

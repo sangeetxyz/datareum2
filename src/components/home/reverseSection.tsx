@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useAtom } from "jotai";
+import { cursorVariant } from "@/jotai/atom";
 const ReverseSection = () => {
   const mainDivRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: mainDivYProgess } = useScroll({
@@ -32,11 +34,21 @@ const ReverseSection = () => {
       text: "analytics.",
     },
   ];
+  const [variant, setVariant] = useAtom(cursorVariant);
+
   return (
     <div ref={mainDivRef} className="relative h-[400vh] bg-black">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden bg-stone-950 pt-20">
         <div className="h-full w-full p-[4vw]">
-          <div className="relative flex h-full w-full overflow-hidden rounded-2xl outline  outline-1 outline-acc">
+          <div
+            onMouseEnter={() => {
+              setVariant("reverse");
+            }}
+            onMouseLeave={() => {
+              setVariant("default");
+            }}
+            className="relative flex h-full w-full overflow-hidden rounded-2xl outline  outline-1 outline-acc"
+          >
             <motion.div
               style={{ x: mainDivTrans }}
               className="relative flex h-full w-full"
