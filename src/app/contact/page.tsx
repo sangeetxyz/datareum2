@@ -32,7 +32,7 @@ const Contact = () => {
             <div className="capitalize text-stone-100">enquery</div>
             <textarea className="rounded-lg bg-stone-100 px-3 py-1 focus:outline-none" />
           </div>
-          <div className="rounded-lg bg-acc px-4 py-2 text-center font-bold capitalize text-stone-950">
+          <div className="rounded-lg mt-6 bg-acc px-4 py-2 text-center font-bold capitalize text-stone-950">
             submit
           </div>
         </div>
