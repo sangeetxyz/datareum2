@@ -21,7 +21,7 @@ const Dark = () => {
         }}
         className="cursor-pointer text-9xl"
       >
-        click
+        click me
       </motion.div>
     </motion.div>
   );
