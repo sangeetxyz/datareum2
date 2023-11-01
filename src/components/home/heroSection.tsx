@@ -90,10 +90,9 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="mt-4 hidden xl:block">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum est
-              quisquam voluptas itaque deserunt soluta impedit recusandae culpa
-              ipsam hic. Odio cumque provident minima molestiae cupiditate fuga
-              et porro maiores?
+              We centralize anonymized health data for researchers. Securely
+              encrypted with Ethereum smart contracts, our platform offers easy
+              data uploads, controlled access, and robust security measures.
             </div>
             <div className="mt-4 flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
               <motion.div
