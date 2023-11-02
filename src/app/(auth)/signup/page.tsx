@@ -346,10 +346,9 @@ const Signup = () => {
                   <BiSolidQuoteAltLeft size={100} />
                 </div>
                 <div className="text-justify text-xl capitalize">
-                  I gave @datereum a try this weekend and I was able to create a
-                  quick dashboard to visualize the data from the PostgreSQL
-                  instance. Its super easy to use thir API or the direct DB
-                  connection. Check out the tutorial{" "}
+                  As a user of @Datareum, I appreciate its secure data storage
+                  and seamless user management, enabling efficient health data
+                  exchange for researchers while safeguarding patient privacy.{" "}
                 </div>
                 <div className="relative top-32">
                   <BiSolidQuoteAltRight size={100} />
