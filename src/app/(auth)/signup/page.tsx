@@ -55,7 +55,6 @@ const Signup = () => {
     setAllUsersDataHelper();
   }, [user]);
   return (
-    
       <div className="h-screen bg-gradient-to-b from-stone-900 to-stone-950">
         <div className="grid h-full grid-cols-3">
           {/* for mobile */}
@@ -320,7 +319,7 @@ const Signup = () => {
             </AnimatePresence>
           </div>
           {/* for pc */}
-          <div className="relative col-span-2 hidden h-full w-full border-l border-gray-700 xl:block">
+          <div className="relative col-span-2 hidden h-full w-full border-l border-stone-700 xl:block">
             <div className="absolute left-0 top-0 h-full w-full">
               <img
                 src={abstract.src}
