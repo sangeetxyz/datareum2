@@ -12,14 +12,13 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/context";
 import { userData } from "@/types/types";
 import abstract from "../../../../public/auth/abstract.png";
-
 import { getAllUsersData } from "@/utils/helper/helpers";
 import {
   handleGetOtpClickedForSignin,
   handleProceedClickedForSignin,
 } from "@/utils/helper/handlers";
-import Toaster from "@/components/containers/Toaster";
-import Container from "@/components/containers/container";
+import Image from "next/image";
+
 const Signup = () => {
   const [phoneNumber, setPhoneNumber] = useState("1212121212");
   const [isOtpClicked, setIsOtpClicked] = useState(false);
@@ -27,6 +26,7 @@ const Signup = () => {
   const [allUserData, setAllUserData] = useState<userData[] | null>(null);
   const router = useRouter();
   const { user } = useAuth();
+
   const setAllUsersDataHelper = async () => {
     const data = await getAllUsersData();
     setAllUserData(data);
@@ -220,10 +220,12 @@ const Signup = () => {
         {/* for pc */}
         <div className="relative col-span-2 hidden h-full w-full border-l border-stone-700 xl:block">
           <div className="absolute left-0 top-0 h-full w-full">
-            <img
+            <Image
               src={abstract.src}
-              alt=""
-              className="h-full w-full object-center"
+              className="h-full w-full object-cover"
+              width={2000}
+              height={2000}
+              alt="background"
             />
           </div>
           <div className="flex h-full w-full items-center justify-center">
