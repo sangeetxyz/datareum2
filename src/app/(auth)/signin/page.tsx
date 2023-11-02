@@ -225,6 +225,7 @@ const Signup = () => {
               className="h-full w-full object-cover"
               width={2000}
               height={2000}
+              priority
               alt="background"
             />
           </div>
@@ -245,9 +246,11 @@ const Signup = () => {
                 </div>
               </div>
               <div className="ml-24 mt-4 flex items-center space-x-4 self-start">
-                <img
-                  src="/rolando.png"
+                <Image
+                  src={"/auth/rolando.png"}
                   alt=""
+                  width={100}
+                  height={100}
                   className="h-12 w-12 rounded-full object-cover"
                 />
                 <div className="capitalize">narendra rolando</div>
