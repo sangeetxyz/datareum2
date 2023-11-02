@@ -346,9 +346,9 @@ const Signup = () => {
                   <BiSolidQuoteAltLeft size={100} />
                 </div>
                 <div className="text-justify text-xl capitalize">
-                  As a user of @Datareum, I appreciate its secure data storage
-                  and seamless user management, enabling efficient health data
-                  exchange for researchers while safeguarding patient privacy.{" "}
+                  As a user of @Datareum, I appreciate its combination of robust
+                  encryption, smart contract technology, and a user-friendly
+                  interface makes it a game-changer in health data management.{" "}
                 </div>
                 <div className="relative top-32">
                   <BiSolidQuoteAltRight size={100} />
