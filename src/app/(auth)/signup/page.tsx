@@ -66,7 +66,7 @@ const Signup = () => {
             height={2000}
             priority
             width={2000}
-            className="absolute left-0 top-0 h-full w-full object-cover brightness-50"
+            className="absolute left-0 top-0 h-full w-full object-cover opacity-70 brightness-50"
           />
           <AnimatePresence>
             {isOtpClicked ? (
