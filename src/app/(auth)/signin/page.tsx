@@ -43,6 +43,14 @@ const Signup = () => {
       <div className="grid h-full grid-cols-3">
         {/* for mobile */}
         <div className="relative col-span-3 flex h-full flex-col items-center justify-center xl:col-span-1 xl:bg-stone-950">
+          <Image
+            src={"/hero/p2.svg"}
+            alt=""
+            height={2000}
+            priority
+            width={2000}
+            className="absolute left-0 top-0 h-full w-full object-cover opacity-40"
+          />
           <AnimatePresence>
             {isOtpClicked ? (
               // second page
