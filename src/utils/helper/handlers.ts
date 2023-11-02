@@ -362,7 +362,7 @@ export const handleProceedClickedForSignin = (OTP: string) => {
   if (OTP.length === 6) {
     checker(OTP).then(async (value) => {
       if (value === true) {
-        toast.success("welcome!", {
+        toast.success("Welcome!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -629,7 +629,6 @@ export const handleDeleteBcAll = async (
     setTimeout(refresher, 5000);
     setTimeout(refresher, 10000);
     setTimeout(refresher, 15000);
-
   };
   next(false);
   toast.promise(

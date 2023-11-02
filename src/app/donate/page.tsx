@@ -168,6 +168,24 @@ const Donate = () => {
                 whileTap={{
                   scale: 0.9,
                 }}
+                onClick={async () => {
+                  if (process.env.NEXT_PUBLIC_WALLET_PUBLIC_KEY) {
+                    await navigator.clipboard.writeText(
+                      process.env.NEXT_PUBLIC_WALLET_PUBLIC_KEY,
+                    );
+                    toast.success("Address copied!", {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: false,
+                      draggable: true,
+                      progress: undefined,
+                      pauseOnFocusLoss: false,
+                      theme: "dark",
+                    });
+                  }
+                }}
                 className="cursor-pointer rounded-full bg-acc p-1 font-bold text-stone-100"
               >
                 <PiCopyFill size={30} color={"#1C1917"} />
