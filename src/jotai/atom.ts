@@ -9,4 +9,4 @@ export const currentDisease = atom<string>("");
 
 export const cursorVariant = atom<string>("default");
 
-export const isDark = atom<boolean>(false)
+export const isDark = atom<boolean>(false);

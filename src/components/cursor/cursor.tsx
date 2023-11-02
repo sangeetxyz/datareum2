@@ -5,11 +5,16 @@ import { useAtom } from "jotai";
 import { cursorVariant } from "@/jotai/atom";
 import { HiOutlineCursorClick } from "react-icons/hi";
 import { cursorVariants } from "@/utils/helper/listHolders";
+import { useEffect } from "react";
 
 const Cursor = () => {
   const cursor = useMousePosition();
   const [variant, setVariant] = useAtom(cursorVariant);
   const cursorVariantsPrivate: any = cursorVariants(cursor);
+
+  useEffect(() => {
+    setVariant("default");
+  }, []);
 
   return (
     <>
