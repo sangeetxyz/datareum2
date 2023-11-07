@@ -21,12 +21,12 @@ const Home = () => {
   return (
     <div className="cursor-none">
       <HomeHeader />
-    <Cursor />  
+      <Cursor />  
       <HeroSection />
       <ReverseSection />
       <BrandSection />
       <FeatureSection />
-     <!--   <Three /> -->
+  
       <Footer />
     </div>
   );
