@@ -48,7 +48,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="text-center text-sm">
-                Lorem ipsum dolor sit amet consectetur
+                The next gen storage solution for healthcare!
               </div>
             </div>
           </div>
@@ -134,10 +134,10 @@ const Footer = () => {
               <div
                 className="cursor-pointer capitalize"
                 onClick={() => {
-                  router.replace("https://www.youtube.com/watch?v=_1Zgbzsl76A");
+                  router.replace("https://www.youtube.com/watch?v=h-TIRIxhq6E");
                 }}
               >
-                meaw
+                help
               </div>
             </div>
           </div>
