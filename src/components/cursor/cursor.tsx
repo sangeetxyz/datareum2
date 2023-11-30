@@ -17,7 +17,7 @@ const Cursor = () => {
   }, []);
 
   return (
-    <>
+    <div className="hidden md:block">
       {variant === "button" ? (
         <motion.div
           variants={cursorVariantsPrivate}
@@ -75,7 +75,7 @@ const Cursor = () => {
           className="pointer-events-none fixed left-0 top-0 z-50 h-4 w-4 rounded-full bg-white md:block"
         ></motion.div>
       )}
-    </>
+    </div>
   );
 };
 

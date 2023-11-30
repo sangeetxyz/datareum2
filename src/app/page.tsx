@@ -19,7 +19,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="cursor-none">
+    <div className="md:cursor-none">
       <HomeHeader />
       <Cursor />
       <HeroSection />
