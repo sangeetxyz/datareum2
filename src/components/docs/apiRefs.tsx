@@ -44,7 +44,7 @@ import axios, { AxiosResponse } from 'axios';
 // Replace 'YOUR_API_TOKEN' with the actual API token provided by Datareum
 const API_TOKEN = 'YOUR_API_TOKEN';
 
-const apiUrl = '${process.env.NEXT_PUBLIC_WEB_URL}/api/v2/patients';
+const apiUrl = '${process.env.NEXT_PUBLIC_WEB_URL}api/v2/patients';
 
 const config = {
   headers: {

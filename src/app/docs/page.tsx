@@ -46,7 +46,7 @@ const Docs = () => {
                   <div className="text-center text-xl capitalize">
                     documentation
                   </div>
-                  <div className="text-center text-xl">(v1)</div>
+                  <div className="text-center text-xl">(v2)</div>
                 </div>
               </div>
               <div className="h-ful borde bordersto absolute bottom-0 top-0 flex w-full flex-col rounded-xl pt-[17.6rem]">

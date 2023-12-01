@@ -13,6 +13,7 @@ import { ForDbTypes, userData } from "@/types/types";
 const prisma = new PrismaClient();
 
 export async function GET(request: NextRequest, response: NextResponse) {
+  console.log("api");
   try {
     const authHeader = request.headers.get("authorization");
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -26,6 +27,7 @@ export async function GET(request: NextRequest, response: NextResponse) {
     } else {
       const dataFromDb = await prisma.patient.findMany();
       const dataFromBc = await getPatientsDataFromBc();
+      console.log(dataFromBc, dataFromDb);
       const a = combineDataAndSecretKeys(dataFromDb, dataFromBc);
       const b = decryptList(a);
       return NextResponse.json(b);
