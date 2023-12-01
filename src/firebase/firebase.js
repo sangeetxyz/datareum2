@@ -27,8 +27,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
+
 export const signer = async (phoneNumber) => {
-  auth.settings.appVerificationDisabledForTesting = true;
+  // auth.settings.appVerificationDisabledForTesting = true;
   window.recaptchaVerifier = new RecaptchaVerifier(auth, "sign-in", {
     size: "invisible",
   });
