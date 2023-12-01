@@ -391,7 +391,7 @@ const medicalDataFieldsPrivate = [
     minValue: 0, // Minimum QRS duration value
     maxValue: 200, // Maximum QRS duration value
   },
-]
+];
 const generatePerfectData = () => {
   const rowData = {};
   medicalDataFieldsPrivate.forEach((field) => {
@@ -423,15 +423,15 @@ const generatePerfectData = () => {
 };
 
 // Set the error percentage (e.g., 100%)
-const errorPercentage = 10;
+const errorPercentage = 50;
 
 // Generate rows with error percentage
-const rows = Array.from({ length: 200 }, () =>
+const rows = Array.from({ length: 500 }, () =>
   generatePerfectData(errorPercentage),
 );
 
 const csvWriter = createObjectCsvWriter({
-  path: "wrong_names_data.csv",
+  path: `csvs/wrong_names_data_${errorPercentage}.csv`,
   header: medicalDataFieldsPrivate.map((field) => ({
     id: field.name,
     title: field.name,

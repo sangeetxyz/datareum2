@@ -395,7 +395,7 @@ const medicalDataFieldsPrivate = [
   },
 ];
 
-const numRows = 600; // Number of rows to generate
+const numRows = 500; // Number of rows to generate
 
 const realDiseases = [
   "Hypertension",

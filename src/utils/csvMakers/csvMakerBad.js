@@ -392,6 +392,7 @@ const medicalDataFieldsPrivate = [
     maxValue: 200, // Maximum QRS duration value
   },
 ];
+
 function getRandomNumberOrEmptyString() {
   const randomNumber = Math.random();
   if (randomNumber < 0.5) {
@@ -400,6 +401,7 @@ function getRandomNumberOrEmptyString() {
     return "";
   }
 }
+
 const generateRandomData = (errorPercentage) => {
   const rowData = {};
   medicalDataFieldsPrivate.forEach((field) => {
@@ -451,12 +453,12 @@ const generateRandomData = (errorPercentage) => {
 const errorPercentage = 50;
 
 // Generate rows with error percentage
-const rows = Array.from({ length: 1000 }, () =>
+const rows = Array.from({ length: 500 }, () =>
   generateRandomData(errorPercentage),
 );
 
 const csvWriter = createObjectCsvWriter({
-  path: "csvs/error_data.csv",
+  path: `csvs/error_data_${errorPercentage}.csv`,
   header: medicalDataFieldsPrivate.map((field) => ({
     id: field.name,
     title: field.name,
