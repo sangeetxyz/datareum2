@@ -26,18 +26,17 @@ import {
 } from "@/utils/helper/handlers";
 import { Switch } from "@/components/ui/switch";
 
-import Container from "@/components/containers/container";
 import Image from "next/image";
 
 const Signup = () => {
-  const [name, setName] = useState("Matte Black");
-  const [email, setEmail] = useState("nateblcak9089@gmail.com");
-  const [org, setOrg] = useState("Google INC");
-  const [phoneNumber, setPhoneNumber] = useState("1212121212");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [org, setOrg] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [isContributing, setIsContributing] = useState(false);
-  const [isTacAccepted, setIsTacAccepted] = useState(true);
+  const [isTacAccepted, setIsTacAccepted] = useState(false);
   const [isOtpClicked, setIsOtpClicked] = useState(false);
-  const [OTP, setOTP] = useState("121212");
+  const [OTP, setOTP] = useState("");
   const [allUserData, setAllUserData] = useState<userData[] | null>(null);
   const router = useRouter();
   const user = useAuth();

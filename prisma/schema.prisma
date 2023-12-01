@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgres://postgres:dM8GkzFyLM3ak9SY@db.yviyyehnwrktxriejdwh.supabase.co:5432/postgres"
 }
 
 model user {
@@ -25,7 +25,7 @@ model user {
   canContribute   Boolean
   canDownload     Boolean
   isGod           Boolean
-  token           String?   @unique
+  token           String?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime? @updatedAt
 }

@@ -20,9 +20,9 @@ import {
 import Image from "next/image";
 
 const Signup = () => {
-  const [phoneNumber, setPhoneNumber] = useState("1212121212");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [isOtpClicked, setIsOtpClicked] = useState(false);
-  const [OTP, setOTP] = useState("121212");
+  const [OTP, setOTP] = useState("");
   const [allUserData, setAllUserData] = useState<userData[] | null>(null);
   const router = useRouter();
   const { user } = useAuth();

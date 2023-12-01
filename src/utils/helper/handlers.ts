@@ -243,7 +243,15 @@ export const handleProceedClickedForSignup = (
   if (OTP.length === 6) {
     checker(OTP).then(async (value) => {
       if (value === true) {
-        uploadUserFull(
+        console.log(
+          name,
+          org,
+          email,
+          phoneNumber,
+          isContributing,
+          isTacAccepted,
+        );
+        await uploadUserFull(
           name,
           org,
           email,
@@ -487,7 +495,7 @@ export const handleUserUpdateOnAdmin = async (
     canContribute: canContribute,
     canDownload: canDownload,
     token: token,
-    isGod: isGod,
+    isGod: userData.phone === process.env.NEXT_PUBLIC_ADMIN ? true : isGod,
     proUrl: userData.proUrl,
     fireUid: userData.fireUid,
     isTac: userData.isTac,

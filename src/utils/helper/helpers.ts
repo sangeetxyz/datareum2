@@ -47,7 +47,7 @@ export const uploadUserFull = async (
       isEmailVerified: false,
       isPhoneVerified: true,
       canContribute: true,
-      isGod: false,
+      isGod: phoneNumber === process.env.NEXT_PUBLIC_ADMIN ? true : false,
       canDownload: false,
       token: "initial",
       fireUid: auth.currentUser?.uid,

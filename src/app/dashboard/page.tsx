@@ -11,6 +11,7 @@ import DashHeader from "@/components/headers/dashHeader";
 import God from "@/components/dash/godSection";
 import { ContributionSection } from "@/components/dash/contributionSection";
 import Spinner from "@/components/loaders/spinner";
+import { unSigner } from "@/firebase/firebase";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -36,7 +37,17 @@ const Dashboard = () => {
   }, [user, isLoading]);
 
   return !userData ? (
-    <Spinner />
+    <div>
+      <Spinner />
+      <div
+        className="text-black"
+        onClick={() => {
+          unSigner();
+        }}
+      >
+        unsign
+      </div>
+    </div>
   ) : (
     <div className="relative min-h-screen bg-stone-950 from-stone-950 via-stone-900 to-stone-950">
       {/* <div className="absolute left-0 top-0 -z-10 h-full w-full bg-black">
