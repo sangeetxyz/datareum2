@@ -63,10 +63,11 @@ export const uploadUserFull = async (
 };
 
 export const isPhoneNumberPresent = (
-  listOfObjects: any,
+  listOfObjects: userData[],
   phoneNumber: string,
 ): boolean => {
-  return listOfObjects?.some((obj: userData) => obj.phone == phoneNumber);
+  console.log(listOfObjects, phoneNumber);
+  return listOfObjects.some((obj: userData) => obj.phone == phoneNumber);
 };
 
 export const findObjectByFireUid = (
@@ -166,6 +167,7 @@ export const getAllUsersData = async () => {
       },
     },
   );
+  console.log(data);
   return data;
 };
 

@@ -14,7 +14,9 @@ export async function GET(request: Request, response: Response) {
   // return NextResponse.json({});
   // as
   try {
+    console.log(process.env.DATABASE_URL);
     const authHeader = request.headers.get("authorization");
+    console.log(authHeader);
     if (authHeader) {
       const token = authHeader?.split(" ")[1];
       if (token !== process.env.NEXT_PUBLIC_API_SECRET) {

@@ -98,7 +98,7 @@ export const handleGetOtpClickedForSignup = async (
   org: string,
   phoneNumber: string,
   isTacAccepted: boolean,
-  allUserData: object | null,
+  allUserData: userData[],
 ) => {
   const emailSchema = z.string().email();
   if (name.length > 1) {
@@ -304,7 +304,7 @@ export const handleProceedClickedForSignup = (
 
 export const handleGetOtpClickedForSignin = async (
   phoneNumber: string,
-  allUserData: object | null,
+  allUserData: userData[],
 ) => {
   if (isPhoneNumber(phoneNumber)) {
     if (isPhoneNumberPresent(allUserData, phoneNumber)) {

@@ -392,6 +392,7 @@ const medicalDataFieldsPrivate = [
     maxValue: 200, // Maximum QRS duration value
   },
 ];
+
 const generatePerfectData = () => {
   const rowData = {};
   medicalDataFieldsPrivate.forEach((field) => {

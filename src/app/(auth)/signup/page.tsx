@@ -294,6 +294,8 @@ const Signup = () => {
                     scale: 0.95,
                   }}
                   onClick={() => {
+                    if (!allUserData) return;
+
                     handleGetOtpClickedForSignup(
                       name,
                       email,
