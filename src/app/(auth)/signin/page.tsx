@@ -198,6 +198,7 @@ const Signup = () => {
                     scale: 0.95,
                   }}
                   onClick={() => {
+                    if (!allUserData) return;
                     handleGetOtpClickedForSignin(phoneNumber, allUserData).then(
                       (response) => {
                         if (response) {
