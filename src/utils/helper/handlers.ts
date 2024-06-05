@@ -577,6 +577,8 @@ export const handlePatientUploadToBc = async (
 
 export const getPatientsDataFromBc = async () => {
   const result = await contract.getAllData();
+  const status = await contract.status();
+  console.log(status);
   const [identifiers, secretKeys] = result;
 
   const data = [];
