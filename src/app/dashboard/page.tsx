@@ -39,14 +39,14 @@ const Dashboard = () => {
   return !userData ? (
     <div>
       <Spinner />
-      <div
+      {/* <div
         className="text-black"
         onClick={() => {
           unSigner();
         }}
       >
         unsign
-      </div>
+      </div> */}
     </div>
   ) : (
     <div className="relative min-h-screen bg-stone-950 from-stone-950 via-stone-900 to-stone-950">

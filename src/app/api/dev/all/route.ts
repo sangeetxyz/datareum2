@@ -1,6 +1,4 @@
-import {
-  combineDataAndSecretKeys,
-} from "@/utils/helper/helpers";
+import { combineDataAndSecretKeys } from "@/utils/helper/helpers";
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { getPatientsDataFromBc } from "@/utils/helper/handlers";
@@ -19,7 +17,9 @@ export async function GET(request: NextRequest, response: NextResponse) {
       return NextResponse.json({ error: "Unauthorized" });
     } else {
       const dataFromDb = await prisma.patient.findMany();
+      console.log("Data from DB");
       const dataFromBc = await getPatientsDataFromBc();
+      console.log("Data from BC", dataFromBc);
       const a = combineDataAndSecretKeys(dataFromDb, dataFromBc);
       const b = decryptList(a);
       return NextResponse.json(b);
