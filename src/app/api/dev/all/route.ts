@@ -16,16 +16,19 @@ export async function GET(request: NextRequest, response: NextResponse) {
     if (token !== process.env.NEXT_PUBLIC_API_SECRET) {
       return NextResponse.json({ error: "Unauthorized" });
     } else {
-      const dataFromDb = await prisma.patient.findMany();
-      console.log("Data from DB");
-      const dataFromBc = await getPatientsDataFromBc();
-      console.log("Data from BC", dataFromBc);
-      const a = combineDataAndSecretKeys(dataFromDb, dataFromBc);
-      const b = decryptList(a);
-      return NextResponse.json(b);
+      try {
+        const dataFromDb = await prisma.patient.findMany();
+        const dataFromBc = await getPatientsDataFromBc();
+        const a = combineDataAndSecretKeys(dataFromDb, dataFromBc);
+        const b = decryptList(a);
+        return NextResponse.json(b);
+      } catch (error) {
+        console.log("Error msg: " + (error as Error).message);
+        return NextResponse.json({ error: "Could not fetch data" });
+      }
     }
   } catch (error) {
-    console.error(error);
+    console.log("Error msg: " + (error as Error).message);
     return NextResponse.json({ error: "Internal Server Error" });
   }
 }
