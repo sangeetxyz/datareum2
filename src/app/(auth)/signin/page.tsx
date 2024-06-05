@@ -29,6 +29,7 @@ const Signup = () => {
 
   const setAllUsersDataHelper = async () => {
     const data = await getAllUsersData();
+    // console.log(first)
     setAllUserData(data);
   };
 
