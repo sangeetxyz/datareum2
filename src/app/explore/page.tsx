@@ -30,8 +30,10 @@ const Explore = () => {
         const processed = processData(data);
         console.log(processed);
         const diseases = extractDiseases(processed);
+        console.log(diseases);
         setDiseaseList(diseases);
         const forCharts = filterDiseaseData(processed, currentDiseasePrivate);
+        console.log(forCharts);
         setChartsData(forCharts);
       }
     } catch (error) {

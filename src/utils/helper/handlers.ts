@@ -588,7 +588,7 @@ export const getPatientsDataFromBc = async () => {
       secretKey: secretKeys[i],
     });
   }
-
+  console.log("Data from BC", data);
   return data;
 };
 
