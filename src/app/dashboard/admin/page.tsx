@@ -83,7 +83,7 @@ const AdminPanel = () => {
         </div>
         <div className="text-xl">{"- nah!"}</div>
         <div className="text-2xl">
-          Go back{" "}
+          Go back
           <span
             className="cursor-pointer underline"
             onClick={() => {

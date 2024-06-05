@@ -578,6 +578,7 @@ export const handlePatientUploadToBc = async (
 export const getPatientsDataFromBc = async () => {
   const result = await contract.getAllData();
   console.log("got data");
+
   const [identifiers, secretKeys] = result;
 
   const data = [];
@@ -587,7 +588,6 @@ export const getPatientsDataFromBc = async () => {
       secretKey: secretKeys[i],
     });
   }
-
   return data;
 };
 
